@@ -18,18 +18,18 @@ int main(int ac, char *av[])
 {
 	if (ac != 2)
 	{
-		printf("argument error");
+		ft_error("argument", NULL);
 		return 1;
 	}
 	if (!check_exetation(av[1]) || check_name_dot(av[1]))
 	{
-		printf("error extension. Must be .cub\n");
+		ft_error("extension. Must be .cub\n", NULL);
 		return 1;
 	}
 	int fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
-		printf("ERROR can not open this file:%s", av[1]);
+		ft_error("can not open this file", av[1]);
 		return 1;
 	}
 	close (fd);

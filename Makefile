@@ -8,7 +8,7 @@ GREEN0 = \033[32m
 GREEN1 = \033[38;5;121m
 
 # Files:
-SRC = ./parsing/parsing.c
+SRC = ./parsing/parsing.c ./parsing/utils.c
 	  
 
 OBJ = $(SRC:.c=.o)

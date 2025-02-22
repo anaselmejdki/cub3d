@@ -6,4 +6,7 @@
 # include <stdio.h>
 #include <fcntl.h>
 
+
+void ft_error(char *str, char *arg);
+
 #endif
