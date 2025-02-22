@@ -26,6 +26,13 @@ int main(int ac, char *av[])
 		printf("error extension. Must be .cub\n");
 		return 1;
 	}
-	// printf("ALL gooz");
+	int fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+	{
+		printf("ERROR can not open this file:%s", av[1]);
+		return 1;
+	}
+	close (fd);
+	printf("The file is exist:%s", av[1]);
 	return 0;
 }
