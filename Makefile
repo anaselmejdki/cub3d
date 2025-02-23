@@ -8,7 +8,9 @@ GREEN0 = \033[32m
 GREEN1 = \033[38;5;121m
 
 # Files:
-SRC = ./parsing/parsing.c ./parsing/utils.c
+
+SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
+		./parsing/parsing.c ./parsing/utils.c
 	  
 
 OBJ = $(SRC:.c=.o)

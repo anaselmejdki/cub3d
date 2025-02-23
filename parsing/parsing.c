@@ -14,6 +14,17 @@ int check_name_dot(char *filename)
 	}
 	return 0;
 }
+void reading_map(int fd)
+{
+	char *temp;
+	while ((temp = get_next_line(fd)))
+	{
+		printf("%s", temp);
+		free(temp);
+	}
+	return ;
+}
+
 int main(int ac, char *av[])
 {
 	if (ac != 2)
@@ -32,6 +43,7 @@ int main(int ac, char *av[])
 		ft_error("can not open this file", av[1]);
 		return 1;
 	}
+	reading_map(fd);
 	close (fd);
 	printf("The file is exist:%s", av[1]);
 	return 0;

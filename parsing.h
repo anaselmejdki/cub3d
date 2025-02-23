@@ -3,10 +3,12 @@
 
 
 # include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
 # include <stdio.h>
-#include <fcntl.h>
+# include <fcntl.h>
+#include <unistd.h>
 
-
-void ft_error(char *str, char *arg);
+// ERROR:
+void    ft_error(char *str, char *arg);
 
 #endif
