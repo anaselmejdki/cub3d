@@ -19,7 +19,7 @@ void ft_check_texture(char *str)
 	int fd;
 
 	ptr = str;
-	if(ptr[0] == 'N' && ptr[1] == 'O')
+	if((ptr[0] == 'N' && ptr[1] == 'O') || (ptr[0] == 'S' && ptr[1] == 'O') || (ptr[0] == 'W' && ptr[1] == 'E') || (ptr[0] == 'E' && ptr[1] == 'A'))
 	{
 		ptr += 2;
 		while (*ptr == 32)
@@ -31,7 +31,7 @@ void ft_check_texture(char *str)
 			if(len > 0 && dup[len - 1] == '\n')	
 				dup[len - 1] = '\0';
 			if (ft_check_xpm(dup))
-				ft_error("check extension .xpm", NULL);
+				ft_error("check extension .xpm", dup);
 			fd = open (dup, O_RDONLY);
 			if(fd < 0)
 			{
@@ -44,7 +44,8 @@ void ft_check_texture(char *str)
 		else 
 			ft_error("Path is  not existed!", NULL);
 	}
-	ft_error("Texture", str);
+	else
+		ft_error("Texture", str);
 }
 
 void reading_map(int fd)
