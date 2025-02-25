@@ -7,7 +7,11 @@ void ft_error(char *str, char *arg)
 		printf(": %s", arg);
 	exit(1);
 }
-
+int ft_check_xpm(char *str)
+{
+	int i = ft_strlen(str);
+	return (i > 4 && ft_strncmp(str + i - 4, ".xpm", 4));
+}
 void ft_check_texture(char *str)
 {
 	char *ptr;
@@ -25,9 +29,9 @@ void ft_check_texture(char *str)
 			dup = ft_strdup(ptr);
 			int len = ft_strlen(dup);
 			if(len > 0 && dup[len - 1] == '\n')	
-				dup[len- 1] = '\0';
-			printf("Trying to open file: '%s'\n", dup);
-
+				dup[len - 1] = '\0';
+			if (ft_check_xpm(dup))
+				ft_error("check extension .xpm", NULL);
 			fd = open (dup, O_RDONLY);
 			if(fd < 0)
 			{
@@ -40,6 +44,7 @@ void ft_check_texture(char *str)
 		else 
 			ft_error("Path is  not existed!", NULL);
 	}
+	ft_error("Texture", str);
 }
 
 void reading_map(int fd)
