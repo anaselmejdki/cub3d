@@ -14,16 +14,7 @@ int check_name_dot(char *filename)
 	}
 	return 0;
 }
-void reading_map(int fd)
-{
-	char *temp;
-	while ((temp = get_next_line(fd)))
-	{
-		printf("%s", temp);
-		free(temp);
-	}
-	return ;
-}
+
 
 int main(int ac, char *av[])
 {

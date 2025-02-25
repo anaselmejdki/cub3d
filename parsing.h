@@ -10,5 +10,7 @@
 
 // ERROR:
 void    ft_error(char *str, char *arg);
+// MAP:
+void reading_map(int fd);
 
 #endif
