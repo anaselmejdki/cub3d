@@ -23,7 +23,6 @@ void ft_check_texture(char *str)
 	char *ptr;
 	char *dup;
 	int fd;
-
 	ptr = str;
 	if((ptr[0] == 'N' && ptr[1] == 'O') || (ptr[0] == 'S' && ptr[1] == 'O') || (ptr[0] == 'W' && ptr[1] == 'E') || (ptr[0] == 'E' && ptr[1] == 'A'))
 	{
@@ -50,8 +49,6 @@ void ft_check_texture(char *str)
 		else 
 			ft_error("Path is  not existed!", NULL);
 	}
-	else
-		ft_error("Texture", str);
 }
 
 void ft_check_rgb(char *str)
@@ -70,6 +67,15 @@ void ft_check_rgb(char *str)
 		printf("KHDAMA\n");
 	return ;
 }
+// void	ft_check_new_line(char *str)
+// {
+// 	char *ptr;
+
+// 	*ptr = str;
+// 	if (ft_strncmp(ptr, "\n", 1))
+// 		continue;
+// 	ft_error("you need new line", str);
+// }
 // work with flags to see each line it has a nuber:
 void reading_map(int fd)
 {
@@ -77,12 +83,16 @@ void reading_map(int fd)
 	int i = 0;
 	while ((temp = get_next_line(fd)))
 	{
-		if (i < 4)
+		printf("i = %d, str:%s", i, temp);
+		if (i < 3)
 			ft_check_texture(temp);
-		else if(i < 6)
+		// if (i == 4)
+		// 	ft_check_new_line(temp);
+		if(i == 5 || i == 6)
 			ft_check_rgb(temp);
-		else
-			printf("==>\033[1;35m%s\033[0m", temp)
+		// else
+		// 	printf("==>\033[1;35m%s\033[0m", temp);
+		i++;
 		free(temp);
 	}
 	return ;
