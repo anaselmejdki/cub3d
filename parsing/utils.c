@@ -12,6 +12,12 @@ int ft_check_xpm(char *str)
 	int i = ft_strlen(str);
 	return (i > 4 && ft_strncmp(str + i - 4, ".xpm", 4));
 }
+
+int ft_check_cub(char *filename)
+{
+	int len = ft_strlen(filename);
+	return (len > 4 && ft_strncmp(filename + len - 4, ".cub", 4) == 0);
+}
 void ft_check_texture(char *str)
 {
 	char *ptr;
@@ -48,17 +54,36 @@ void ft_check_texture(char *str)
 		ft_error("Texture", str);
 }
 
+void ft_check_rgb(char *str)
+{
+	char *ptr;
+	char *dup;
+	ptr = str;
+	dup = ft_strdup(ptr);
+	printf("RGB:%s", dup);
+
+	if (ptr[0] == 'F' || ptr[0] == 'C')
+	{
+		printf("RGB:%s", dup);
+	}
+	else 
+		printf("KHDAMA\n");
+	return ;
+}
+// work with flags to see each line it has a nuber:
 void reading_map(int fd)
 {
 	char *temp;
 	int i = 0;
 	while ((temp = get_next_line(fd)))
 	{
-		ft_check_texture(temp);
-			i++;
+		if (i < 4)
+			ft_check_texture(temp);
+		else if(i < 6)
+			ft_check_rgb(temp);
+		else
+			printf("==>\033[1;35m%s\033[0m", temp)
 		free(temp);
 	}
-	printf("------->%d",i);
-	
 	return ;
 }

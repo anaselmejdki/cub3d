@@ -13,4 +13,8 @@ void    ft_error(char *str, char *arg);
 // MAP:
 void reading_map(int fd);
 
+//	CHECK :
+int ft_check_cub(char *filename);
+int ft_check_xpm(char *str);
+
 #endif
