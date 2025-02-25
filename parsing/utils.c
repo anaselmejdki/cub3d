@@ -20,9 +20,14 @@ void ft_check_texture(char *str)
 		ptr += 2;
 		while (*ptr == 32)
 			ptr++;
-		if(*ptr == '.')
+		if(*ptr == '.' || *ptr == '/')
 		{
 			dup = ft_strdup(ptr);
+			int len = ft_strlen(dup);
+			if(len > 0 && dup[len - 1] == '\n')	
+				dup[len- 1] = '\0';
+			printf("Trying to open file: '%s'\n", dup);
+
 			fd = open (dup, O_RDONLY);
 			if(fd < 0)
 			{
