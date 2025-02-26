@@ -71,7 +71,6 @@ void move_to_rgb(char *temp, int *target)
         }
         while (*ptr && *ptr != ',' && *ptr != '\n')
             ptr++;
-
         if (*ptr == ',')
             ptr++;
 		i++;
