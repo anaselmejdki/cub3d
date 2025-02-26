@@ -64,6 +64,7 @@ void move_to_rgb(char *temp, int *target)
 	while ( i < 3 )
     {
         target[i] = ft_atoi(ptr);
+		printf("=====>%s", target[i]);
         if (target[i] < 0 || target[i] > 255)
         {
             printf("Error: Invalid RGB value. Must be between 0-255\n");
@@ -84,7 +85,6 @@ void ft_check_floor(char *temp, t_par *colors)
 	int *target;
 
 	ptr = temp;
-	// int i  = 0;
 	if (*ptr == 'F')
 		target = colors->floor;
 	else if (*ptr == 'C')
