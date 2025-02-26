@@ -1,23 +1,7 @@
 #include "../parsing.h"
 
-void ft_error(char *str, char *arg)
-{
-	printf("Error: %s", str);
-	if (arg)
-		printf(": %s", arg);
-	exit(1);
-}
-int ft_check_xpm(char *str)
-{
-	int i = ft_strlen(str);
-	return (i > 4 && ft_strncmp(str + i - 4, ".xpm", 4));
-}
 
-int ft_check_cub(char *filename)
-{
-	int len = ft_strlen(filename);
-	return (len > 4 && ft_strncmp(filename + len - 4, ".cub", 4) == 0);
-}
+
 void ft_check_texture(char *str)
 {
 	char *ptr;
@@ -49,47 +33,46 @@ void ft_check_texture(char *str)
 		else 
 			ft_error("Path is  not existed!", NULL);
 	}
+	else	
+		ft_error("Not any more!!!");
 }
-
+void ft_check_rgb_rang(char *str)
+{
+	int red = ft_atoi(str);
+	printf("red:\033[1;35m%d\033[0m", red);
+	printf("str:\033[1;35m%s\033[0m", str);
+}
 void ft_check_rgb(char *str)
 {
-	char *ptr;
+	char *ptr = str;
 	char *dup;
-	ptr = str;
-	dup = ft_strdup(ptr);
-	printf("RGB:%s", dup);
+	
 
 	if (ptr[0] == 'F' || ptr[0] == 'C')
 	{
-		printf("RGB:%s", dup);
+		dup = ft_strdup(ptr);
+		// printf("%s", dup);
+		ft_check_rgb_rang(dup);
 	}
-	else 
-		printf("KHDAMA\n");
+
 	return ;
 }
-// void	ft_check_new_line(char *str)
-// {
-// 	char *ptr;
 
-// 	*ptr = str;
-// 	if (ft_strncmp(ptr, "\n", 1))
-// 		continue;
-// 	ft_error("you need new line", str);
-// }
-// work with flags to see each line it has a nuber:
 void reading_map(int fd)
 {
 	char *temp;
 	int i = 0;
 	while ((temp = get_next_line(fd)))
 	{
-		printf("i = %d, str:%s", i, temp);
-		if (i < 3)
+		if (i <= 3)
+		{
+			printf("i = %d, str:%s", i, temp);
 			ft_check_texture(temp);
+		}
 		// if (i == 4)
 		// 	ft_check_new_line(temp);
-		if(i == 5 || i == 6)
-			ft_check_rgb(temp);
+		// if(i == 5 || i == 6)
+		// 	ft_check_rgb(temp);
 		// else
 		// 	printf("==>\033[1;35m%s\033[0m", temp);
 		i++;
