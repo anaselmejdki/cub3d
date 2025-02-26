@@ -2,9 +2,9 @@
 
 void ft_error(char *str, char *arg)
 {
-	printf("Error: %s", str);
+	printf("\033[0;31m Error: %s \033[0m", str);
 	if (arg)
-		printf(": %s", arg);
+		printf(":\033[38;5;121m %s \033[0m", arg);
 	exit(1);
 }
 
@@ -20,14 +20,12 @@ int ft_check_cub(char *filename)
 	return (len > 4 && ft_strncmp(filename + len - 4, ".cub", 4) == 0);
 }
 
-void	ft_check_new_line(char *str)
+int	ft_check_new_line(char *str)
 {
 	char *ptr;
 
 	ptr = str;
 	if (ft_strncmp(ptr ,"\n", 1) == 0)
-		return ;
-	else 
-		ft_error("you need new line, instead of", str);
-	return ;
+		return 0;
+	return 1;
 }

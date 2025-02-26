@@ -34,7 +34,7 @@ void ft_check_texture(char *str)
 			ft_error("Path is  not existed!", NULL);
 	}
 	else	
-		ft_error("Not any more!!!");
+		ft_error("Not textures!!!", str);
 }
 void ft_check_rgb_rang(char *str)
 {
@@ -64,13 +64,14 @@ void reading_map(int fd)
 	int i = 0;
 	while ((temp = get_next_line(fd)))
 	{
+		printf("i = %d, str:%s", i, temp);
 		if (i <= 3)
-		{
-			printf("i = %d, str:%s", i, temp);
 			ft_check_texture(temp);
-		}
-		// if (i == 4)
-		// 	ft_check_new_line(temp);
+		if (i == 4 && ft_check_new_line(temp) == 1)
+			ft_error("you need new line, instead of", temp);
+
+		// if(i == 5 && ft_check_new_line(temp) == 1)
+		// 	printf("Hayed dik nwe line achrifa");
 		// if(i == 5 || i == 6)
 		// 	ft_check_rgb(temp);
 		// else

@@ -16,5 +16,6 @@ void reading_map(int fd);
 //	CHECK :
 int ft_check_cub(char *filename);
 int ft_check_xpm(char *str);
+int	ft_check_new_line(char *str);
 
 #endif
