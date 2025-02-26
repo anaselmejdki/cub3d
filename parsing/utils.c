@@ -111,7 +111,7 @@ void reading_map(int fd)
 		if (i == 4 && ft_check_new_line(temp) == 1)
 		ft_error("you need new line, instead of", temp);
 		if(i == 5 || i == 6){
-			printf("i = %d, str: \033[38;5;121m%s \033[0m", i, temp);
+			printf("i = %d, str: \033[38;5;121m%s\033[0m", i, temp);
 			ft_check_floor(temp, &color);
 		}
 		// ft_check_rgb(temp);
