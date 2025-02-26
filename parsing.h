@@ -8,6 +8,14 @@
 # include <fcntl.h>
 #include <unistd.h>
 
+typedef struct s_par
+{
+	//los colores:
+	int floor[3];
+	int ceiling[3];
+	
+}t_par;
+
 // ERROR:
 void    ft_error(char *str, char *arg);
 // MAP:

@@ -33,6 +33,5 @@ int main(int ac, char *av[])
 	}
 	reading_map(fd);
 	close (fd);
-	printf("The file is exist:%s", av[1]);
 	return 0;
 }
