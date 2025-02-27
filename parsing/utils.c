@@ -66,7 +66,7 @@ void move_to_rgb(char *temp, int *target)
         target[i] = ft_atoi(ptr);
         if (target[i] < 0 || target[i] > 255)
         {
-            printf("Error: Invalid RGB value. Must be between 0-255\n");
+            ft_error("Invalid RGB value. Must be between 0-255", ptr);
             return;
         }
         while (*ptr && *ptr != ',' && *ptr != '\n')
@@ -85,15 +85,30 @@ void ft_check_floor(char *temp, t_par *colors)
 	ptr = temp;
 	if (*ptr == 'F')
 		target = colors->floor;
-	else if (*ptr == 'C')
-		target = colors->ceiling;
 	else
-		ft_error("You need 'F' or 'C' instead of ", ptr);
+		ft_error("You need 'F' orinstead of ", ptr);
 	ptr++;
 	while (*ptr == 32)
 		ptr++;
 	move_to_rgb(ptr, target);
 	
+	return ;
+}
+
+void ft_check_ceiling(char *temp, t_par *colors)
+{
+	char *ptr;
+	int *target;
+
+	ptr = temp;
+	if (*ptr == 'C')
+		target = colors->ceiling;
+	else
+		ft_error("You need 'C' orinstead of ", ptr);
+	ptr++;
+	while (*ptr == 32)
+		ptr++;
+	move_to_rgb(ptr, target);
 	return ;
 }
 
@@ -108,11 +123,16 @@ void reading_map(int fd)
 		ft_check_texture(temp);
 		if (i == 4 && ft_check_new_line(temp) == 1)
 		ft_error("you need new line, instead of", temp);
-		if(i == 5 || i == 6){
+		if(i == 5 || i == 6)
+		{
 			printf("i = %d, str: \033[38;5;121m%s\033[0m", i, temp);
-			ft_check_floor(temp, &color);
+			if (i == 5)
+				ft_check_floor(temp, &color);
+			else 
+				ft_check_ceiling(temp, &color);
 		}
-		// ft_check_rgb(temp);
+		if (i == 7 && ft_check_new_line(temp) == 1)
+			ft_error("you need new line, instead of", temp);
 		// else
 		// 	printf("==>\033[1;35m%s\033[0m", temp);
 		i++;
