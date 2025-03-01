@@ -14,12 +14,6 @@ int ft_check_xpm(char *str)
 	return (i > 4 && ft_strncmp(str + i - 4, ".xpm", 4));
 }
 
-int ft_check_cub(char *filename)
-{
-	int len = ft_strlen(filename);
-	return (len > 4 && ft_strncmp(filename + len - 4, ".cub", 4) == 0);
-}
-
 int	ft_check_new_line(char *str)
 {
 	char *ptr;

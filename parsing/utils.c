@@ -112,20 +112,32 @@ void ft_check_ceiling(char *temp, t_par *colors)
 	return ;
 }
 
+// void ft_check_maping(char *temp)
+// {
+// 	char **map = malloc(sizeof(char *)*i);
+
+// }
 void reading_map(int fd)
 {
 	t_par color;
 	char *temp;
 	int i = 0;
-	while ((temp = get_next_line(fd)))
+	int count_line = 0;
+	while ((temp1 = get_next_line(fd)))
 	{
+		count_line++;
+	}
+	printf("this is x===>%d", count_line);
+	
+	while ((temp = get_next_line(fd)) && i != 8)
+	{
+		printf("i = %d, str: \033[38;5;121m%s\033[0m", i, temp);
 		if (i <= 3)
-		ft_check_texture(temp);
+			ft_check_texture(temp);
 		if (i == 4 && ft_check_new_line(temp) == 1)
-		ft_error("you need new line, instead of", temp);
+			ft_error("you need new line, instead of", temp);
 		if(i == 5 || i == 6)
 		{
-			printf("i = %d, str: \033[38;5;121m%s\033[0m", i, temp);
 			if (i == 5)
 				ft_check_floor(temp, &color);
 			else 
@@ -133,10 +145,10 @@ void reading_map(int fd)
 		}
 		if (i == 7 && ft_check_new_line(temp) == 1)
 			ft_error("you need new line, instead of", temp);
-		// else
-		// 	printf("==>\033[1;35m%s\033[0m", temp);
 		i++;
 		free(temp);
 	}
+	// if (i >= 8)
+	// 		ft_check_maping(temp);
 	return ;
 }
