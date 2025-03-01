@@ -37,7 +37,7 @@ $(LIBFT):
 clean:
 	@echo "$(GREEN0)Cleaning 🧹$(BLACK)"
 	@rm -rf $(OBJ)
-	@make -C libft clean
+	@make -s -C libft clean
 
 fclean: clean
 	@rm -rf $(NAME)
