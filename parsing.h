@@ -7,7 +7,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 #include <unistd.h>
-
+#include <string.h>
 typedef struct s_tinfo
 {
 	//MAP:
@@ -29,7 +29,8 @@ void    ft_error(char *str, char *arg);
 // char **ft_read_map(&map_info);
 
 // //	CHECK :
-// int ft_check_cub(char *filename);
+void	validation_extantion(t_tinfo *mapp, int ac, char **av);
+void	validation_exist(t_tinfo *mapp);
 // int ft_check_xpm(char *str);
 // int	ft_check_new_line(char *str);
 

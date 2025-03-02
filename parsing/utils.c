@@ -1,7 +1,5 @@
 #include "../parsing.h"
 
-
-
 void ft_check_texture(char *str)
 {
 	char *ptr;

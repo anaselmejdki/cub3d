@@ -10,49 +10,86 @@
 // 	return 0;
 // }
 //	🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-// int ft_count_height_map(t_tinfo *mapp)
-// {
-// 	char* line;
-
-// 	while (line == get_next_line(fd))
-// 	{
-// 		/* code */
-// 	}
-	
-// }
+int ft_count_height_map(t_tinfo *mapp)
+{
+	char* line = get_next_line(mapp->fd);
+	int i = 0;
+	while (line)
+	{
+		i++;
+		free(line);
+		line = get_next_line(mapp->fd);
+	}
+	return (i);
+}
 // char **ft_read_map(t_tinfo *mapp)
 // {
+// 	char **temp;
+// 	char  *line;
+// 	int i = 0;
 // 	mapp->hieght  = ft_count_height_map(mapp);
-// 	return 0;
+// 	mapp->fd = open(mapp->file_name, O_RDONLY);
+// 	line = get_next_line(mapp->fd);
+	
+// 	temp = malloc(sizeof(char *) * (mapp->hieght + 1));
+// 	if (!temp)
+// 	return (NULL);
+// 	while (line)
+// 	{
+// 		printf("\033[0;31m%s\033[0m", line);
+// 		//checl the first line if is it a new line
+// 		printf("line:%d:: %s", i, temp[i]);
+// 		temp[i] = strdup(line);
+// 		i++;
+// 		free(line);
+// 		line = get_next_line(mapp->fd);
+// 	}	
+// 	temp[i] = NULL;
+// 	return temp;
 // }
-void	validation_extantion(t_tinfo *mapp, int ac, char **av)
+char	**ft_read_map(t_tinfo *mapp)
 {
-	char	*ptr;
+	char	**temp;
+	char	*line;
+	int		i;
 
-	if (ac != 2)
-		ft_error("argument", NULL);
-	ptr = ft_strrchr(av[1], '.');
-	if (ft_strncmp(av[1], ".cub", ft_strlen(".cub")) == 0)
-		ft_error("Name your file 🐸\n", NULL);
-	if (!ptr || ft_strncmp(ptr, ".cub", ft_strlen(ptr)))
-		ft_error("extension. Must be .cub\n", NULL);
-	// if you want to check on .cub.cub
-	mapp->file_name = av[1];
-}
-void	validation_exist(t_tinfo *mapp)
-{
-	mapp->fd = open (mapp->file_name, O_RDONLY);
-	if (mapp->fd < 0)
-		ft_error("can not open this file", mapp->file_name);
+	mapp->hieght = ft_count_height_map(mapp);
+	mapp->fd = open(mapp->file_name, O_RDONLY);
+	line = get_next_line(mapp->fd);
+	i = 0;
+	temp = malloc((mapp->hieght + 1) * sizeof(char *));
+	if (!temp)
+		return (NULL);
+	while (line)
+	{
+		// printf("\033[0;31m%s\033[0m", line);
+		// printf("\033[0;31m%s\033[0m", temp[i]);
+
+		// if (line[0] == '\n')
+		// 	ft_error("🐸 Your map contains an empty line 🐸\n", NULL);
+		temp[i] = ft_strdup(line);
+		i++;
+		free(line);
+		line = get_next_line(mapp->fd);
+	}
+	temp[i] = NULL;
+	return (temp);
 }
 int main(int ac, char *av[])
 {
 	t_tinfo mapp;
 	validation_extantion(&mapp, ac, av);
 	validation_exist(&mapp);
-
+	mapp.dbl_ptr = ft_read_map(&mapp);
+	int i = 0;
+	int x = 0;
+	while (mapp.dbl_ptr[i])
+	{
+		printf(":::%s", mapp.dbl_ptr[i]);
+		i++;
+	}
+	
 	// // reading_map(fd);
-	// map_info.dbl_ptr = ft_read_map(&mapp);
 	// close (fd);
 	return 0;
 }
