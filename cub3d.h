@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:16:34 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/02/28 23:44:54 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:53:52 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,25 @@
 
 #define WIDTH 1280
 #define HEIGHT 620
+# define MOVESPEED 0.0125
+# define ROTSPEED 0.015
 # define ERR_MALLOC "Could not allocate memory"
 
 #include "parsing.h"
-#include <math.h>
+# include "libft.h"
+# include "mlx.h"
+# include <errno.h>
+# include <fcntl.h>
+# include <math.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <unistd.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 
 
 typedef struct s_img
