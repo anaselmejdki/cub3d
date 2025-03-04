@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:20:27 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/02/28 23:44:45 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:42:35 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_player(t_player *player)
 	player->rotate = 0;
 }
 
-static void	init_mapinfo(t_mapinfo *mapinfo)
+void	init_mapinfo(t_mapinfo *mapinfo)
 {
 	mapinfo->fd = 0;
 	mapinfo->line_count = 0;
