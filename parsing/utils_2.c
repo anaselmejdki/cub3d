@@ -23,3 +23,16 @@ int	ft_check_new_line(char *str)
 		return 0;
 	return 1;
 }
+
+int ft_count_height_map(t_tinfo *mapp)
+{
+	char* line = get_next_line(mapp->fd);
+	int i = 0;
+	while (line)
+	{
+		i++;
+		free(line);
+		line = get_next_line(mapp->fd);
+	}
+	return (i);
+}

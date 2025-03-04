@@ -10,7 +10,7 @@ GREEN1 = \033[38;5;121m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		./parsing/parsing.c  ./parsing/utils_2.c ./parsing/validation.c
+		./parsing/parsing.c  ./parsing/utils_2.c ./parsing/validation.c ./parsing/mapping.c
 	  
 
 OBJ = $(SRC:.c=.o)

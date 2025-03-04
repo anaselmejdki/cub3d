@@ -22,16 +22,26 @@ typedef struct s_tinfo
 	
 }t_tinfo;
 
-// ERROR:
+// 		ERROR:
 void    ft_error(char *str, char *arg);
-// MAP:
-// void reading_map(int fd);
-// char **ft_read_map(&map_info);
 
-// //	CHECK :
+
+//  	CHECK :
 void	validation_extantion(t_tinfo *mapp, int ac, char **av);
 void	validation_exist(t_tinfo *mapp);
-// int ft_check_xpm(char *str);
-// int	ft_check_new_line(char *str);
+
+//		MAP:
+char	**ft_read_map(t_tinfo *mapp);
+
+// 		UTILS:
+
+int ft_count_height_map(t_tinfo *mapp);
 
 #endif
+
+
+
+
+
+
+

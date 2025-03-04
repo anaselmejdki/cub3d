@@ -11,9 +11,9 @@ void	validation_extantion(t_tinfo *mapp, int ac, char **av)
 		ft_error("Name your file 🐸\n", NULL);
 	if (!ptr || ft_strncmp(ptr, ".cub", ft_strlen(ptr)))
 		ft_error("extension. Must be .cub\n", NULL);
-	// if you want to check on .cub.cub
 	mapp->file_name = av[1];
 }
+
 void	validation_exist(t_tinfo *mapp)
 {
 	mapp->fd = open (mapp->file_name, O_RDONLY);
