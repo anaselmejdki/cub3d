@@ -24,9 +24,48 @@ void ft_check_map_borders(char **map, int height)
             return;
         }
     }
-
     printf("✅ Map is correctly enclosed by walls!\n");
 }
+
+
+int ft_height(t_tinfo *mapp)
+{
+	int i;
+
+	i = 0;
+	while (mapp->dbl_ptr[i])
+		i++;
+	mapp->hieght = i;
+	return (mapp->hieght);
+}
+
+void check_f_and_last_line(t_tinfo *mapp)
+{
+	char *first;
+	char *last;
+	int i;
+	int f;
+
+	first = mapp->dbl_ptr[0];
+	last = mapp->dbl_ptr[mapp->hieght - 1];
+	i = 0;
+	f = 0;
+
+	while (first[f])
+	{
+		if (first[f] != '1' && first[f] != '\n')
+			ft_error("👾 YOU NEED '1' IN FIRST ROW 👾", first);
+		f++;
+	}
+	f = 0;
+	while (last[f])
+	{
+		if (last[f] != '1' && last[f] != '\n')
+			ft_error("👾 YOU NEED '1' IN LAST ROW 👾", last);
+		f++;
+	}
+}
+
 
 int main(int ac, char *av[])
 {
@@ -34,7 +73,10 @@ int main(int ac, char *av[])
 	validation_extantion(&mapp, ac, av);
 	validation_exist(&mapp);
 	mapp.dbl_ptr = ft_read_map(&mapp);
-	// ft_check_map_borders(mapp.dbl_ptr, mapp.hieght);
+	ft_height(&mapp);
+	check_f_and_last_line(&mapp);
+	//checking the border:
+	ft_check_map_borders(mapp.dbl_ptr, mapp.hieght);
 
 
 
@@ -44,12 +86,12 @@ int main(int ac, char *av[])
 
 
 	// printing the map
-	int i = 0;
-	while (mapp.dbl_ptr[i])
-	{
-		printf(":::%s", mapp.dbl_ptr[i]);
-		i++;
-	}
+	// int i = 0;
+	// while (mapp.dbl_ptr[i])
+	// {
+	// 	printf(":::%s", mapp.dbl_ptr[i]);
+	// 	i++;
+	// }
 	
 	return 0;
 }

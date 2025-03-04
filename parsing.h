@@ -14,6 +14,7 @@ typedef struct s_tinfo
 	char** dbl_ptr;
 	int 	counting_line;
 	int 	hieght;
+	// int 	width;
 	char* 	file_name;
 	int 	fd;
 	//los colores:
