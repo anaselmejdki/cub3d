@@ -10,9 +10,13 @@ GREEN1 = \033[38;5;121m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		./parsing/parsing.c  ./parsing/utils_2.c ./sources/error.c ./sources/exit.c \
+		./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
+		./parsing/mapping.c ./parsing/utils_2.c ./sources/error.c ./sources/exit.c \
 		./sources/free_data.c ./sources/init_data.c ./sources/init_mlx.c \
-		./sources/init_textures.c main.c
+		./sources/init_textures.c ./sources/input_handler.c ./sources/player_move.c \
+		./sources/player_pos.c ./sources/player_rotate.c ./sources/raycasting.c ./sources/render.c \
+		./sources/texture.c main.c
+		
 	  
 
 OBJ = $(SRC:.c=.o)

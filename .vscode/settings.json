@@ -1,14 +1,7 @@
 {
-	"files.associations": {
-		"*.embeddedhtml": "html",
-		"parsing.h": "c",
-		"libft.h": "c",
-<<<<<<< HEAD
-		"so_long.h": "c"
-=======
-		"cub3d.h": "c",
-		"stdio.h": "c"
->>>>>>> da967f1dba54cb69c6e44c0445e4a5f3fb323b3d
-	},
-	"C_Cpp.errorSquiggles": "disabled"
+    "files.associations": {
+        "cub3d.h": "c",
+        "parsing.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

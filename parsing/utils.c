@@ -1,7 +1,5 @@
 #include "../parsing.h"
 
-
-
 void ft_check_texture(char *str)
 {
 	char *ptr;
@@ -77,7 +75,7 @@ void move_to_rgb(char *temp, int *target)
     }
 	return ;
 }
-void ft_check_floor(char *temp, t_par *colors)
+void ft_check_floor(char *temp, t_tinfo *colors)
 {
 	char *ptr;
 	int *target;
@@ -95,7 +93,7 @@ void ft_check_floor(char *temp, t_par *colors)
 	return ;
 }
 
-void ft_check_ceiling(char *temp, t_par *colors)
+void ft_check_ceiling(char *temp, t_tinfo *colors)
 {
 	char *ptr;
 	int *target;
@@ -117,13 +115,13 @@ void ft_check_ceiling(char *temp, t_par *colors)
 // 	char **map = malloc(sizeof(char *)*i);
 
 // }
-void reading_map(int fd)
+void reading_map(int fd, t_tinfo *mapp)
 {
-	t_par color;
+	t_tinfo color;
 	char *temp;
 	int i = 0;
 	int count_line = 0;
-	while ((temp1 = get_next_line(fd)))
+	while ((temp = get_next_line(fd)))
 	{
 		count_line++;
 	}

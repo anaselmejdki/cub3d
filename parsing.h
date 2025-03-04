@@ -7,13 +7,14 @@
 # include <stdio.h>
 # include <fcntl.h>
 #include <unistd.h>
-
+#include <string.h>
 typedef struct s_tinfo
 {
 	//MAP:
 	char** dbl_ptr;
 	int 	counting_line;
 	int 	hieght;
+	// int 	width;
 	char* 	file_name;
 	int 	fd;
 	//los colores:
@@ -22,16 +23,21 @@ typedef struct s_tinfo
 	
 }t_tinfo;
 
-// ERROR:
+// 		ERROR:
 void    ft_error(char *str, char *arg);
-int	validation_extantion(t_tinfo *mapp, int ac, char **av);
 // MAP:
 // void reading_map(int fd);
 // char **ft_read_map(&map_info);
 
-// //	CHECK :
-// int ft_check_cub(char *filename);
-// int ft_check_xpm(char *str);
-// int	ft_check_new_line(char *str);
+// 		UTILS:
+int	validation_extantion(t_tinfo *mapp, int ac, char **av);
+int ft_count_height_map(t_tinfo *mapp);
 
 #endif
+
+
+
+
+
+
+
