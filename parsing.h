@@ -24,6 +24,7 @@ typedef struct s_tinfo
 
 // ERROR:
 void    ft_error(char *str, char *arg);
+int	validation_extantion(t_tinfo *mapp, int ac, char **av);
 // MAP:
 // void reading_map(int fd);
 // char **ft_read_map(&map_info);

@@ -6,13 +6,13 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:31:12 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/02/28 23:42:57 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:39:14 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int xpm_to_img(t_data *data, char *path)
+int *xpm_to_img(t_data *data, char *path)
 {
     t_img image;
     int *buffer;
@@ -59,7 +59,7 @@ void	init_texinfo(t_texinfo *textures)
 	textures->ceiling = 0;
 	textures->hex_floor = 0x0;
 	textures->hex_ceiling = 0x0;
-	textures->size = TEX_SIZE;
+	textures->size = 64;
 	textures->step = 0.0;
 	textures->pos = 0.0;
 	textures->x = 0;

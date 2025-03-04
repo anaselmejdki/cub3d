@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 22:06:51 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/02/28 23:43:42 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:34:22 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,14 @@ void	free_texinfo(t_texinfo *textures)
 int free_data(t_data *data)
 {
     if (data->textures)
+    {
         free_tab((void **)data->textures);
+    }
     if (data->texture_pixels)
+    {
         free_tab((void **)data->texture_pixels);
-	free_texinfo(&data->texinfo);
+    }
+    free_texinfo(&data->texinfo);
     free_map(data);
     return (1);
 }

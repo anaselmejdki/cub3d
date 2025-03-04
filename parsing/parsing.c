@@ -25,7 +25,7 @@
 // 	mapp->hieght  = ft_count_height_map(mapp);
 // 	return 0;
 // }
-void	validation_extantion(t_tinfo *mapp, int ac, char **av)
+int	validation_extantion(t_tinfo *mapp, int ac, char **av)
 {
 	char	*ptr;
 
@@ -38,6 +38,7 @@ void	validation_extantion(t_tinfo *mapp, int ac, char **av)
 		ft_error("extension. Must be .cub\n", NULL);
 	// if you want to check on .cub.cub
 	mapp->file_name = av[1];
+	return (0);
 }
 void	validation_exist(t_tinfo *mapp)
 {
@@ -45,14 +46,14 @@ void	validation_exist(t_tinfo *mapp)
 	if (mapp->fd < 0)
 		ft_error("can not open this file", mapp->file_name);
 }
-int main(int ac, char *av[])
-{
-	t_tinfo mapp;
-	validation_extantion(&mapp, ac, av);
-	validation_exist(&mapp);
+// int main(int ac, char *av[])
+// {
+// 	t_tinfo mapp;
+// 	validation_extantion(&mapp, ac, av);
+// 	validation_exist(&mapp);
 
-	// // reading_map(fd);
-	// map_info.dbl_ptr = ft_read_map(&mapp);
-	// close (fd);
-	return 0;
-}
+// 	// // reading_map(fd);
+// 	// map_info.dbl_ptr = ft_read_map(&mapp);
+// 	// close (fd);
+// 	return 0;
+// }

@@ -10,7 +10,9 @@ GREEN1 = \033[38;5;121m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		./parsing/parsing.c  ./parsing/utils_2.c 
+		./parsing/parsing.c  ./parsing/utils_2.c ./sources/error.c ./sources/exit.c \
+		./sources/free_data.c ./sources/init_data.c ./sources/init_mlx.c \
+		./sources/init_textures.c main.c
 	  
 
 OBJ = $(SRC:.c=.o)
@@ -18,6 +20,8 @@ OBJ = $(SRC:.c=.o)
 # Flags:
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+LFLAGS = -L ./mlx -lmlx -lXext -lX11 -lm -lz
+INCLUDES = mlx/libmlx.a
 
 # Library:
 NAME = cub3D
@@ -28,10 +32,10 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(CYAN)Making Cub3D..👾$(BLACK)"
-	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME) $(LFLAGS)
 
 $(LIBFT):
-	@make -C libft
+	@make -s -C libft
 	@mv libft/libft.a .
 
 clean:
@@ -46,4 +50,5 @@ fclean: clean
 
 re: fclean all
 
+.SECONDARY: $(OBJ)
 .PHONY: all clean fclean re

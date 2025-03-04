@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:16:34 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/02/28 23:44:54 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:50:33 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 #include "parsing.h"
 #include <math.h>
-
+#include "mlx.h"
 
 typedef struct s_img
 {
@@ -130,5 +130,8 @@ int err_msg(char *s1, char *s2, int flag);
 void    init_image(t_data *data, t_img *image, int width, int height);
 void    init_texture_img(t_data *data, t_img *image, char *path);
 void    init_mlx(t_data *data);
+void	init_texinfo(t_texinfo *textures);
+void	init_data(t_data *data);
+void	init_textures(t_data *data);
 
 #endif
