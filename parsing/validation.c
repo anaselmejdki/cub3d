@@ -1,18 +1,17 @@
 #include "../parsing.h"
 
-int	validation_extantion(t_tinfo *mapp, int ac, char **av)
+int validation_extantion(t_tinfo *mapp, int ac, char **av)
 {
-	char	*ptr;
-	//hadi 7awel dkhaliha int o fiha jma3 parsing kaml d'accord
-	if (ac != 2)
-		ft_error("argument", NULL);
-	ptr = ft_strrchr(av[1], '.');
-	if (ft_strncmp(av[1], ".cub", ft_strlen(".cub")) == 0)
-		ft_error("Name your file 🐸\n", NULL);
-	if (!ptr || ft_strncmp(ptr, ".cub", ft_strlen(ptr)))
-		ft_error("extension. Must be .cub\n", NULL);
-	mapp->file_name = av[1];
-	return (0);
+    char *ptr;
+    if (ac != 2)
+        ft_error("Incorrect number of arguments!", NULL);
+    ptr = ft_strrchr(av[1], '.');
+    if (!ptr)
+        ft_error("Missing file extension (.cub)!", NULL);
+    if (ft_strncmp(ptr, ".cub", ft_strlen(".cub") + 1) != 0)
+        ft_error("Invalid extension! Must be .cub", NULL);
+    mapp->file_name = av[1];
+    return (0);
 }
 
 void	validation_exist(t_tinfo *mapp)
