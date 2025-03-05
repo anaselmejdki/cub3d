@@ -36,6 +36,7 @@ int ft_count_height_map(t_tinfo *mapp)
 	}
 	return (i);
 }
+
 int ft_height(t_tinfo *mapp)
 {
 	int i;
@@ -45,4 +46,31 @@ int ft_height(t_tinfo *mapp)
 		i++;
 	mapp->hieght = i;
 	return (mapp->hieght);
+}
+
+void ft_check_map_borders(char **map, int height)
+{
+    int i;
+    int width;
+    int first_index;
+	int last_index;
+	
+    i = 0;
+    while (i < height)
+    {
+        width = ft_strlen(map[i]); 
+        first_index = 0;
+        last_index = width - 1;
+
+        while (map[i][first_index] == ' ')
+            first_index++;
+
+        while (map[i][last_index] == ' ' || map[i][last_index] == '\n')
+            last_index--;
+
+        if (map[i][first_index] != '1' || map[i][last_index] != '1')
+            ft_error(" MAP BORDER : First or last non-space column must be 1!", map[i]);
+        i++;
+    }
+    printf("✅ MAP BORDERS ARE VALID!\n");
 }

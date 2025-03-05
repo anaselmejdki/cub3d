@@ -1,6 +1,5 @@
 #include "../parsing.h"
 
-
 char	**ft_read_map(t_tinfo *mapp)
 {
 	char	**temp;

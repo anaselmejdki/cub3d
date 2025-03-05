@@ -110,11 +110,6 @@ void ft_check_ceiling(char *temp, t_tinfo *colors)
 	return ;
 }
 
-// void ft_check_maping(char *temp)
-// {
-// 	char **map = malloc(sizeof(char *)*i);
-
-// }
 void reading_map(int fd, t_tinfo *mapp)
 {
 	t_tinfo color;
