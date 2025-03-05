@@ -36,3 +36,13 @@ int ft_count_height_map(t_tinfo *mapp)
 	}
 	return (i);
 }
+int ft_height(t_tinfo *mapp)
+{
+	int i;
+
+	i = 0;
+	while (mapp->dbl_ptr[i])
+		i++;
+	mapp->hieght = i;
+	return (mapp->hieght);
+}

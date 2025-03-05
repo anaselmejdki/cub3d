@@ -6,11 +6,12 @@ MAGENTA = \033[1;35m
 CYAN = \033[36m
 GREEN0 = \033[32m
 GREEN1 = \033[38;5;121m
-
+HIGHLIGHTER = \033[0;43m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		./parsing/parsing.c  ./parsing/utils_2.c ./parsing/validation.c ./parsing/mapping.c
+		./parsing/parsing.c  ./parsing/utils_2.c ./parsing/validation.c \
+		./parsing/mapping.c ./parsing/checking.c
 	  
 
 OBJ = $(SRC:.c=.o)

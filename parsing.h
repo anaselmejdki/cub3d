@@ -33,9 +33,10 @@ void	validation_exist(t_tinfo *mapp);
 
 //		MAP:
 char	**ft_read_map(t_tinfo *mapp);
+void check_f_and_last_line(t_tinfo *mapp);
 
 // 		UTILS:
-
+int ft_height(t_tinfo *mapp);
 int ft_count_height_map(t_tinfo *mapp);
 
 #endif
