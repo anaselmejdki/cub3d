@@ -25,6 +25,7 @@ typedef struct s_tinfo
 
 // 		ERROR:
 void    ft_error(char *str, char *arg);
+<<<<<<< HEAD
 
 
 //  	CHECK :
@@ -37,6 +38,14 @@ void check_f_and_last_line(t_tinfo *mapp);
 
 // 		UTILS:
 int ft_height(t_tinfo *mapp);
+=======
+// MAP:
+// void reading_map(int fd);
+// char **ft_read_map(&map_info);
+
+// 		UTILS:
+int	validation_extantion(t_tinfo *mapp, int ac, char **av);
+>>>>>>> 31119c9260564e479a3fed590611d639b8dcb9ee
 int ft_count_height_map(t_tinfo *mapp);
 
 #endif

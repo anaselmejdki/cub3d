@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:44:49 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/04 15:47:25 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:42:31 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ void	calculate_line_height(t_ray *ray, t_data *data, t_player *player)
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
 	else
 		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
-	ray->line_height = (int)(data->win_height / ray->wall_dist);
-	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
+	ray->line_height = (int)(data->height / ray->wall_dist);
+	ray->draw_start = -(ray->line_height) / 2 + data->height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
-	if (ray->draw_end >= data->win_height)
-		ray->draw_end = data->win_height - 1;
+	ray->draw_end = ray->line_height / 2 + data->height / 2;
+	if (ray->draw_end >= data->height)
+		ray->draw_end = data->height - 1;
 	if (ray->side == 0)
 		ray->wall_x = player->pos_y + ray->wall_dist * ray->dir_y;
 	else
@@ -101,7 +101,7 @@ int	raycasting(t_player *player, t_data *data)
 
 	x = 0;
 	ray = data->ray;
-	while (x < data->win_width)
+	while (x < data->width)
 	{
 		init_raycasting_info(x, &ray, player);
 		set_dda(&ray, player);

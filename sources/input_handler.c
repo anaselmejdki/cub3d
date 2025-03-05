@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:52:18 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/04 15:56:20 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:54:10 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	key_press_handler(int key, t_data *data)
 	return (0);
 }
 
-static int	key_release_handler(int key, t_data *data)
+int	key_release_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
 		quiter(data);
@@ -52,7 +52,7 @@ static int	key_release_handler(int key, t_data *data)
 
 void	listen_for_input(t_data *data)
 {
-	mlx_hook(data->win, ClientMessage, NoEventMask, quit_cub3d, data);
+	mlx_hook(data->win, ClientMessage, NoEventMask, quiter, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press_handler, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release_handler, data);
 }

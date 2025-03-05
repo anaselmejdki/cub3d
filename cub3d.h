@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:16:34 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/04 15:53:52 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:19:47 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,10 @@
 # define ERR_MALLOC "Could not allocate memory"
 
 #include "parsing.h"
-# include "libft.h"
-# include "mlx.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <math.h>
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
+#include "mlx.h"
+#include <math.h>
+#include <X11/keysym.h>
+#include <X11/X.h>
 
 
 typedef struct s_img
@@ -138,12 +128,26 @@ enum e_texture_index
 
 void    init_img_clean(t_img *img);
 int free_data(t_data *data);
+void    free_tab(void **tab);
 int quiter(t_data *data);
 void    clean_exit(t_data *data, int flag);
 int	err_msg_val(int detail, char *str, int flag);
 int err_msg(char *s1, char *s2, int flag);
-void    init_image(t_data *data, t_img *image, int width, int height);
+void    init_img(t_data *data, t_img *image, int width, int height);
 void    init_texture_img(t_data *data, t_img *image, char *path);
 void    init_mlx(t_data *data);
-
+void	init_texinfo(t_texinfo *textures);
+void	init_data(t_data *data);
+void	init_ray(t_ray *ray);
+void	init_textures(t_data *data);
+void	listen_for_input(t_data *data);
+int	move_player(t_data *data);
+int	validate_move(t_data *data, double new_x, double new_y);
+int	rotate_player(t_data *data, double rotdir);
+int	raycasting(t_player *player, t_data *data);
+int	render(t_data *data);
+void	init_texture_pixels(t_data *data);
+void	get_texture_index(t_data *data, t_ray *ray);
+void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
+void	render_images(t_data *data);
 #endif

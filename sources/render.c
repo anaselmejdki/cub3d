@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:28:49 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/04 15:50:41 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:42:12 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
 {
 	if (data->texture_pixels[y][x] > 0)
 		set_image_pixel(image, x, y, data->texture_pixels[y][x]);
-	else if (y < data->win_height / 2)
+	else if (y < data->height / 2)
 		set_image_pixel(image, x, y, data->texinfo.hex_ceiling);
-	else if (y < data->win_height -1)
+	else if (y < data->height -1)
 		set_image_pixel(image, x, y, data->texinfo.hex_floor);
 }
 
@@ -37,12 +37,12 @@ void	render_frame(t_data *data)
 	int		y;
 
 	image.img = NULL;
-	init_img(data, &image, data->win_width, data->win_height);
+	init_img(data, &image, data->width, data->height);
 	y = 0;
-	while (y < data->win_height)
+	while (y < data->height)
 	{
 		x = 0;
-		while (x < data->win_width)
+		while (x < data->width)
 		{
 			set_frame_image_pixel(data, &image, x, y);
 			x++;

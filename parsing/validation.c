@@ -1,9 +1,9 @@
 #include "../parsing.h"
 
-void	validation_extantion(t_tinfo *mapp, int ac, char **av)
+int	validation_extantion(t_tinfo *mapp, int ac, char **av)
 {
 	char	*ptr;
-
+	//hadi 7awel dkhaliha int o fiha jma3 parsing kaml d'accord
 	if (ac != 2)
 		ft_error("argument", NULL);
 	ptr = ft_strrchr(av[1], '.');
@@ -12,6 +12,7 @@ void	validation_extantion(t_tinfo *mapp, int ac, char **av)
 	if (!ptr || ft_strncmp(ptr, ".cub", ft_strlen(ptr)))
 		ft_error("extension. Must be .cub\n", NULL);
 	mapp->file_name = av[1];
+	return (1);
 }
 
 void	validation_exist(t_tinfo *mapp)

@@ -10,8 +10,18 @@ HIGHLIGHTER = \033[0;43m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
+<<<<<<< HEAD
 		./parsing/parsing.c  ./parsing/utils_2.c ./parsing/validation.c \
 		./parsing/mapping.c ./parsing/checking.c
+=======
+		./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
+		./parsing/mapping.c ./sources/error.c ./sources/exit.c \
+		./sources/free_data.c ./sources/init_data.c ./sources/init_mlx.c \
+		./sources/init_textures.c ./sources/input_handler.c ./sources/player_move.c \
+		./sources/player_pos.c ./sources/player_rotate.c ./sources/raycasting.c ./sources/render.c \
+		./sources/texture.c main.c
+		
+>>>>>>> 31119c9260564e479a3fed590611d639b8dcb9ee
 	  
 
 OBJ = $(SRC:.c=.o)
@@ -19,6 +29,8 @@ OBJ = $(SRC:.c=.o)
 # Flags:
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+LFLAGS = -L ./mlx -lmlx -lXext -lX11 -lm -lz
+INCLUDES = mlx/libmlx.a
 
 # Library:
 NAME = cub3D
@@ -29,10 +41,10 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(CYAN)Making Cub3D..👾$(BLACK)"
-	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME) $(LFLAGS)
 
 $(LIBFT):
-	@make -C libft
+	@make -s -C libft
 	@mv libft/libft.a .
 
 clean:
@@ -47,4 +59,5 @@ fclean: clean
 
 re: fclean all
 
+.SECONDARY: $(OBJ)
 .PHONY: all clean fclean re
