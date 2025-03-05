@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salaoui <salaoui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ael-mejd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 18:41:59 by salaoui           #+#    #+#             */
-/*   Updated: 2024/12/16 18:42:00 by salaoui          ###   ########.fr       */
+/*   Created: 2023/11/21 15:40:14 by ael-mejd          #+#    #+#             */
+/*   Updated: 2023/11/21 15:40:26 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, char *src)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
-	int	j;
+	t_list	*tmp;
 
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
+	if (!lst || !del)
+		return ;
+	while (*lst != NULL)
 	{
-		i++;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	while (src[j] != '\0')
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	dest[i + j] = '\0';
-	return (dest);
+	*lst = NULL;
 }

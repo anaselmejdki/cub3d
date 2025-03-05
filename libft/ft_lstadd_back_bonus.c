@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salaoui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ael-mejd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 10:01:27 by salaoui           #+#    #+#             */
-/*   Updated: 2023/12/11 11:14:11 by salaoui          ###   ########.fr       */
+/*   Created: 2023/11/20 10:45:25 by ael-mejd          #+#    #+#             */
+/*   Updated: 2023/11/20 10:45:38 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*arrs;
+	t_list	*tmp;
 
-	arrs = *lst;
 	if (!lst || !new)
 		return ;
-	if (*lst == NULL)
+	if (*lst)
 	{
+		tmp = ft_lstlast(*lst);
+		tmp->next = new;
+	}
+	else
 		*lst = new;
-		return ;
-	}
-	while (arrs->next != NULL)
-	{
-		arrs = arrs->next;
-	}
-	arrs->next = new;
 }

@@ -1,6 +1,5 @@
 #include "../parsing.h"
 
-<<<<<<< HEAD
 
 void ft_check_map_borders(char **map, int height)
 {
@@ -26,16 +25,16 @@ void ft_check_map_borders(char **map, int height)
 
 
 
-int main(int ac, char *av[])
-{
-	t_tinfo mapp;
-	validation_extantion(&mapp, ac, av);
-	validation_exist(&mapp);
-	mapp.dbl_ptr = ft_read_map(&mapp);
-	ft_height(&mapp);
-	check_f_and_last_line(&mapp);
-	//checking the border:
-	ft_check_map_borders(mapp.dbl_ptr, mapp.hieght);
+// int main(int ac, char *av[])
+// {
+// 	t_tinfo mapp;
+// 	validation_extantion(&mapp, ac, av);
+// 	validation_exist(&mapp);
+// 	mapp.dbl_ptr = ft_read_map(&mapp);
+// 	ft_height(&mapp);
+// 	check_f_and_last_line(&mapp);
+// 	//checking the border:
+// 	ft_check_map_borders(mapp.dbl_ptr, mapp.hieght);
 
 
 
@@ -44,14 +43,14 @@ int main(int ac, char *av[])
 
 
 
-	// printing the map
-	// int i = 0;
-	// while (mapp.dbl_ptr[i])
-	// {
-	// 	printf(":::%s", mapp.dbl_ptr[i]);
-	// 	i++;
-	// }
-=======
+// 	printing the map
+// 	int i = 0;
+// 	while (mapp.dbl_ptr[i])
+// 	{
+// 		printf(":::%s", mapp.dbl_ptr[i]);
+// 		i++;
+// 	}
+// }
 //	🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 // int check_name_dot(char *filename)
 // {
@@ -70,7 +69,6 @@ int main(int ac, char *av[])
 // 	{
 // 		/* code */
 // 	}
->>>>>>> 31119c9260564e479a3fed590611d639b8dcb9ee
 	
 // }
 // char **ft_read_map(t_tinfo *mapp)
