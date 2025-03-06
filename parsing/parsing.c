@@ -1,6 +1,5 @@
 #include "../parsing.h"
 
-<<<<<<< HEAD
 
 int main(int ac, char *av[])
 {
@@ -13,7 +12,6 @@ int main(int ac, char *av[])
 	ft_check_map_borders(mapp.dbl_ptr, mapp.hieght);
 	ft_check_special_chars(mapp.dbl_ptr, mapp.hieght);
 	ft_check_32(mapp.dbl_ptr, mapp.hieght);
-=======
 
 void ft_check_map_borders(char **map, int height)
 {
@@ -49,7 +47,6 @@ void ft_check_map_borders(char **map, int height)
 // 	check_f_and_last_line(&mapp);
 // 	//checking the border:
 // 	ft_check_map_borders(mapp.dbl_ptr, mapp.hieght);
->>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
 
 	close (mapp.fd);
 	validation_exist(&mapp);
@@ -66,7 +63,6 @@ void ft_check_map_borders(char **map, int height)
 
 
 
-<<<<<<< HEAD
 	// printing the map
 	// int i = 0;
 	// while (mapp.dbl_ptr[i])
@@ -76,7 +72,6 @@ void ft_check_map_borders(char **map, int height)
 	// }
 	close (mapp.fd);
 }
-=======
 // 	printing the map
 // 	int i = 0;
 // 	while (mapp.dbl_ptr[i])
@@ -141,4 +136,3 @@ void ft_check_map_borders(char **map, int height)
 // 	// close (fd);
 // 	return 0;
 // }
->>>>>>> 784c0db4191273817a140ead724abb1fb5871e17

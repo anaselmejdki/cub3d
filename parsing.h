@@ -33,18 +33,16 @@ typedef struct s_texture
 
 // 		ERROR:
 void    ft_error(char *str, char *arg);
-<<<<<<< HEAD
+
 
 
 //  	CHECK :
 int		validation_extantion(t_tinfo *mapp, int ac, char **av);
-=======
 
 
 
 //  	CHECK :
 // void	validation_extantion(t_tinfo *mapp, int ac, char **av);
->>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
 void	validation_exist(t_tinfo *mapp);
 
 //		MAP:
@@ -56,11 +54,9 @@ void	ft_check_32(char **map, int height);
 void ft_store_texture(t_tinfo *mapp,t_texture *tex, char *line);
 void ft_parse_textures(t_tinfo *mapp, t_texture *tex);
 
-<<<<<<< HEAD
 
 // 		UTILS:
 int ft_height(t_tinfo *mapp);
-=======
 // 		UTILS:
 int ft_height(t_tinfo *mapp);
 
@@ -70,7 +66,6 @@ int ft_height(t_tinfo *mapp);
 
 // 		UTILS:
 int	validation_extantion(t_tinfo *mapp, int ac, char **av);
->>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
 int ft_count_height_map(t_tinfo *mapp);
 
 
