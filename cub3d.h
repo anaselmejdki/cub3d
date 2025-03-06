@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:16:34 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/05 02:56:49 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/06 21:15:15 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #include "parsing.h"
 #include "mlx.h"
 #include <math.h>
+#include <stdbool.h>
+# include <errno.h>
 #include <X11/keysym.h>
 #include <X11/X.h>
 
