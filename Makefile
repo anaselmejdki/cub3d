@@ -10,9 +10,18 @@ HIGHLIGHTER = \033[0;43m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
+<<<<<<< HEAD
 		./parsing/parsing.c  ./parsing/utils_2.c ./parsing/validation.c \
 		./parsing/mapping.c ./parsing/checking.c ./parsing/ft_texture.c
 		
+=======
+		./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
+		./parsing/mapping.c ./parsing/checking.c ./sources/error.c ./sources/exit.c \
+		./sources/free_data.c ./sources/init_data.c ./sources/init_mlx.c \
+		./sources/init_textures.c ./sources/input_handler.c ./sources/player_move.c \
+		./sources/player_pos.c ./sources/player_rotate.c ./sources/raycasting.c ./sources/render.c \
+		./sources/texture.c main.c
+>>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
 
 OBJ = $(SRC:.c=.o)
 

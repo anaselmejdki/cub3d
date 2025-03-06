@@ -1,21 +1,30 @@
+<<<<<<< HEAD
+=======
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-mejd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/06 20:41:50 by ael-mejd          #+#    #+#             */
+/*   Updated: 2023/11/25 21:41:57 by ael-mejd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+>>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
 
 #include "libft.h"
+#include <stdint.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
-	void	*ptr;
+	unsigned char	*p;
 
-	i = 0;
-	if (size != 0)
+	if (count != 0 && size != 0 && size > SIZE_MAX / count)
 		return (NULL);
-	ptr = malloc(count * size);
-	if (ptr == NULL)
+	p = malloc(count * size);
+	if (!p)
 		return (NULL);
-	while (i < (count * size))
-	{
-		*((char *)ptr + i) = 0;
-		i++;
-	}
-	return (ptr);
+	ft_bzero((void *)p, count * size);
+	return ((void *)p);
 }

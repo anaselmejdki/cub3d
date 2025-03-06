@@ -1,55 +1,60 @@
+<<<<<<< HEAD
+=======
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-mejd <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/13 18:39:43 by ael-mejd          #+#    #+#             */
+/*   Updated: 2023/11/15 15:33:36 by ael-mejd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+>>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
 
 #include "libft.h"
 
-static int	ft_len(int n)
+static int	count_size(long n)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	if (n <= 0)
+	i = 1;
+	if (n < 0)
 	{
-		len = 1;
+		i++;
+		n *= -1;
 	}
-	while (n != 0)
+	while (n > 9)
 	{
-		len++;
-		n = n / 10;
+		n /= 10;
+		i++;
 	}
-	return (len);
-}
-
-static char	*ft_putchar(char *ptr, unsigned int n, int len)
-{
-	while (n > 0)
-	{
-		ptr[len--] = 48 + (n % 10);
-		n = n / 10;
-	}
-	return (ptr);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	int				len;
-	char			*ptr;
-	unsigned int	number;
+	char	*snum;
+	int		count;
+	long	num;
 
-	len = ft_len(n);
-	ptr = malloc((len + 1) * sizeof(char));
-	if (ptr == NULL)
+	num = n;
+	count = count_size(num);
+	snum = (char *)malloc(sizeof(char) * (count + 1));
+	if (!snum)
 		return (NULL);
-	ptr[len--] = '\0';
-	if (n == 0)
+	snum[count--] = '\0';
+	if (num < 0)
 	{
-		ptr[0] = '0';
+		snum[0] = '-';
+		num *= -1;
 	}
-	if (n < 0)
+	while (num > 9)
 	{
-		number = n * -1;
-		ptr[0] = '-';
+		snum[count--] = num % 10 + '0';
+		num /= 10;
 	}
-	else
-		number = n;
-	ptr = ft_putchar(ptr, number, len);
-	return (ptr);
+	snum[count] = num % 10 + '0';
+	return (snum);
 }

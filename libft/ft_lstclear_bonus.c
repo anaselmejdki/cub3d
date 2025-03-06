@@ -1,38 +1,31 @@
-<<<<<<< HEAD
+<<<<<<< HEAD:libft/ft_strcat.c
 =======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 21:54:59 by ael-mejd          #+#    #+#             */
-/*   Updated: 2023/11/12 06:19:07 by ael-mejd         ###   ########.fr       */
+/*   Created: 2023/11/21 15:40:14 by ael-mejd          #+#    #+#             */
+/*   Updated: 2023/11/21 15:40:26 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
+>>>>>>> 784c0db4191273817a140ead724abb1fb5871e17:libft/ft_lstclear_bonus.c
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	len;
-	size_t	i;
-	char	*str;
+	t_list	*tmp;
 
-	i = 0;
-	if (!s || !f)
-		return (NULL);
-	len = ft_strlen(s);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	while (i < len)
+	if (!lst || !del)
+		return ;
+	while (*lst != NULL)
 	{
-		str[i] = f(i, s[i]);
-		i++;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	str[i] = '\0';
-	return (str);
+	*lst = NULL;
 }

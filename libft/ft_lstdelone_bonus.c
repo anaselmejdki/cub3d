@@ -1,38 +1,22 @@
-<<<<<<< HEAD
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 21:54:59 by ael-mejd          #+#    #+#             */
-/*   Updated: 2023/11/12 06:19:07 by ael-mejd         ###   ########.fr       */
+/*   Created: 2023/11/21 15:36:14 by ael-mejd          #+#    #+#             */
+/*   Updated: 2023/11/21 15:36:27 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
->>>>>>> 784c0db4191273817a140ead724abb1fb5871e17
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	size_t	len;
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	if (!s || !f)
-		return (NULL);
-	len = ft_strlen(s);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	while (i < len)
+	if (lst && del)
 	{
-		str[i] = f(i, s[i]);
-		i++;
+		del(lst->content);
+		free(lst);
 	}
-	str[i] = '\0';
-	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:37:04 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/04 17:59:15 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:08:21 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ void    init_img(t_data *data, t_img *image, int width, int height)
 void    init_texture_img(t_data *data, t_img *image, char *path)
 {
     init_img_clean(image);
+    printf("Initialization data : %s\n", path);
     image->img = mlx_xpm_file_to_image(data->mlx, path, &data->texinfo.size, &data->texinfo.size);
     if (image->img == NULL)
         clean_exit(data, err_msg("mlx", "Could not create mlx image", 1));
+    printf("hna\n");
     image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits, &image->size_line, &image->endian);
     return;
 }

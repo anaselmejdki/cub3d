@@ -11,7 +11,7 @@ int validation_extantion(t_tinfo *mapp, int ac, char **av)
     if (ft_strncmp(ptr, ".cub", ft_strlen(".cub") + 1) != 0)
         ft_error("Invalid extension! Must be .cub", NULL);
     mapp->file_name = av[1];
-    return (1);
+    return (0);
 }
 
 void	validation_exist(t_tinfo *mapp)
