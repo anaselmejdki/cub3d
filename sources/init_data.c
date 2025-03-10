@@ -1,84 +1,54 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/28 21:20:27 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/05 15:55:54 by ael-mejd         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../cub3d.h"
 
-void    init_img_clean(t_img *img)
+void    player_first_corrdinate(t_data *data)
 {
-    img->img = NULL;
-    img->addr = NULL;
-    img->pixel_bits = 0;
-    img->size_line = 0;
-    img->endian = 0;
+    int x;
+    int y;
+
+    y = 0;
+    while (data->map[y])
+    {
+        x = 0;
+        while (data->map[y][x])
+        {
+            if (ft_strchr("NSEW", data->map[y][x]))
+            {
+                data->player.pos_x = (x * TILE_SIZE + TILE_SIZE / 2);
+                data->player.pos_y = (y * TILE_SIZE + TILE_SIZE / 2);
+                return ;
+            }
+            x++;
+        }
+        y++;
+    }
 }
 
-void	init_ray(t_ray *ray)
+void init_data(t_data *data)
 {
-	ray->camera_x = 0;
-	ray->dir_x = 0;
-	ray->dir_y = 0;
-	ray->map_x = 0;
-	ray->map_y = 0;
-	ray->step_x = 0;
-	ray->step_y = 0;
-	ray->sidedist_x = 0;
-	ray->sidedist_y = 0;
-	ray->deltadist_x = 0;
-	ray->deltadist_y = 0;
-	ray->wall_dist = 0;
-	ray->wall_x = 0;
-	ray->side = 0;
-	ray->line_height = 0;
-	ray->draw_start = 0;
-	ray->draw_end = 0;
+    data->mlx = mlx_init();
+    data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
+    data->image.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+    data->image.addr = mlx_get_data_addr(data->image.img, &data->image.bpp, &data->image.size_line, &data->image.endian);
+    data->width = data->map_width * TILE_SIZE;
+    data->height = data->map_height * TILE_SIZE;
+    player_first_cordinate(data);
+    data->player.fov = FOV;
+    data->player.distance = ((float)WIDTH / 2) / tan(radian(data->player.fov / 2));
 }
 
-void	init_player(t_player *player)
+void merge(t_tinfo *info)
 {
-	player->dir = '\0';
-	player->pos_x = 0.0;
-	player->pos_y = 0.0;
-	player->dir_x = 0.0;
-	player->dir_y = 0.0;
-	player->plane_x = 0.0;
-	player->plane_y = 0.0;
-	player->has_moved = 0;
-	player->move_x = 0;
-	player->move_y = 0;
-	player->rotate = 0;
-}
+    t_data data;
 
-void	init_mapinfo(t_mapinfo *mapinfo)
-{
-	mapinfo->fd = 0;
-	mapinfo->line_count = 0;
-	mapinfo->path = NULL;
-	mapinfo->file = NULL;
-	mapinfo->height = 0;
-	mapinfo->width = 0;
-	mapinfo->index_end_of_map = 0;
-}
-
-void	init_data(t_data *data)
-{
-	data->mlx = NULL;
-	data->win = NULL;
-	data->height = HEIGHT;
-	data->width = WIDTH;
-	init_player(&data->player);
-	init_texinfo(&data->texinfo);
-	data->map = NULL;
-	init_mapinfo(&data->mapinfo);
-	init_img_clean(&data->minimap);
-	data->texture_pixels = NULL;
-	data->textures = NULL;
+    data.map = info->dbl_ptr;
+    // data.ceilieng_color = info->baqa ma3mlata;
+    // data.floor_color = info-> baqa ma3mlata
+    data.map_height = info->hieght;
+    data.map_width = info->width;
+    // data.player.angle = info-> baqa ma3mlata
+    data.player.angle_step = ((float)FOV / (float)WIDTH);
+    init_data(&data);
+    init_data(&data, info);
+    info->dbl_ptr = NULL;
+    input_handler(&data);
 }

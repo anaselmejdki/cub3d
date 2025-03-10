@@ -1,58 +1,57 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   input_handler.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 15:52:18 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/04 17:54:10 by ael-mejd         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../cub3d.h"
+
+void	init_key_flags(t_data *data)
+{
+	data->keys[RIGHT_FLAG] = 0;
+	data->keys[LEFT_FLAG] = 0;
+	data->keys[W_FLAG] = 0;
+	data->keys[S_FLAG] = 0;
+	data->keys[D_FLAG] = 0;
+	data->keys[A_FLAG] = 0;
+	data->keys[CLOSE_FLAG] = 0;
+	data->keys[ROTATE_FLAG] = 0;
+	data->keys[MOVE_FLAG] = 0;
+}
 
 int	key_press_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
 		quiter(data);
 	if (key == XK_Left)
-		data->player.rotate -= 1;
+		data->keys[LEFT_FLAG] = 1;
 	if (key == XK_Right)
-		data->player.rotate += 1;
+		data->keys[RIGHT_FLAG] = 1;
 	if (key == XK_w)
-		data->player.move_y = 1;
+		data->keys[W_FLAG] = 1
 	if (key == XK_a)
-		data->player.move_x = -1;
+		data->keys[A_FLAG] = 1;
 	if (key == XK_s)
-		data->player.move_y = -1;
+		data->keys[S_FLAG] = 1;
 	if (key == XK_d)
-		data->player.move_x = 1;
+		data->keys[D_FLAG] = 1
 	return (0);
 }
 
-int	key_release_handler(int key, t_data *data)
+static int	key_release_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
-		quiter(data);
-	if (key == XK_w && data->player.move_y == 1)
-		data->player.move_y = 0;
-	if (key == XK_s && data->player.move_y == -1)
-		data->player.move_y = 0;
-	if (key == XK_a && data->player.move_x == -1)
-		data->player.move_x += 1;
-	if (key == XK_d && data->player.move_x == 1)
-		data->player.move_x -= 1;
-	if (key == XK_Left && data->player.rotate <= 1)
-		data->player.rotate = 0;
-	if (key == XK_Right && data->player.rotate >= -1)
-		data->player.rotate = 0;
+		quitter(data);
+	if (key == XK_left)
+		data->keys[LEFT_FLAG] = false;
+	if (key == XK_w)
+		data->keys[W_FLAG] = false;
+	if (key == XK_s)
+		data->keys[S_FLAG] = false;
+	if (key == XK_d)
+		data->keys[D_FLAG] = false;
+	if (key == XK_a)
+		data->keys[A_FLAG] = false;
 	return (0);
 }
 
-void	listen_for_input(t_data *data)
+void	input_handler(t_data *data)
 {
-	mlx_hook(data->win, ClientMessage, NoEventMask, quiter, data);
+	mlx_hook(data->win, ClientMessage, NoEventMask, quitter, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press_handler, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release_handler, data);
 }

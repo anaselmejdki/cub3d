@@ -13,12 +13,13 @@
 typedef struct s_tinfo
 {
 	//MAP:
-	char** dbl_ptr;
+	char** dbl_ptr; //hadi wax d map ?
 	int 	counting_line;
 	int 	hieght;
 	int 	width; // hadi mkhdemtch biha 
 	char* 	file_name;
 	int 	fd;
+	char    *text_path[4]; 
 }t_tinfo;
 
 typedef struct s_texture

@@ -1,14 +1,3 @@
 {
-    "files.associations": {
-        "cub3d.h": "c",
-        "parsing.h": "c",
-        "keysym.h": "c",
-        "math.h": "c",
-        "x.h": "c",
-        "array": "c",
-        "string": "c",
-        "string_view": "c",
-        "span": "c"
-    },
     "C_Cpp.errorSquiggles": "disabled"
 }
