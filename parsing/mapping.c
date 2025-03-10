@@ -26,7 +26,7 @@ char	**ft_read_map(t_tinfo *mapp)
 		if (map_start)
 		{
 			if (*ptr == '\n' || *ptr == '\0') 
-				ft_error("KHOYA 3NDEK EMPTY ptr hh", NULL);
+				ft_error("Check the map", NULL);
 			// printf("\033[0;33m%s\033[0m", ptr);;
 			temp[i] = ft_strdup(line);
 			i++;
@@ -34,5 +34,7 @@ char	**ft_read_map(t_tinfo *mapp)
 		free(line);
 	}
 	temp[i] = NULL;
+	mapp->width = i;
+	printf("========>%d", mapp->width);
 	return (temp);
 }

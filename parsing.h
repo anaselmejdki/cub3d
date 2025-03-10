@@ -39,7 +39,8 @@ void    ft_error(char *str, char *arg);
 //  	CHECK :
 int		validation_extantion(t_tinfo *mapp, int ac, char **av);
 
-
+// ALL:
+int ft_parsing(int ac, char *av[], t_tinfo *mapp, t_texture *tex){;
 
 //  	CHECK :
 // void	validation_extantion(t_tinfo *mapp, int ac, char **av);
