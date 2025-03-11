@@ -50,5 +50,5 @@ void merge(t_tinfo *info)
     init_data(&data);
     init_data(&data, info);
     info->dbl_ptr = NULL;
-    input_handler(&data);
+    input_handler(&data); 
 }

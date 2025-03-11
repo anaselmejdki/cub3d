@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 21:16:34 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/09 16:24:54 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/10 03:15:31 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@
 # define ROTATE_FLAG 7
 # define MOVE_FLAG 8
 # define KEYS_NB 9
+# define ANGLE 1.5
+
 
 # define ERR_MALLOC "Could not allocate memory"
 
 #include "parsing.h"
-#include "mlx.h"
+#include <mlx.h>
 #include <math.h>
 #include <stdbool.h>
 # include <errno.h>
@@ -54,23 +56,20 @@ typedef struct s_img
 
 typedef struct s_ray
 {
-	double	camera_x;
-	double	dir_x;
-	double	dir_y;
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	double	sidedist_x;
-	double	sidedist_y;
-	double	deltadist_x;
-	double	deltadist_y;
-	double	wall_dist;
-	double	wall_x;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
+	float	colums;
+	float	distance;
+	float	rayangle;
+	float	raystep;
+	float	horizontal_x;
+	float	horizontal_y;
+	float	horizontal_distance;
+	float	vertical_x;
+	float	vertical_y;
+	float	vertical_distance;
+	int		side_flag;
+	int		curr_color;
+	int		texture_idx;
+	float	height;
 }	t_ray;
 
 typedef struct s_player
@@ -125,4 +124,6 @@ void init_textures(t_data *data, t_tinfo *info);
 void	free_tab(void **tab);
 int	quitter(t_data *data);
 void	input_handler(t_data *data);
+float	radian(float degree);
+void	rotate(t_data *data);
 #endif
