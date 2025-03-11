@@ -1,8 +1,9 @@
 #include "../parsing.h"
 
 //example:
-int ft_parsing(int ac, char *av[], t_tinfo *mapp, t_texture *tex){
-
+int ft_parsing(int ac, char *av[])
+{
+	t_tinfo mapp;
 	validation_extantion(&mapp, ac, av);
 	validation_exist(&mapp);
 	mapp.dbl_ptr = ft_read_map(&mapp);
@@ -15,6 +16,8 @@ int ft_parsing(int ac, char *av[], t_tinfo *mapp, t_texture *tex){
 
 	close (mapp.fd);
 	validation_exist(&mapp);
+	t_texture tex;
+
     ft_parse_textures(&mapp, &tex);
 
     printf("NO: %s\n", tex.no);
@@ -37,4 +40,5 @@ int ft_parsing(int ac, char *av[], t_tinfo *mapp, t_texture *tex){
 	// 	i++;
 	// }
 	close (mapp.fd);
+	return 1;
 }

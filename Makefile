@@ -12,7 +12,7 @@ HIGHLIGHTER = \033[0;43m
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
 		./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
 		./parsing/mapping.c ./parsing/checking.c  ./parsing/ft_texture.c \
-	#./sources/texture.c main.c
+		main.c
 
 OBJ = $(SRC:.c=.o)
 
