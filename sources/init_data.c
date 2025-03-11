@@ -1,6 +1,6 @@
 #include "../cub3d.h"
 
-void    player_first_corrdinate(t_data *data)
+void    player_first_cordinate(t_data *data)
 {
     int x;
     int y;
@@ -36,6 +36,12 @@ void init_data(t_data *data)
     data->player.distance = ((float)WIDTH / 2) / tan(radian(data->player.fov / 2));
 }
 
+static void	first_view(t_data *data)
+{
+	raycasting(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+}
+
 void merge(t_tinfo *info)
 {
     t_data data;
@@ -48,7 +54,10 @@ void merge(t_tinfo *info)
     // data.player.angle = info-> baqa ma3mlata
     data.player.angle_step = ((float)FOV / (float)WIDTH);
     init_data(&data);
-    init_data(&data, info);
+    init_textures(&data, info);
     info->dbl_ptr = NULL;
-    input_handler(&data); 
+    input_handler(&data);
+	first_view(&data);
+	// mlx_loop_hook(data.mlx, render, &data);
+    mlx_loop(data.mlx);
 }

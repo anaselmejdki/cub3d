@@ -23,6 +23,10 @@
 # define KEYS_NB 9
 # define ANGLE 1.5
 
+# define N_INDEX 0
+# define S_INDEX 1
+# define W_INDEX 2
+# define E_INDEX 3
 
 # define ERR_MALLOC "Could not allocate memory"
 
@@ -66,10 +70,14 @@ typedef struct s_player
 {
 	float	pos_x;
 	float	pos_y;
-	float   fov;
 	float	angle;
-	float   distance;
-	float   angle_step;
+	float	fov;
+	float	angle_step;
+	float	distance_to_project_plan;
+	float	first_x_fov;
+	float	last_x_fov;
+	float	first_y_fov;
+	float	last_y_fov;
 }	t_player;
 
 typedef struct s_texture
@@ -116,4 +124,9 @@ int	quitter(t_data *data);
 void	input_handler(t_data *data);
 float	radian(float degree);
 void	rotate(t_data *data);
+void	horizontal(t_data *data, t_ray *ray, float rayangle);
+void vertical(t_data *data, t_ray *ray, float rayangle);
+void raycasting(t_data *data);
+void my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void get_texture_color(t_data *data, t_ray *ray, int current_y);
 #endif

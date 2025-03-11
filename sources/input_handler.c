@@ -1,5 +1,27 @@
 #include "../cub3d.h"
 
+void	clean_exit(t_data *data, int code)
+{
+	if (!data)
+		exit(code);
+	if (data->win && data->mlx)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
+		mlx_loop_end(data->mlx);
+		free(data->mlx);
+	}
+	free(data);
+	exit(code);
+}
+
+int	quiter(t_data *data)
+{
+	clean_exit(data, 0);
+	return (0);
+}
+
 void	init_key_flags(t_data *data)
 {
 	data->keys[RIGHT_FLAG] = 0;
@@ -35,7 +57,7 @@ int	key_press_handler(int key, t_data *data)
 static int	key_release_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
-		quitter(data);
+		quiter(data);
 	if (key == XK_left)
 		data->keys[LEFT_FLAG] = false;
 	if (key == XK_w)
@@ -51,7 +73,7 @@ static int	key_release_handler(int key, t_data *data)
 
 void	input_handler(t_data *data)
 {
-	mlx_hook(data->win, ClientMessage, NoEventMask, quitter, data);
+	mlx_hook(data->win, ClientMessage, NoEventMask, quiter, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press_handler, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release_handler, data);
 }
