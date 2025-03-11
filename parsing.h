@@ -13,7 +13,7 @@
 typedef struct s_tinfo
 {
 	//MAP:
-	char** dbl_ptr; //hadi wax d map ?
+	char** dbl_ptr; //hadi wax d map ? ah sajida
 	int 	counting_line;
 	int 	hieght;
 	int 	width; // hadi mkhdemtch biha 
@@ -40,7 +40,8 @@ void    ft_error(char *str, char *arg);
 //  	CHECK :
 int		validation_extantion(t_tinfo *mapp, int ac, char **av);
 
-
+// ALL:
+	int ft_parsing(int ac, char *av[]);
 
 //  	CHECK :
 // void	validation_extantion(t_tinfo *mapp, int ac, char **av);
