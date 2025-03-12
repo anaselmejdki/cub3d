@@ -100,8 +100,8 @@ typedef struct s_data
 	int			map_height;
 	int			map_width;
 	char		**map;
-	int			ceilieng_color;
-	int			floor_color;
+	int			ceilieng_color[3];
+	int			floor_color[3];
 	int 		keys[KEYS_NB];
 	t_player	player;
 	t_ray		ray;
@@ -120,7 +120,7 @@ enum e_texture_index
 
 void init_textures(t_data *data, t_tinfo *info);
 void	free_tab(void **tab);
-int	quitter(t_data *data);
+int	quiter(t_data *data);
 void	input_handler(t_data *data);
 float	radian(float degree);
 void	rotate(t_data *data);
@@ -129,4 +129,5 @@ void vertical(t_data *data, t_ray *ray, float rayangle);
 void raycasting(t_data *data);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void get_texture_color(t_data *data, t_ray *ray, int current_y);
+void merge(t_tinfo *info);
 #endif

@@ -12,7 +12,8 @@ HIGHLIGHTER = \033[0;43m
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
 		./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
 		./parsing/mapping.c ./parsing/checking.c  ./parsing/ft_texture.c \
-		main.c
+		./sources/free.c ./sources/horizontal.c ./sources/init_data.c ./sources/input_handler.c \
+		./sources/raycasting.c ./sources/render.c ./sources/rotate.c ./sources/texture.c ./sources/vertical.c main.c
 
 OBJ = $(SRC:.c=.o)
 

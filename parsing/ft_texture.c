@@ -1,6 +1,6 @@
 #include "../parsing.h"
 
-void ft_store_texture(t_tinfo *mapp,t_texture *tex, char *line)
+void ft_store_texture(t_tinfo *mapp,t_textura *tex, char *line)
 {
 	(void)mapp;
     while (*line == 32 || *line == '\t')
@@ -47,7 +47,7 @@ void ft_store_texture(t_tinfo *mapp,t_texture *tex, char *line)
     }
     free(split);
 }
-void ft_check_xpm(t_texture *tex)
+void ft_check_xpm(t_textura *tex)
 {
     char *file_name[4] = {tex->ea, tex->no, tex->so, tex->we};
     if (!tex->no || !tex->so || !tex->we || !tex->ea) 
@@ -67,7 +67,7 @@ void ft_check_xpm(t_texture *tex)
         i++;
     }
 }
-void ft_parse_textures(t_tinfo *mapp, t_texture *tex)
+void ft_parse_textures(t_tinfo *mapp, t_textura *tex)
 {
     char *line;
     int i = 0;

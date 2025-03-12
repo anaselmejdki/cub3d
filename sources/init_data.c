@@ -36,7 +36,7 @@ void init_data(t_data *data)
     data->player.distance = ((float)WIDTH / 2) / tan(radian(data->player.fov / 2));
 }
 
-static void	first_view(t_data *data)
+void	first_view(t_data *data)
 {
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
@@ -47,11 +47,15 @@ void merge(t_tinfo *info)
     t_data data;
 
     data.map = info->dbl_ptr;
-    // data.ceilieng_color = info->baqa ma3mlata;
-    // data.floor_color = info-> baqa ma3mlata
+    data.ceilieng_color[0] = info->textura.c[0];
+    data.ceilieng_color[1] = info->textura.c[1];
+    data.ceilieng_color[2] = info->textura.c[2];
+    data.floor_color[0] = info->textura.f[0];
+    data.floor_color[1] = info->textura.f[1];
+    data.floor_color[2] = info->textura.f[2];
     data.map_height = info->hieght;
     data.map_width = info->width;
-    // data.player.angle = info-> baqa ma3mlata
+    data.player.angle = -1;
     data.player.angle_step = ((float)FOV / (float)WIDTH);
     init_data(&data);
     init_textures(&data, info);

@@ -16,7 +16,7 @@ int ft_parsing(int ac, char *av[])
 
 	close (mapp.fd);
 	validation_exist(&mapp);
-	t_texture tex;
+	t_textura tex;
 
     ft_parse_textures(&mapp, &tex);
 
