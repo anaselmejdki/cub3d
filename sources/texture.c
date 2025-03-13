@@ -38,8 +38,8 @@ void get_texture_color(t_data *data, t_ray *ray, int current_y)
     int current_x;
 
     current_x = 0;
-    x_scale = (float)data->wall_textures[ray->texture_idx].width / TILE_SIZE;
-    y_scale = (float)data->wall_textures[ray->texture_idx].hight / ray->height;
+    x_scale = (float)data->texinfo[ray->texture_idx].width / TILE_SIZE;
+    y_scale = (float)data->texinfo[ray->texture_idx].hight / ray->height;
     if (ray->texture_idx == N_INDEX)
         current_x = (int)ray->horizontal_x % TILE_SIZE;
     else if (ray->texture_idx == S_INDEX)
@@ -48,5 +48,5 @@ void get_texture_color(t_data *data, t_ray *ray, int current_y)
         current_x = (int)ray->vertical_y % TILE_SIZE;
     else if (ray->texture_idx == W_INDEX)
         current_x = TILE_SIZE - ((int)ray->vertical_y % TILE_SIZE);
-    ray->curr_color = get_cords_color(&data->wall_textures[ray->texture_idx], current_x * x_scale, current_y * y_scale);
+    ray->curr_color = get_cords_color(&data->texinfo[ray->texture_idx], current_x * x_scale, current_y * y_scale);
 }

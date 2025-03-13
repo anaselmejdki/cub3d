@@ -4,8 +4,9 @@
 int main(int ac, char **av)
 {
     t_tinfo info;
+    t_textura tex;
 
-	ft_parsing(ac, av);
-	merge(&info);
+	ft_parsing(&info, ac, av);
+	merge(&info, &tex);
     return (0);
 }

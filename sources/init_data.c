@@ -33,35 +33,32 @@ void init_data(t_data *data)
     data->height = data->map_height * TILE_SIZE;
     player_first_cordinate(data);
     data->player.fov = FOV;
-    data->player.distance = ((float)WIDTH / 2) / tan(radian(data->player.fov / 2));
+    data->player.distance_to_project_plan = ((float)WIDTH / 2) / tan(radian(data->player.fov / 2));
 }
 
 void	first_view(t_data *data)
 {
 	raycasting(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->image.img, 0, 0);
 }
+ 
 
-void merge(t_tinfo *info)
+void merge(t_tinfo *info, t_textura *tex)
 {
     t_data data;
 
     data.map = info->dbl_ptr;
-    data.ceilieng_color[0] = info->textura.c[0];
-    data.ceilieng_color[1] = info->textura.c[1];
-    data.ceilieng_color[2] = info->textura.c[2];
-    data.floor_color[0] = info->textura.f[0];
-    data.floor_color[1] = info->textura.f[1];
-    data.floor_color[2] = info->textura.f[2];
-    data.map_height = info->hieght;
-    data.map_width = info->width;
-    data.player.angle = -1;
-    data.player.angle_step = ((float)FOV / (float)WIDTH);
-    init_data(&data);
-    init_textures(&data, info);
-    info->dbl_ptr = NULL;
-    input_handler(&data);
-	first_view(&data);
-	// mlx_loop_hook(data.mlx, render, &data);
-    mlx_loop(data.mlx);
+
+    printf("tex ceil : %d", tex->c[0]);
+    // data.ceilieng_color[0] = tex->c[0];
+    // data.ceilieng_color[1] = tex->c[1];
+    // data.ceilieng_color[2] = tex->c[2];
+
+    // init_data(&data);
+    // init_textures(&data, info);
+    // info->dbl_ptr = NULL;
+    // input_handler(&data);
+	// first_view(&data);
+	// // mlx_loop_hook(data.mlx, render, &data);
+    // mlx_loop(data.mlx);
 }

@@ -43,44 +43,44 @@ void find_horizontal_point(t_data *data, float rayangle, float *horizontal_x, fl
     *horizontal_y = *horizontal_y - delta_y;
 }
 
-int	check_next_position(t_data *data, t_ray *ray, int *x, int *y)
+static int check_next_position(t_data *data, t_ray *ray, int *x, int *y)
 {
-	float	check_y;
+    float check_y;
 
-	if (ray->rayangle == 0 || ray->rayangle == 180 || ray->horizontal_y > data->height || ray->horizontal_y < 0 || ray->horizontal_x > data->width || ray->horizontal_x < 0)
-		return (1);
-	check_y = ray->horizontal_y;
-	if (ray->horizontal_y < data->player.player_y)
-		check_y -= 1;
-	*x = ray->horizontal_x / TILE_SIZE;
-	*y = check_y / TILE_SIZE;
-	if ((*y < data->map_height && *y >= 0) && (*x >= 0 && *x < (int)ft_strlen(data->map[*y])))
-	{
-		if (data->map[*y][*x] == ' ')
-			return (1);
-	}
-	else
-		return (1);
-	return (0);
+    if (ray->rayangle == 0 || ray->rayangle == 180 || ray->horizontal_y > data->height || ray->horizontal_y < 0 || ray->horizontal_x > data->width || ray->horizontal_x < 0)
+        return (1);
+    check_y = ray->horizontal_y;
+    if (ray->horizontal_y < data->player.pos_y)
+        check_y -= 1;
+    *x = ray->horizontal_x / TILE_SIZE;
+    *y = check_y / TILE_SIZE;
+    if ((*y < data->map_height && *y >= 0) && (*x >= 0 && *x < (int)ft_strlen(data->map[*y])))
+    {
+        if (data->map[*y][*x] == ' ')
+            return (1);
+    }
+    else
+        return (1);
+    return (0);
 }
 
-void	horizontal(t_data *data, t_ray *ray, float rayangle)
+void horizontal(t_data *data, t_ray *ray, float rayangle)
 {
-	int		x;
-	int		y;
+    int x;
+    int y;
 
-	ray->horizontal_y = data->player.player_y;
-	ray->horizontal_x = data->player.player_x;
-	ray->horizontal_distance = -1.0;
-	while (1)
-	{
-		find_horizontal_point(data, rayangle, &ray->horizontal_x, &ray->horizontal_y);
-		if (check_next_position(data, ray, &x, &y))
-			break ;
-		if (data->map[y][x] == '1')
-		{
-			ray->horizontal_distance = get_distance(data, ray->horizontal_x, ray->horizontal_y);
-			break ;
-		}
-	}
+    ray->horizontal_y = data->player.pos_y;
+    ray->horizontal_x = data->player.pos_x;
+    ray->horizontal_distance = -1.0;
+    while (1)
+    {
+        find_horizontal_point(data, rayangle, &ray->horizontal_x, &ray->horizontal_y);
+        if (check_next_position(data, ray, &x, &y))
+            break;
+        if (data->map[y][x] == '1')
+        {
+            ray->horizontal_distance = get_distance(data, ray->horizontal_x, ray->horizontal_y);
+            break;
+        }
+    }
 }

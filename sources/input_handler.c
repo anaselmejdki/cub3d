@@ -44,13 +44,13 @@ int	key_press_handler(int key, t_data *data)
 	if (key == XK_Right)
 		data->keys[RIGHT_FLAG] = 1;
 	if (key == XK_w)
-		data->keys[W_FLAG] = 1
+		data->keys[W_FLAG] = 1;
 	if (key == XK_a)
 		data->keys[A_FLAG] = 1;
 	if (key == XK_s)
 		data->keys[S_FLAG] = 1;
 	if (key == XK_d)
-		data->keys[D_FLAG] = 1
+		data->keys[D_FLAG] = 1;
 	return (0);
 }
 
@@ -58,7 +58,7 @@ static int	key_release_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
 		quiter(data);
-	if (key == XK_left)
+	if (key == XK_Left)
 		data->keys[LEFT_FLAG] = false;
 	if (key == XK_w)
 		data->keys[W_FLAG] = false;

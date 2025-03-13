@@ -6,7 +6,7 @@ float calculate_delta_x(t_data *data, float *vertical_x, float *vertical_y, floa
 
     if (rayangle > 90 && rayangle < 270)
     {
-        if (*vertical_x == data->player.player_x && *vertical_y == data->player.player_y)
+        if (*vertical_x == data->player.pos_x && *vertical_y == data->player.pos_y)
         {
             delta_x = *vertical_x - (((int)(*vertical_x / TILE_SIZE)) * TILE_SIZE);
             if (delta_x == 0)
@@ -17,7 +17,7 @@ float calculate_delta_x(t_data *data, float *vertical_x, float *vertical_y, floa
     }
     else
     {
-        if (*vertical_x == data->player.player_x && *vertical_y == data->player.player_y)
+        if (*vertical_x == data->player.pos_x && *vertical_y == data->player.pos_y)
             delta_x = *vertical_x - (((int)(*vertical_x / TILE_SIZE) + 1) * TILE_SIZE);
         else
             delta_x = -TILE_SIZE;
@@ -38,7 +38,7 @@ void find_vertical_point(t_data *data, float rayangle, float *vertical_x, float 
     *vertical_y = *vertical_y - delta_y;
 }
 
-int check_next_position(t_data *data, t_ray *ray, int *x, int *y)
+static int check_next_position(t_data *data, t_ray *ray, int *x, int *y)
 {
     float check_x;
 
@@ -49,7 +49,7 @@ int check_next_position(t_data *data, t_ray *ray, int *x, int *y)
         check_x -= 1;
     *x = check_x / TILE_SIZE;
     *y = ray->vertical_y / TILE_SIZE;
-    if ((*y < data->map_hight && *y >= 0) && (*x >= 0 && *x < (int)ft_strlen(data->map[*y])))
+    if ((*y < data->map_height && *y >= 0) && (*x >= 0 && *x < (int)ft_strlen(data->map[*y])))
     {
         if (data->map[*y][*x] == ' ')
             return (1);
@@ -64,13 +64,13 @@ void vertical(t_data *data, t_ray *ray, float rayangle)
     int x;
     int y;
 
-    ray->vertical_y = data->player.player_y;
-    ray->vertical_x = data->player.player_x;
+    ray->vertical_y = data->player.pos_y;
+    ray->vertical_x = data->player.pos_x;
     ray->vertical_distance = -1.0;
     while (1)
     {
         find_vertical_point(data, rayangle, &ray->vertical_x, &ray->vertical_y);
-        if (check_next_possition(data, ray, &x, &y))
+        if (check_next_position(data, ray, &x, &y))
             break;
         if (data->map[y][x] == '1')
         {

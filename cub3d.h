@@ -42,7 +42,7 @@
 typedef struct s_img
 {
 	void	*img;
-	int		*addr;
+	char	*addr;
 	int		bpp;
 	int		size_line;
 	int		endian;
@@ -119,15 +119,16 @@ enum e_texture_index
 
 
 void init_textures(t_data *data, t_tinfo *info);
-void	free_tab(void **tab);
 int	quiter(t_data *data);
 void	input_handler(t_data *data);
 float	radian(float degree);
 void	rotate(t_data *data);
 void	horizontal(t_data *data, t_ray *ray, float rayangle);
 void vertical(t_data *data, t_ray *ray, float rayangle);
+float get_distance(t_data *data, float x, float y);
 void raycasting(t_data *data);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void get_texture_color(t_data *data, t_ray *ray, int current_y);
-void merge(t_tinfo *info);
+void merge(t_tinfo *info, t_textura *tex)
+
 #endif

@@ -68,5 +68,5 @@ void ft_check_map_borders(char **map, int height)
             ft_error(" MAP BORDER : First or last non-space column must be 1!", map[i]);
         i++;
     }
-    printf("✅ MAP BORDERS ARE VALID!\n");
+    // printf("✅ MAP BORDERS ARE VALID!\n");
 }

@@ -56,6 +56,7 @@ void draw_column(t_data *data, t_ray *ray, int column)
     int start;
     int end;
     int i;
+    int j;
 
     height_and_texture(data, ray);
     start = (HEIGHT - ray->height) / 2;
@@ -64,7 +65,7 @@ void draw_column(t_data *data, t_ray *ray, int column)
         end = HEIGHT;
     i = -1;
     while (++i < start)
-        my_mlx_pixel_put(data, column, i, data->ceiling_color);
+        my_mlx_pixel_put(data, column, i, data->ceilieng_color[i]);
     i = -1;
     if (start > 0)
         i = start - 1;
@@ -73,8 +74,9 @@ void draw_column(t_data *data, t_ray *ray, int column)
         get_texture_color(data, ray, i - start);
         my_mlx_pixel_put(data, column, i, ray->curr_color);
     }
+    j = 0;
     while (i < HEIGHT)
-        my_mlx_pixel_put(data, column, i++, data->floor_color);
+        my_mlx_pixel_put(data, column, i++, data->floor_color[j++]);
 }
 
 void raycasting(t_data *data)

@@ -35,6 +35,6 @@ char	**ft_read_map(t_tinfo *mapp)
 	}
 	temp[i] = NULL;
 	mapp->width = i;
-	printf("========>%d", mapp->width);
+	// printf("========>%d", mapp->width);
 	return (temp);
 }
