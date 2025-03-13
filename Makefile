@@ -38,6 +38,9 @@ $(LIBFT):
 	@make -s -C libft
 	@mv libft/libft.a .
 
+mlx:
+	git clone https://github.com/42Paris/minilibx-linux.git 
+
 clean:
 	@echo "$(GREEN0)Cleaning 🧹$(BLACK)"
 	@rm -rf $(OBJ)

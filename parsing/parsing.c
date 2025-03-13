@@ -1,7 +1,7 @@
 #include "../parsing.h"
 
 //example:
-int ft_parsing(t_tinfo *mapp, int ac, char *av[])
+int ft_parsing(t_tinfo *mapp,t_textura *tex, int ac, char *av[])
 {
 	validation_extantion(mapp, ac, av);
 	validation_exist(mapp);
@@ -15,16 +15,16 @@ int ft_parsing(t_tinfo *mapp, int ac, char *av[])
 
 	close (mapp->fd);
 	validation_exist(mapp);
-	t_textura tex;
+	
 
-    ft_parse_textures(mapp, &tex);
+    ft_parse_textures(mapp, tex);
 
     // printf("NO: %s\n", tex.no);
     // printf("SO: %s\n", tex.so);
     // printf("WE: %s\n", tex.we);
     // printf("EA: %s\n", tex.ea);
-    // printf("Floor: %d, %d, %d\n", tex.f[0], tex.f[1], tex.f[2]);
-    // printf("Ceiling: %d, %d, %d\n", tex.c[0], tex.c[1], tex.c[2]);
+    // printf("Floor: %d, %d, %d\n", tex->f[0], tex->f[1], tex->f[2]);
+    // printf("Ceiling: %d, %d, %d\n", tex->c[0], tex->c[1], tex->c[2]);
 
 	// printf("ceiling data : %d\n", tex.c[0]);
 

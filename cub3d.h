@@ -31,7 +31,7 @@
 # define ERR_MALLOC "Could not allocate memory"
 
 #include "parsing.h"
-#include <mlx.h>
+#include "mlx.h"
 #include <math.h>
 #include <stdbool.h>
 # include <errno.h>
@@ -129,6 +129,6 @@ float get_distance(t_data *data, float x, float y);
 void raycasting(t_data *data);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void get_texture_color(t_data *data, t_ray *ray, int current_y);
-void merge(t_tinfo *info, t_textura *tex)
+void merge(t_tinfo *info, t_textura *tex);
 
 #endif

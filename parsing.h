@@ -29,6 +29,7 @@ typedef struct s_tinfo
 	char* 	file_name;
 	int 	fd;
 	char    *text_path[4];
+	t_textura *tex;
 }t_tinfo;
 
 
@@ -42,7 +43,7 @@ void    ft_error(char *str, char *arg);
 int		validation_extantion(t_tinfo *mapp, int ac, char **av);
 
 // ALL:
-int ft_parsing(t_tinfo *mapp, int ac, char *av[]);
+int ft_parsing(t_tinfo *mapp,t_textura *tex, int ac, char *av[]);
 
 //  	CHECK :
 // void	validation_extantion(t_tinfo *mapp, int ac, char **av);
