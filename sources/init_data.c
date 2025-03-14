@@ -61,7 +61,7 @@ void merge(t_tinfo *info, t_textura *tex)
     init_textures(&data, info);
     info->dbl_ptr = NULL;
     input_handler(&data);
-	first_view(&data);
+	// first_view(&data);
 	// // mlx_loop_hook(data.mlx, render, &data);
     mlx_loop(data.mlx);
 }

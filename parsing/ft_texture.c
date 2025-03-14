@@ -30,7 +30,7 @@ void ft_store_texture(t_tinfo *mapp,t_textura *tex, char *line)
 
         if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
             ft_error("🚨 COLOR VALUE OUT OF RANGE (0-255)!", line);
-
+    
         if (!strcmp(split[0], "F")) 
         {
             tex->f[0] = r;
@@ -43,15 +43,19 @@ void ft_store_texture(t_tinfo *mapp,t_textura *tex, char *line)
             tex->c[1] = g;
             tex->c[2] = b;
         }
-        free(rgb);
+        free_map(rgb);
     }
-    free(split);
+    free_map(split);
 }
-void ft_check_xpm(t_textura *tex)
+void ft_check_xpm(t_textura *tex, t_tinfo *info)
 {
     char *file_name[4] = {tex->ea, tex->no, tex->so, tex->we};
     if (!tex->no || !tex->so || !tex->we || !tex->ea) 
-        ft_error("Missing at least one texture",NULL); 
+        ft_error("Missing at least one texture",NULL);
+    info->text_path[0] = tex->no;
+    info->text_path[1] = tex->so;
+    info->text_path[2] = tex->we;
+    info->text_path[3] = tex->ea;
     char *sch;
     int i = 0;
     while (i < 4)
@@ -82,5 +86,5 @@ void ft_parse_textures(t_tinfo *mapp, t_textura *tex)
         free(line);
     }
     // ft_check_tex(tex);
-    ft_check_xpm(tex);
+    ft_check_xpm(tex, mapp);
 }

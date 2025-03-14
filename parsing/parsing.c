@@ -18,7 +18,7 @@ int ft_parsing(t_tinfo *mapp,t_textura *tex, int ac, char *av[])
 	
 
     ft_parse_textures(mapp, tex);
-
+    // printf("Loading texture %d: '%s'\n", 0, tex->no);
     // printf("NO: %s\n", tex.no);
     // printf("SO: %s\n", tex.so);
     // printf("WE: %s\n", tex.we);

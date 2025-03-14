@@ -72,7 +72,7 @@ int ft_height(t_tinfo *mapp);
 int	validation_extantion(t_tinfo *mapp, int ac, char **av);
 int ft_count_height_map(t_tinfo *mapp);
 
-
+void    free_map(char **map);
 
 
 #endif
