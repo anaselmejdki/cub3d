@@ -9,6 +9,7 @@
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 # define TILE_SIZE 1000
+# define SPEED_DIVISOR 25
 # define FOV 60
 
 # define RIGHT_FLAG 0
@@ -132,4 +133,5 @@ void get_texture_color(t_data *data, t_ray *ray, int current_y);
 void merge(t_tinfo *info, t_textura *tex);
 void free_texture(void *mlx, t_texture *texture);
 void    free_map(char **map);
+void	move_player(t_data *data);
 #endif
