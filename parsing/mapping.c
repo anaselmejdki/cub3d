@@ -20,7 +20,7 @@ char	**ft_read_map(t_tinfo *mapp)
 		while (*ptr == ' ')
 			ptr++;
 		
-		if ((ptr[0] == '1' || ptr[0] == '0' )&& !map_start ) // lax  0 laax
+		if ((ptr[0] == '1' || ptr[0] == '0' )&& !map_start )
 			map_start = 1;
 
 		if (map_start)

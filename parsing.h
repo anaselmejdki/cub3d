@@ -55,12 +55,10 @@ void	check_f_and_last_line(t_tinfo *mapp);
 void	ft_check_map_borders(char **map, int height);
 void	ft_check_special_chars(char **map, int height);
 void	ft_check_32(char **map, int height);
-void ft_store_texture(t_textura *tex, char *line);
-void ft_parse_textures(t_tinfo *mapp, t_textura *tex);
+void ft_store_texture(t_tinfo *mapp,t_textura *tex, char *line);
+void ft_store_rgb(t_tinfo *mapp,t_textura *tex,char *line);
 
 
-// 		UTILS:
-int ft_height(t_tinfo *mapp);
 // 		UTILS:
 int ft_height(t_tinfo *mapp);
 
@@ -73,8 +71,10 @@ int	validation_extantion(t_tinfo *mapp, int ac, char **av);
 int ft_count_height_map(t_tinfo *mapp);
 
 void    free_map(char **map);
-/// ljadiiid 
-int    ft_check_directions(char *line);
+
+/// LJADID:
+
+char *skip_spaces(char *line);
 #endif
 
 
