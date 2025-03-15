@@ -55,7 +55,7 @@ void ft_check_special_chars(char **map, int height)
 		ft_error(" MULTIPLE PLAYERS FOUNDED IN MAP!", NULL);
 }
 
-void ft_check_32(char **map, int height)
+void    ft_check_32(char **map, int height)
 {
     int i, j;
 

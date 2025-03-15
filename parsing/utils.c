@@ -110,38 +110,38 @@ void ft_check_ceiling(char *temp, t_tinfo *colors)
 	return ;
 }
 
-void reading_map(int fd, t_tinfo *mapp)
-{
-	t_tinfo color;
-	char *temp;
-	int i = 0;
-	int count_line = 0;
-	while ((temp = get_next_line(fd)))
-	{
-		count_line++;
-	}
-	printf("this is x===>%d", count_line);
+// void reading_map(int fd, t_tinfo *mapp)
+// {
+// 	t_tinfo color;
+// 	char *temp;
+// 	int i = 0;
+// 	int count_line = 0;
+// 	while ((temp = get_next_line(fd)))
+// 	{
+// 		count_line++;
+// 	}
+// 	printf("this is x===>%d", count_line);
 	
-	while ((temp = get_next_line(fd)) && i != 8)
-	{
-		printf("i = %d, str: \033[38;5;121m%s\033[0m", i, temp);
-		if (i <= 3)
-			ft_check_texture(temp);
-		if (i == 4 && ft_check_new_line(temp) == 1)
-			ft_error("you need new line, instead of", temp);
-		if(i == 5 || i == 6)
-		{
-			if (i == 5)
-				ft_check_floor(temp, &color);
-			else 
-				ft_check_ceiling(temp, &color);
-		}
-		if (i == 7 && ft_check_new_line(temp) == 1)
-			ft_error("you need new line, instead of", temp);
-		i++;
-		free(temp);
-	}
-	// if (i >= 8)
-	// 		ft_check_maping(temp);
-	return ;
-}
+// 	while ((temp = get_next_line(fd)) && i != 8)
+// 	{
+// 		printf("i = %d, str: \033[38;5;121m%s\033[0m", i, temp);
+// 		if (i <= 3)
+// 			ft_check_texture(temp);
+// 		if (i == 4 && ft_check_new_line(temp) == 1)
+// 			ft_error("you need new line, instead of", temp);
+// 		if(i == 5 || i == 6)
+// 		{
+// 			if (i == 5)
+// 				ft_check_floor(temp, &color);
+// 			else 
+// 				ft_check_ceiling(temp, &color);
+// 		}
+// 		if (i == 7 && ft_check_new_line(temp) == 1)
+// 			ft_error("you need new line, instead of", temp);
+// 		i++;
+// 		free(temp);
+// 	}
+// 	// if (i >= 8)
+// 	// 		ft_check_maping(temp);
+// 	return ;
+// }

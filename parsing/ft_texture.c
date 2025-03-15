@@ -1,19 +1,23 @@
 #include "../parsing.h"
 
-void ft_store_texture(t_tinfo *mapp,t_textura *tex, char *line)
+void ft_store_texture(t_textura *tex, char *line)
 {
-	(void)mapp;
+
     while (*line == 32 || *line == '\t')
         line++;
     
     char **split = ft_split(line, ' ');
     if (!split || !split[0] || !split[1])
         ft_error("🚨 INVALID TEXTURE LINE!", line);
-    if (!strcmp(split[0], "NO")) tex->no = ft_strdup(split[1]);
-    else if (!strcmp(split[0], "SO")) tex->so = ft_strdup(split[1]);
-    else if (!strcmp(split[0], "WE")) tex->we = ft_strdup(split[1]);
-    else if (!strcmp(split[0], "EA")) tex->ea = ft_strdup(split[1]);
-    else if (!strcmp(split[0], "F") || !strcmp(split[0], "C"))
+    if (!strcmp(split[0], "NO")) 
+        tex->no = ft_strdup(split[1]);
+    else if (!strcmp(split[0], "SO")) 
+        tex->so = ft_strdup(split[1]);
+    else if (!strcmp(split[0], "WE")) 
+        tex->we = ft_strdup(split[1]);
+    else if (!strcmp(split[0], "EA")) 
+        tex->ea = ft_strdup(split[1]);
+    if (!strcmp(split[0], "F") || !strcmp(split[0], "C"))
     {
         while (*split[1] == 32 || *split[1] == '\t')
             split[1]++;
@@ -43,9 +47,9 @@ void ft_store_texture(t_tinfo *mapp,t_textura *tex, char *line)
             tex->c[1] = g;
             tex->c[2] = b;
         }
-        free_map(rgb);
+        // free_map(rgb);
     }
-    free_map(split);
+    // free_map(split);
 }
 void ft_check_xpm(t_textura *tex, t_tinfo *info)
 {
@@ -80,10 +84,10 @@ void ft_parse_textures(t_tinfo *mapp, t_textura *tex)
     {
         if (*line != '\n')
         {
-            ft_store_texture(mapp, tex, line);
+            ft_store_texture(tex, line);
             i++;
         }
-        free(line);
+        // free(line);
     }
     // ft_check_tex(tex);
     ft_check_xpm(tex, mapp);
