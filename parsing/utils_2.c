@@ -70,3 +70,16 @@ void ft_check_map_borders(char **map, int height)
     }
     // printf("✅ MAP BORDERS ARE VALID!\n");
 }
+
+char *skip_spaces(char *line)
+{
+    int i = 0;
+    
+    if (!line)
+        return NULL;
+        
+    while (line[i] && (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13)))
+        i++;
+    
+    return line + i;
+}

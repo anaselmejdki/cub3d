@@ -74,7 +74,9 @@ int ft_count_height_map(t_tinfo *mapp);
 
 void    free_map(char **map);
 
+/// LJADID:
 
+char *skip_spaces(char *line);
 #endif
 
 

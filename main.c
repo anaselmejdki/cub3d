@@ -1,5 +1,5 @@
 
-#include "cub3d.h"
+#include "parsing.h"
 
 int main(int ac, char **av)
 {
@@ -7,6 +7,6 @@ int main(int ac, char **av)
     t_textura tex;
 
 	ft_parsing(&info,&tex, ac, av);
-	merge(&info, &tex);
+	//merge(&info, &tex);
     return (0);
 }
