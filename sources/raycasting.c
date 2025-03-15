@@ -48,7 +48,11 @@ void height_and_texture(t_data *data, t_ray *ray)
         else
             ray->texture_idx = E_INDEX;
     }
+    if (ray->distance <= 0.0001)
+        ray->distance = 0.0001;
     ray->height = ((float)TILE_SIZE / ray->distance) * data->player.distance_to_project_plan;
+    if (ray->height > HEIGHT * 10)
+        ray->height = HEIGHT * 10;
 }
 
 void draw_column(t_data *data, t_ray *ray, int column)
@@ -59,7 +63,13 @@ void draw_column(t_data *data, t_ray *ray, int column)
     int j;
 
     height_and_texture(data, ray);
+    if (ray->height <= 0)
+        ray->height = 1; 
+    else if (ray->height > HEIGHT * 10)
+        ray->height = HEIGHT * 2;
     start = (HEIGHT - ray->height) / 2;
+    if (start < 0)
+        start = 0;
     end = start + ray->height;
     if (end > HEIGHT)
         end = HEIGHT;
@@ -79,15 +89,23 @@ void draw_column(t_data *data, t_ray *ray, int column)
         my_mlx_pixel_put(data, column, i++, data->floor_color[j++]);
 }
 
+// Normalize angle to be between 0 and 360
+float normalize_angle(float angle)
+{
+    while (angle < 0)
+        angle += 360;
+    while (angle >= 360)
+        angle -= 360;
+    return angle;
+}
+
 void raycasting(t_data *data)
 {
     t_ray ray;
     int column;
 
     column = 0;
-    ray.rayangle = data->player.angle - (data->player.fov / 2);
-    if (ray.rayangle < 0)
-        ray.rayangle += 360;
+    ray.rayangle = normalize_angle(data->player.angle - (data->player.fov / 2));
     while (column <= WIDTH)
     {
         horizontal(data, &ray, ray.rayangle);
@@ -95,9 +113,7 @@ void raycasting(t_data *data)
         real_distance(&ray, data);
         small_distance(&ray);
         draw_column(data, &ray, column);
-            column++;
-        ray.rayangle += data->player.angle_step;
-        if (ray.rayangle >= 360)
-            ray.rayangle -= 360;
+        column++;
+        ray.rayangle = normalize_angle(ray.rayangle + data->player.angle_step);
     }
 }

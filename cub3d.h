@@ -134,4 +134,5 @@ void merge(t_tinfo *info, t_textura *tex);
 void free_texture(void *mlx, t_texture *texture);
 void    free_map(char **map);
 void	move_player(t_data *data);
+int render(t_data *data);
 #endif

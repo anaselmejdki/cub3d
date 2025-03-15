@@ -72,6 +72,9 @@ void horizontal(t_data *data, t_ray *ray, float rayangle)
     ray->horizontal_y = data->player.pos_y;
     ray->horizontal_x = data->player.pos_x;
     ray->horizontal_distance = -1.0;
+    // printf("ray-hor x is %f data ply po x is %f\n", ray->horizontal_x, data->player.pos_x);
+    // printf("ray-hor y is %f data ply po y is %f\n", ray->horizontal_y, data->player.pos_y);
+    // exit (0);
     while (1)
     {
         find_horizontal_point(data, rayangle, &ray->horizontal_x, &ray->horizontal_y);

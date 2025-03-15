@@ -55,13 +55,13 @@ void merge(t_tinfo *info, t_textura *tex)
     data.floor_color[2] = tex->f[2];
     data.height = info->hieght;
     data.width = info->width;
-    data.player.angle = -1;
+    data.player.angle = 45;
     data.player.angle_step = ((float)(FOV) / (float)WIDTH);
     init_data(&data);
     init_textures(&data, info);
     info->dbl_ptr = NULL;
+	first_view(&data);
     input_handler(&data);
-	// first_view(&data);
-	// // mlx_loop_hook(data.mlx, render, &data);
+	// mlx_loop_hook(data.mlx, render, &data);
     mlx_loop(data.mlx);
 }
