@@ -61,8 +61,6 @@ void ft_store_rgb(t_tinfo *mapp,t_textura *tex,char *line);
 
 // 		UTILS:
 int ft_height(t_tinfo *mapp);
-// 		UTILS:
-int ft_height(t_tinfo *mapp);
 
 // MAP:
 // void reading_map(int fd);
