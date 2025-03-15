@@ -1,45 +1,32 @@
 #include "../parsing.h"
 
 
-
-void ft_store_rgb(t_tinfo *mapp,t_textura *tex,char *line)
+int is_valid_map_symbol(char c)
 {
-	(void)mapp;
-	while (*line == 32 || *line == '\t')
-        line++;
-	char **split =  ft_split(line, ' ');
-    if (!strcmp(split[0], "F") || !strcmp(split[0], "C"))
-    {
-        while (*split[1] == 32 || *split[1] == '\t')
-            split[1]++;
-
-        char **rgb = ft_split(split[1], ',');
-        if (!rgb || !rgb[0] || !rgb[1] || !rgb[2]) 
-            ft_error("🚨 INVALID COLOR FORMAT!", line);
-        if (rgb[3]) // checking for the 4th color;
-            ft_error("nop", rgb[3]);
-
-        int r = ft_atoi(rgb[0]);
-        int g = ft_atoi(rgb[1]);
-        int b = ft_atoi(rgb[2]);
-
-        if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-            ft_error("🚨 COLOR VALUE OUT OF RANGE (0-255)!", line);
-    
-        if (!strcmp(split[0], "F")) 
-        {
-            tex->f[0] = r;
-            tex->f[1] = g;
-            tex->f[2] = b;
-        }
-        else 
-        {
-            tex->c[0] = r;
-            tex->c[1] = g;
-            tex->c[2] = b;
-        }
-    }
+    return (c == '0' || c == '1' || 
+            c == 'N' || c == 'S' || 
+            c == 'W' || c == 'E' ||
+            c == ' ' || c == '\t' || c == '\n');
 }
+
+/**
+ * Simple function to check if a line contains only valid map symbols
+ * Returns 1 if valid, 0 if invalid
+ */
+int has_only_valid_map_symbols(char *line)
+{
+    int i = 0;
+    
+    while (line[i])
+    {
+        if (!is_valid_map_symbol(line[i]))
+            return 0; // Invalid symbol found
+        i++;
+    }
+    
+    return 1; // All symbols are valid
+}
+
 
 
 
@@ -67,6 +54,12 @@ int check_line(t_tinfo *mapp, t_textura *tex, char *line)
 	{
 		ft_store_rgb(mapp,tex, trimmed_line);
 	}
+	else if (!has_only_valid_map_symbols(line))
+    {
+        ft_error("Error: Invalid map symbol found in line: %s\n", line);
+        // return 1; // Error
+    }
+	// else 
 	// goodo
 	// else
 	// 	return (ft_error("Invalid configuration", trimmed_line), 1);
@@ -82,9 +75,7 @@ int ft_parsing(t_tinfo *mapp,t_textura *tex, int ac, char *av[])
 	while (line)
 	{
 		check_line(mapp, tex, line);
-			// ft_error("KAYNA INAA", line);
-		// printf("%s", line);
-		
+		// free(line); 
 		line = get_next_line(mapp->fd);
 	}
 	

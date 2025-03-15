@@ -56,7 +56,7 @@ void	ft_check_map_borders(char **map, int height);
 void	ft_check_special_chars(char **map, int height);
 void	ft_check_32(char **map, int height);
 void ft_store_texture(t_tinfo *mapp,t_textura *tex, char *line);
-void ft_parse_textures(t_tinfo *mapp, t_textura *tex);
+void ft_store_rgb(t_tinfo *mapp,t_textura *tex,char *line);
 
 
 // 		UTILS:
