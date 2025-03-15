@@ -3,21 +3,32 @@
 //example:
 int ft_parsing(t_tinfo *mapp,t_textura *tex, int ac, char *av[])
 {
+	(void)tex;
 	validation_extantion(mapp, ac, av);
 	validation_exist(mapp);
-	mapp->dbl_ptr = ft_read_map(mapp);
-	ft_height(mapp);
-	check_f_and_last_line(mapp);
-	ft_check_map_borders(mapp->dbl_ptr, mapp->hieght);
-	ft_check_special_chars(mapp->dbl_ptr, mapp->hieght);
-	ft_check_32(mapp->dbl_ptr, mapp->hieght);
+
+	char *line = get_next_line(mapp->fd);
+	while (line)
+	{
+		if (!ft_check_directions(line))
+    		printf("0");
+			
+			
+		line = get_next_line(mapp->fd);
+	}
+	
+	// mapp->dbl_ptr = ft_read_map(mapp);
+	// ft_height(mapp);
+	// check_f_and_last_line(mapp);
+	// ft_check_map_borders(mapp->dbl_ptr, mapp->hieght);
+	// ft_check_special_chars(mapp->dbl_ptr, mapp->hieght);
+	// ft_check_32(mapp->dbl_ptr, mapp->hieght);
 
 
-	close (mapp->fd);
-	validation_exist(mapp);
+	// close (mapp->fd);
+	// validation_exist(mapp);
 	
 
-    ft_parse_textures(mapp, tex);
     // printf("Loading texture %d: '%s'\n", 0, tex->no);
     // printf("NO: %s\n", tex.no);
     // printf("SO: %s\n", tex.so);
@@ -38,6 +49,6 @@ int ft_parsing(t_tinfo *mapp,t_textura *tex, int ac, char *av[])
 	// 	printf("%s", mapp->dbl_ptr[i]);
 	// 	i++;
 	// }
-	close (mapp->fd);
+	// close (mapp->fd);
 	return 1;
 }

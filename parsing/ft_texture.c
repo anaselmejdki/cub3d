@@ -9,14 +9,8 @@ void ft_store_texture(t_textura *tex, char *line)
     char **split = ft_split(line, ' ');
     if (!split || !split[0] || !split[1])
         ft_error("🚨 INVALID TEXTURE LINE!", line);
-    if (!strcmp(split[0], "NO")) 
-        tex->no = ft_strdup(split[1]);
-    else if (!strcmp(split[0], "SO")) 
-        tex->so = ft_strdup(split[1]);
-    else if (!strcmp(split[0], "WE")) 
-        tex->we = ft_strdup(split[1]);
-    else if (!strcmp(split[0], "EA")) 
-        tex->ea = ft_strdup(split[1]);
+    ft_check_directions(tex, split);
+   
     if (!strcmp(split[0], "F") || !strcmp(split[0], "C"))
     {
         while (*split[1] == 32 || *split[1] == '\t')
@@ -33,7 +27,7 @@ void ft_store_texture(t_textura *tex, char *line)
         int b = ft_atoi(rgb[2]);
 
         if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-            ft_error("🚨 COLOR VALUE OUT OF RANGE (0-255)!", line);
+            ft_error("E🚨 COLOR VALUE OUT OF RANGE (0-255)!", line);
     
         if (!strcmp(split[0], "F")) 
         {
@@ -47,8 +41,10 @@ void ft_store_texture(t_textura *tex, char *line)
             tex->c[1] = g;
             tex->c[2] = b;
         }
+        
         // free_map(rgb);
     }
+
     // free_map(split);
 }
 void ft_check_xpm(t_textura *tex, t_tinfo *info)
