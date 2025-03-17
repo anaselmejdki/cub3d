@@ -27,7 +27,7 @@ void ft_store_texture(t_tinfo *mapp, t_textura *tex, char *line)
     
     // Free the split array (depending on your ft_split implementation)
     // This assumes you have a function to free the split result
-    // free_split(split);
+    // free(split); // hadi friyiha
 }
 
 
