@@ -29,58 +29,78 @@ void ft_store_texture(t_tinfo *mapp, t_textura *tex, char *line)
     // This assumes you have a function to free the split result
     // free_split(split);
 }
+
+
+int ft_parse_rgb_value(char **line, char *original_line)
+{
+    while (**line == ' ' || **line == '\t')
+        (*line)++;
+
+    if (!ft_isdigit(**line))
+        ft_error("🚨 MISSING RGB VALUE", original_line);
+
+    int rgb_value = 0;
+    
+    while (ft_isdigit(**line)) {
+        rgb_value = rgb_value * 10 + (**line - '0');
+        (*line)++;
+    }
+
+    if (rgb_value < 0 || rgb_value > 255)
+        ft_error("🚨 COLOR VALUE OUT OF RANGE (0-255)!", original_line);
+
+    while (**line == ' ' || **line == '\t')
+        (*line)++;
+
+    return rgb_value;
+}
+
 void ft_store_rgb(t_tinfo *mapp, t_textura *tex, char *line)
 {
     (void)mapp;
-    while (*line == ' ' || *line == '\t') // ✅ Skip leading spaces/tabs
+    char *original_line = line; 
+    
+    while (*line == ' ' || *line == '\t')
         line++;
 
-    char **split = ft_split(line, ' '); // ✅ Split identifier (F/C)
-    if (!split || !split[0] || (strcmp(split[0], "F") && strcmp(split[0], "C")))
-        ft_error("🚨 INVALID COLOR IDENTIFIER! Must be 'F' or 'C'", line);
-
-    // ✅ Remove spaces around commas before splitting
-    char clean_rgb[100] = {0}, *ptr = split[1];
-    int k = 0, last_was_comma = 0;
+    if (!*line || (*line != 'F' && *line != 'C'))
+        ft_error("🚨 INVALID COLOR IDENTIFIER! Must be 'F' or 'C'", original_line);
     
-    while (*ptr)
-    {
-        if (*ptr == ',' || (*ptr >= '0' && *ptr <= '9'))
-        {
-            clean_rgb[k++] = *ptr;
-            last_was_comma = (*ptr == ',');
+    char identifier = *line++;
+    
+    while (*line == ' ' || *line == '\t' )
+        line++;
+
+    int rgb[3] = {0, 0, 0};
+    
+    for (int i = 0; i < 3; i++) {
+        // Parse each color value
+        rgb[i] = ft_parse_rgb_value(&line, original_line);
+
+        if (i < 2) {
+            if (*line != ',')
+                ft_error("🚨 EXPECTED COMMA BETWEEN RGB VALUES", original_line);
+            line++; // Skip the comma
         }
-        else if (*ptr != ' ' && *ptr != '\t')
-            ft_error("🚨 INVALID CHARACTER IN RGB!", line);
-        ptr++;
     }
     
-    if (last_was_comma) // Prevent trailing comma
-        ft_error("🚨 INVALID COLOR FORMAT! No trailing comma", line);
+    while (*line == ' ' || *line == '\t' || *line == '\n')
+        line++;
 
-    char **rgb = ft_split(clean_rgb, ','); // ✅ Now split clean values
-    if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3]) 
-        ft_error("🚨 INVALID COLOR FORMAT! Expected R,G,B (0-255)", line);
-
-    for (int i = 0; i < 3; i++) 
-    {
-        // ✅ Ensure each value is a valid number
-        for (int j = 0; rgb[i][j]; j++)
-            if (rgb[i][j] < '0' || rgb[i][j] > '9') 
-                ft_error("🚨 RGB values must be numbers only", line);
-
-        int val = ft_atoi(rgb[i]);
-        if (val < 0 || val > 255)
-            ft_error("🚨 RGB value out of range (0-255)", line);
+    if (*line != '\0')
+        ft_error("🚨 UNEXPECTED CHARACTERS AFTER RGB VALUES", original_line);
+    
+    if (identifier == 'F') {
+        tex->f[0] = rgb[0];
+        tex->f[1] = rgb[1];
+        tex->f[2] = rgb[2];
+        printf("Floor color set to: R:%d G:%d B:%d\n", rgb[0], rgb[1], rgb[2]);
+    } else {
+        tex->c[0] = rgb[0];
+        tex->c[1] = rgb[1];
+        tex->c[2] = rgb[2];
+        printf("Ceiling color set to: R:%d G:%d B:%d\n", rgb[0], rgb[1], rgb[2]);
     }
-
-    int r = ft_atoi(rgb[0]), g = ft_atoi(rgb[1]), b = ft_atoi(rgb[2]);
-    if (!strcmp(split[0], "F")) 
-        tex->f[0] = r, tex->f[1] = g, tex->f[2] = b;
-    else 
-        tex->c[0] = r, tex->c[1] = g, tex->c[2] = b;
-
-    printf("%s set to: R:%d G:%d B:%d\n", split[0], r, g, b);
 }
 
 
