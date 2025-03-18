@@ -4,8 +4,10 @@ void real_distance(t_ray *ray, t_data *data)
 {
     if (ray->horizontal_distance != -1)
         ray->horizontal_distance = cos(radian(ray->rayangle - data->player.angle)) * ray->horizontal_distance;
+    printf("ray horiz is %f\n", ray->horizontal_distance);
     if (ray->vertical_distance != -1)
         ray->vertical_distance = cos(radian(ray->rayangle - data->player.angle)) * ray->vertical_distance;
+    printf("ray vertical is %f\n", ray->vertical_distance);
 }
 
 void small_distance(t_ray *ray)
@@ -99,18 +101,24 @@ float normalize_angle(float angle)
     return angle;
 }
 
+
 void raycasting(t_data *data)
 {
     t_ray ray;
     int column;
 
     column = 0;
-    ray.rayangle = normalize_angle(data->player.angle - (data->player.fov / 2));
+    memset(&ray, 0, sizeof(t_ray));
+    ray.rayangle = normalize_angle(data->player.angle - (data->player.fov / 2)); //45 - 60/2 = 15
     while (column <= WIDTH)
     {
         horizontal(data, &ray, ray.rayangle);
         vertical(data, &ray, ray.rayangle);
+        printf("we are here we find :\n");
+        printf("ray hor : %f and ray ver is %f\n", ray.horizontal_distance, ray.vertical_distance);
+        // exit(1);
         real_distance(&ray, data);
+        exit(1);
         small_distance(&ray);
         draw_column(data, &ray, column);
         column++;

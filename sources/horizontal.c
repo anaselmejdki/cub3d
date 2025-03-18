@@ -47,7 +47,7 @@ static int check_next_position(t_data *data, t_ray *ray, int *x, int *y)
 {
     float check_y;
 
-    if (ray->rayangle == 0 || ray->rayangle == 180 || ray->horizontal_y > data->height || ray->horizontal_y < 0 || ray->horizontal_x > data->width || ray->horizontal_x < 0)
+    if (ray->rayangle == 0 || ray->rayangle == 180 || ray->horizontal_y > data->map_height || ray->horizontal_y < 0 || ray->horizontal_x > data->map_width || ray->horizontal_x < 0)
         return (1);
     check_y = ray->horizontal_y;
     if (ray->horizontal_y < data->player.pos_y)
@@ -72,9 +72,6 @@ void horizontal(t_data *data, t_ray *ray, float rayangle)
     ray->horizontal_y = data->player.pos_y;
     ray->horizontal_x = data->player.pos_x;
     ray->horizontal_distance = -1.0;
-    // printf("ray-hor x is %f data ply po x is %f\n", ray->horizontal_x, data->player.pos_x);
-    // printf("ray-hor y is %f data ply po y is %f\n", ray->horizontal_y, data->player.pos_y);
-    // exit (0);
     while (1)
     {
         find_horizontal_point(data, rayangle, &ray->horizontal_x, &ray->horizontal_y);
