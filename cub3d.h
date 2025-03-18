@@ -12,15 +12,15 @@
 # define SPEED_DIVISOR 25
 # define FOV 60
 
-# define RIGHT_FLAG 0
-# define LEFT_FLAG 1
-# define W_FLAG 2
+# define RIGHT_FLAG 0 //XK_RIGHT
+# define LEFT_FLAG 1 //XK_Left
+# define W_FLAG 2 //
 # define S_FLAG 3
 # define D_FLAG 4
-# define A_FLAG 5
-# define CLOSE_FLAG 6
+# define A_FLAG 5 //XK_a
+# define CLOSE_FLAG 6 //XK_Escape
 # define ROTATE_FLAG 7
-# define MOVE_FLAG 8
+# define MOVE_FLAG 8 
 # define KEYS_NB 9
 # define ANGLE 1.5
 
@@ -134,4 +134,5 @@ void merge(t_tinfo *info, t_textura *tex);
 void free_texture(void *mlx, t_texture *texture);
 void    free_map(char **map);
 void	move_player(t_data *data);
+int render(t_data *data);
 #endif

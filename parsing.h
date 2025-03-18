@@ -75,11 +75,6 @@ void    free_map(char **map);
 /// LJADID:
 
 char *skip_spaces(char *line);
-// MAP:
-void ft_get_player_position(char **map, int height, int *player_x, int *player_y, char *player_dir);
-int has_only_valid_map_symbols(char *line);
-int ft_check_special_chars(char **map, int height);
-int is_valid_map_symbol(char c);
 #endif
 
 

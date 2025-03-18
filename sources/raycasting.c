@@ -4,8 +4,10 @@ void real_distance(t_ray *ray, t_data *data)
 {
     if (ray->horizontal_distance != -1)
         ray->horizontal_distance = cos(radian(ray->rayangle - data->player.angle)) * ray->horizontal_distance;
+    printf("ray horiz is %f\n", ray->horizontal_distance);
     if (ray->vertical_distance != -1)
         ray->vertical_distance = cos(radian(ray->rayangle - data->player.angle)) * ray->vertical_distance;
+    printf("ray vertical is %f\n", ray->vertical_distance);
 }
 
 void small_distance(t_ray *ray)
@@ -48,7 +50,11 @@ void height_and_texture(t_data *data, t_ray *ray)
         else
             ray->texture_idx = E_INDEX;
     }
+    if (ray->distance <= 0.0001)
+        ray->distance = 0.0001;
     ray->height = ((float)TILE_SIZE / ray->distance) * data->player.distance_to_project_plan;
+    if (ray->height > HEIGHT * 10)
+        ray->height = HEIGHT * 10;
 }
 
 void draw_column(t_data *data, t_ray *ray, int column)
@@ -59,7 +65,13 @@ void draw_column(t_data *data, t_ray *ray, int column)
     int j;
 
     height_and_texture(data, ray);
+    if (ray->height <= 0)
+        ray->height = 1; 
+    else if (ray->height > HEIGHT * 10)
+        ray->height = HEIGHT * 2;
     start = (HEIGHT - ray->height) / 2;
+    if (start < 0)
+        start = 0;
     end = start + ray->height;
     if (end > HEIGHT)
         end = HEIGHT;
@@ -79,25 +91,37 @@ void draw_column(t_data *data, t_ray *ray, int column)
         my_mlx_pixel_put(data, column, i++, data->floor_color[j++]);
 }
 
+// Normalize angle to be between 0 and 360
+float normalize_angle(float angle)
+{
+    while (angle < 0)
+        angle += 360;
+    while (angle >= 360)
+        angle -= 360;
+    return angle;
+}
+
+
 void raycasting(t_data *data)
 {
     t_ray ray;
     int column;
 
     column = 0;
-    ray.rayangle = data->player.angle - (data->player.fov / 2);
-    if (ray.rayangle < 0)
-        ray.rayangle += 360;
+    memset(&ray, 0, sizeof(t_ray));
+    ray.rayangle = normalize_angle(data->player.angle - (data->player.fov / 2)); //45 - 60/2 = 15
     while (column <= WIDTH)
     {
         horizontal(data, &ray, ray.rayangle);
         vertical(data, &ray, ray.rayangle);
+        printf("we are here we find :\n");
+        printf("ray hor : %f and ray ver is %f\n", ray.horizontal_distance, ray.vertical_distance);
+        // exit(1);
         real_distance(&ray, data);
+        exit(1);
         small_distance(&ray);
         draw_column(data, &ray, column);
-            column++;
-        ray.rayangle += data->player.angle_step;
-        if (ray.rayangle >= 360)
-            ray.rayangle -= 360;
+        column++;
+        ray.rayangle = normalize_angle(ray.rayangle + data->player.angle_step);
     }
 }

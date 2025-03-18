@@ -27,33 +27,33 @@ void check_f_and_last_line(t_tinfo *mapp)
 	}
 }
 
-// void ft_check_special_chars(char **map, int height)
-// {
-//     int i = 0;
-// 	int j;
-//     int player_count = 0;
-//     while (i < height)
-//     {
-//         j = 0;
-//         while (map[i][j] && map[i][j] != '\n')
-//         {
-//             if (map[i][j] != '1' && map[i][j] != '0' &&
-//                 map[i][j] != 'N' && map[i][j] != 'S' &&
-//                 map[i][j] != 'E' && map[i][j] != 'W' &&
-//                 map[i][j] != ' ') 
-//                 ft_error(" INVALID CHARACTER FOUND IN MAP!", map[i]);
-// 			if (map[i][j] == 'N' || map[i][j] == 'S' ||
-// 				map[i][j] == 'E' || map[i][j] == 'W')
-// 				player_count++;
-//             j++;
-//         }
-//         i++;
-//     }
-// 	if (player_count == 0)
-// 		ft_error("YOU NEED A PLAYER", NULL);
-// 	if (player_count > 1)
-// 		ft_error(" MULTIPLE PLAYERS FOUNDED IN MAP!", NULL);
-// }
+void ft_check_special_chars(char **map, int height)
+{
+    int i = 0;
+	int j;
+    int player_count = 0;
+    while (i < height)
+    {
+        j = 0;
+        while (map[i][j] && map[i][j] != '\n')
+        {
+            if (map[i][j] != '1' && map[i][j] != '0' &&
+                map[i][j] != 'N' && map[i][j] != 'S' &&
+                map[i][j] != 'E' && map[i][j] != 'W' &&
+                map[i][j] != ' ') 
+                ft_error(" INVALID CHARACTER FOUND IN MAP!", map[i]);
+			if (map[i][j] == 'N' || map[i][j] == 'S' ||
+				map[i][j] == 'E' || map[i][j] == 'W')
+				player_count++;
+            j++;
+        }
+        i++;
+    }
+	if (player_count == 0)
+		ft_error("YOU NEED A PLAYER", NULL);
+	if (player_count > 1)
+		ft_error(" MULTIPLE PLAYERS FOUNDED IN MAP!", NULL);
+}
 
 void ft_check_32(char **map, int height)
 {

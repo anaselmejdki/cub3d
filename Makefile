@@ -10,15 +10,19 @@ HIGHLIGHTER = \033[0;43m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
-		./parsing/mapping.c ./parsing/checking.c  ./parsing/ft_texture.c main.c\
-		./parsing/map00_.c
+		./n9i/colors.c ./n9i/ft_error.c ./n9i/map_walls.c ./n9i/map.c ./n9i/maprce_map.c \
+		./n9i/parse.c ./n9i/textures.c ./n9i/ziyada.c main.c\
+		#./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
+		./parsing/mapping.c ./parsing/checking.c  ./parsing/ft_texture.c \
+		./sources/horizontal.c ./sources/init_data.c ./sources/input_handler.c ./sources/free.c ./sources/mouvement.c\
+		./sources/raycasting.c ./sources/render.c ./sources/rotate.c ./sources/texture.c ./sources/vertical.c 
 
 OBJ = $(SRC:.c=.o)
 
 # Flags:
 CC = cc
 CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address
+#LFLAGS = -L ./mlx -lmlx -lXext -lX11 -lm -lz
 INCLUDES = mlx/libmlx.a
 
 # Library:
@@ -30,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(CYAN)Making Cub3D..👾$(BLACK)"
-	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME) 
 
 $(LIBFT):
 	@make -s -C libft
