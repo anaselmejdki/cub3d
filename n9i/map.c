@@ -4,7 +4,7 @@
 bool	check_enclosure(t_parse *parse, char **map)
 {
 	int	i;
-
+	(void) parse;
 	i = -1;
 	if (!map)
 		return (false);
@@ -12,8 +12,8 @@ bool	check_enclosure(t_parse *parse, char **map)
 	{
 		if (!check_boundaries(map[i]))
 			return (false);
-		if (!check_empty_gaps(parse, map, i))
-			return (false);
+		// if (!check_empty_gaps(parse, map, i))
+		// 	return (false);
 	}
 	return (true);
 }

@@ -10,6 +10,7 @@ bool	check_empty_gaps(t_parse *parse, char **map, int i)
 	{
 		if (map[i][j] == '0')
 		{
+			// printf ("this is the output  %s\n",map[i] );
 			if (!map[i][j + 1] || !ft_strchr(parse->valid_set, map[i][j + 1]))
 				return (false);
 			if (i <= 0 || j >= ft_strlen(map[i - 1])

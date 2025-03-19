@@ -39,8 +39,8 @@ static int	handle_pre_map_content(t_parse *parse, char *line)
 	else if (parse->floor_color != -1 && parse->ceil_color != -1
 		&& ft_strchr("01NSWE \t\r", *line))
 		return (get_map_line(parse, line));
-	// else
-	// 	return (print_err(NULL, "Invalid configuration", 1), 1);
+	else
+		return (print_err(NULL, "Invalid configuration", 1), 1);
 	return (0);
 }
 
@@ -77,7 +77,7 @@ int	ft_parse(t_parse *parse, char *path)
 		if (handle_line(parse, line) == 1)
 			return (get_next_line(parse->fd, true), 1);
 		(void)(free(line), line = get_next_line(parse->fd, 0));
-		printf("%s", line);
+		// printf("%s", line);
 	}
 	if (validate_and_close(parse) == 1)
 		return (1);
