@@ -39,8 +39,8 @@ static int	handle_pre_map_content(t_parse *parse, char *line)
 	else if (parse->floor_color != -1 && parse->ceil_color != -1
 		&& ft_strchr("01NSWE \t\r", *line))
 		return (get_map_line(parse, line));
-	else
-		return (print_err(NULL, "Invalid configuration", 1), 1);
+	// else
+	// 	return (print_err(NULL, "Invalid configuration", 1), 1);
 	return (0);
 }
 
