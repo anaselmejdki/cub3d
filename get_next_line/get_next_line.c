@@ -91,13 +91,12 @@ char	*rest_stash(char *stash)
 	return (string);
 }
 
-char	*get_next_line(int fd, bool free_static)
+char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*stash;
 
-	if (free_static)
-		return (free(stash), NULL);
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	if (!stash)
