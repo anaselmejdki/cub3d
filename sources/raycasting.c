@@ -10,22 +10,12 @@ void real_distance(t_ray *ray, t_data *data)
 
 void small_distance(t_ray *ray)
 {
-    if (ray->horizontal_distance == -1)
+    if (ray->horizontal_distance == -1 || ray->vertical_distance <= ray->horizontal_distance)
     {
         ray->side_flag = 2;
         ray->distance = ray->vertical_distance;
     }
-    else if (ray->vertical_distance == -1)
-    {
-        ray->side_flag = 1;
-        ray->distance = ray->horizontal_distance;
-    }
-    else if (ray->vertical_distance <= ray->horizontal_distance)
-    {
-        ray->side_flag = 2;
-        ray->distance = ray->vertical_distance;
-    }
-    else if (ray->horizontal_distance < ray->vertical_distance)
+    else if (ray->vertical_distance == -1 || ray->horizontal_distance < ray->vertical_distance)
     {
         ray->side_flag = 1;
         ray->distance = ray->horizontal_distance;
@@ -55,38 +45,30 @@ void height_and_texture(t_data *data, t_ray *ray)
         ray->height = HEIGHT * 10;
 }
 
-void draw_column(t_data *data, t_ray *ray, int column)
+void	draw_column(t_data *data, t_ray *ray, int column)
 {
-    int start;
-    int end;
-    int i;
-    int j;
+	int	start;
+	int	end;
+	int	i;
 
-    height_and_texture(data, ray);
-    if (ray->height <= 0)
-        ray->height = 1; 
-    else if (ray->height > HEIGHT * 10)
-        ray->height = HEIGHT * 2;
-    start = (HEIGHT - ray->height) / 2;
-    if (start < 0)
-        start = 0;
-    end = start + ray->height;
-    if (end > HEIGHT)
-        end = HEIGHT;
-    i = -1;
-    while (++i < start)
-        my_mlx_pixel_put(data, column, i, data->ceilieng_color[i]);
-    i = -1;
-    if (start > 0)
-        i = start - 1;
-    while (++i < end)
-    {
-        get_texture_color(data, ray, i - start);
-        my_mlx_pixel_put(data, column, i, ray->curr_color);
-    }
-    j = 0;
-    while (i < HEIGHT)
-        my_mlx_pixel_put(data, column, i++, data->floor_color[j++]);
+	height_and_texture(data, ray);
+	start = (HEIGHT - ray->height) / 2;
+	end = start + ray->height;
+	if (end > HEIGHT)
+		end = HEIGHT;
+	i = -1;
+	while (++i < start)
+		my_mlx_pixel_put(data, column, i, data->cc);
+	i = -1;
+	if (start > 0)
+		i = start - 1;
+	while (++i < end)
+	{
+		get_texture_color(data, ray, i - start);
+		my_mlx_pixel_put(data, column, i, ray->curr_color);
+	}
+	while (i < HEIGHT)
+		my_mlx_pixel_put(data, column, i++, data->fc);
 }
 
 // Normalize angle to be between 0 and 360

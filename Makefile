@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 
 # Flags:
 CC = cc
-CFLAGS = -g3 -fsanitize=address -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address 
 LFLAGS = -L ./mlx -lmlx -lXext -lX11 -lm -lz
 INCLUDES = mlx/libmlx.a
 

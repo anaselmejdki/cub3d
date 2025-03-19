@@ -4,8 +4,8 @@
 #define CUB3D_H
 
 
-#define WIDTH 1280
-#define HEIGHT 620
+#define WIDTH 1080
+#define HEIGHT 720
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 # define TILE_SIZE 1000
@@ -103,6 +103,8 @@ typedef struct s_data
 	char		**map;
 	int			ceilieng_color[3];
 	int			floor_color[3];
+	int 		cc;
+	int			fc;
 	int 		keys[KEYS_NB];
 	t_player	player;
 	t_ray		ray;
@@ -135,4 +137,6 @@ void free_texture(void *mlx, t_texture *texture);
 void    free_map(char **map);
 void	move_player(t_data *data);
 int render(t_data *data);
+void	init_key_flags(t_data *data);
+
 #endif

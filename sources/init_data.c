@@ -23,14 +23,21 @@ void    player_first_cordinate(t_data *data)
     }
 }
 
+int	create_trgb(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
+}
+
 void init_data(t_data *data)
 {
     data->mlx = mlx_init();
     data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
     data->image.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
     data->image.addr = mlx_get_data_addr(data->image.img, &data->image.bpp, &data->image.size_line, &data->image.endian);
-    data->width = data->map_width * TILE_SIZE;
-    data->height = data->map_height * TILE_SIZE;
+    data->map_width = data->width * TILE_SIZE;
+    data->map_height = data->height * TILE_SIZE;
+    data->cc = create_trgb(data->ceilieng_color[0], data->ceilieng_color[1], data->ceilieng_color[2]);
+    data->fc = create_trgb(data->floor_color[0], data->floor_color[1], data->floor_color[2]);
     player_first_cordinate(data);
     data->player.fov = FOV;
     data->player.distance_to_project_plan = ((float)WIDTH / 2) / tan(radian(data->player.fov / 2));
@@ -61,7 +68,8 @@ void merge(t_tinfo *info, t_textura *tex)
     init_textures(&data, info);
     info->dbl_ptr = NULL;
 	first_view(&data);
+	init_key_flags(&data);
     input_handler(&data);
-	// mlx_loop_hook(data.mlx, render, &data);
+	mlx_loop_hook(data.mlx, render, &data);
     mlx_loop(data.mlx);
 }

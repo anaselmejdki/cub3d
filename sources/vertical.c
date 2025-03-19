@@ -42,7 +42,7 @@ static int check_next_position(t_data *data, t_ray *ray, int *x, int *y)
 {
     float check_x;
 
-    if (ray->rayangle == 90 || ray->rayangle == 270 || ray->vertical_x < 0 || ray->vertical_x > data->width || ray->vertical_y < 0 || ray->vertical_y > data->height)
+    if (ray->rayangle == 90 || ray->rayangle == 270 || ray->vertical_x < 0 || ray->vertical_x > data->map_width || ray->vertical_y < 0 || ray->vertical_y > data->map_height)
         return (1);
     check_x = ray->vertical_x;
     if (ray->vertical_x < data->player.pos_x)
