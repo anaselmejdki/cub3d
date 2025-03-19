@@ -13,7 +13,7 @@ char	**duplicate_map(char **map, int *height)
 	while (map[++i])
 		new[i] = ft_strdup(map[i]);
 	i = *height - 1;
-	while (i >= 0 && is_empty_line(new[i]))
+	while (i >= 0 && ft_empty_line(new[i]))
 	{
 		free(new[i]);
 		free(map[i]);
