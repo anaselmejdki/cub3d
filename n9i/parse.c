@@ -1,19 +1,5 @@
 #include "../include/main.h"
 
-static bool	is_dir(char *arg)
-{
-	int		fd;
-	bool	ret;
-
-	ret = false;
-	fd = open(arg, O_DIRECTORY);
-	if (fd >= 0)
-	{
-		close(fd);
-		ret = true;
-	}
-	return (ret);
-}
 
 bool	is_empty_line(char *line)
 {
@@ -62,21 +48,17 @@ int	handle_line(t_parse *parse, char *line)
 	return (0);
 }
 
-int	ft_parse(t_parse *parse, char *path)
+int	ft_parse(t_parse *parse)
 {
 	char	*line;
 
-	if (path && ft_strncmp(path + ft_strlen(path) - 4, ".cub", 4))
-		return (print_err(NULL, "Invalid map file", 1), 1);
-	parse->fd = open(path, O_RDONLY);
-	if (parse->fd < 0 || is_dir(path))
-		return (print_err(path, "map isn't a regular file", 1));
-	line = get_next_line(parse->fd);
+	
+	line = get_next_line(parse->fd, 0);
 	while (line)
 	{
 		if (handle_line(parse, line) == 1)
-			return (get_next_line(parse->fd), 1);
-		(void)(free(line), line = get_next_line(parse->fd));
+			return (get_next_line(parse->fd, true), 1);
+		(void)(free(line), line = get_next_line(parse->fd, 0));
 		// printf("%s", line);
 	}
 	if (validate_and_close(parse) == 1)

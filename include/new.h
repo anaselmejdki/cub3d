@@ -32,7 +32,7 @@ typedef struct s_parse
 	int		consecutive_blanks;
 }			t_parse;
 
-int			ft_parse(t_parse *parse, char *path);
+int			ft_parse(t_parse *parse);
 char		**duplicate_map(char **map, int *height);
 void		free_2d_array(char **str);
 bool		validate_map(t_parse *parse);

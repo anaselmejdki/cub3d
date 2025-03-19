@@ -23,19 +23,14 @@ int validation_extantion(t_parse *mapp, int ac, char **av)
 
 int main(int ac, char **av)
 {
-    t_parse parse;  // Declare it as a struct, not a pointer
-
-    // Initialize values (like in the other person's `main`)
+    t_parse parse;
     ft_memset(&parse, 0, sizeof(t_parse));
     parse.floor_color = -1;
     parse.ceil_color = -1;
     parse.valid_set = "01NEWS";
 
-    // Validate the file extension and store the filename
     validation_extantion(&parse, ac, av);
-
-    // Parse the file
-    if (ft_parse(&parse, av[1]))
+    if (ft_parse(&parse))
         return (free_parser(&parse), EXIT_FAILURE);
 
     return (0);

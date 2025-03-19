@@ -3,7 +3,9 @@
         "cub3d.h": "c",
         "math.h": "c",
         "parsing.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "numbers": "c",
+        "format": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
