@@ -25,7 +25,7 @@
 # endif
 
 size_t	ft_strlen(const char *s);
-char	*get_next_line(int fd, bool free_static);
+char	*get_next_line(int fd);
 char	*ft_strjoinn(char *stash, char *buffer);
 char	*ft_strchrr(const char *s, char c);
 

@@ -71,12 +71,12 @@ int	ft_parse(t_parse *parse, char *path)
 	parse->fd = open(path, O_RDONLY);
 	if (parse->fd < 0 || is_dir(path))
 		return (print_err(path, "map isn't a regular file", 1));
-	line = get_next_line(parse->fd, 0);
+	line = get_next_line(parse->fd);
 	while (line)
 	{
 		if (handle_line(parse, line) == 1)
-			return (get_next_line(parse->fd, true), 1);
-		(void)(free(line), line = get_next_line(parse->fd, 0));
+			return (get_next_line(parse->fd), 1);
+		(void)(free(line), line = get_next_line(parse->fd));
 		// printf("%s", line);
 	}
 	if (validate_and_close(parse) == 1)
