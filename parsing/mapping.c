@@ -5,12 +5,12 @@ char	**ft_read_map(t_tinfo *mapp)
 	char	**temp;
 	char	*line;
 	int		i;
-	int  	map_start = 0;
-
-	mapp->hieght = ft_count_height_map(mapp);
-	mapp->fd = open(mapp->file_name, O_RDONLY);
+	int  	map_start;
 
 	i = 0;
+	map_start = 0;
+	mapp->hieght = ft_count_height_map(mapp);
+	mapp->fd = open(mapp->file_name, O_RDONLY);
 	temp = malloc((mapp->hieght + 1) * sizeof(char *));
 	if (!temp)
 		return (NULL);

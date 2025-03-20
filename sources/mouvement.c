@@ -15,8 +15,8 @@ void	w_moves(t_data *data)
 			delta_x = 0;
 		if (delta_y < 0.00001 && delta_y > -0.00001)
 			delta_y = 0;
-		// if (check_barriers(data, delta_x, delta_y))
-		// 	return ;
+		if (check_barriers(data, delta_x, delta_y))
+			return ;
 		data->player.pos_x += delta_x;
 		data->player.pos_y += delta_y;
 		data->keys[MOVE_FLAG] = 1;
@@ -38,8 +38,8 @@ void	s_moves(t_data *data)
 			delta_x = 0;
 		if (delta_y < 0.00001 && delta_y > -0.00001)
 			delta_y = 0;
-		// if (check_barriers(data, delta_x, delta_y))
-		// 	return ;
+		if (check_barriers(data, delta_x, delta_y))
+			return ;
 		data->player.pos_x += delta_x;
 		data->player.pos_y += delta_y;
 		data->keys[MOVE_FLAG] = 1;
@@ -61,8 +61,8 @@ void	d_moves(t_data *data)
 			delta_x = 0;
 		if (delta_y < 0.00001 && delta_y > -0.00001)
 			delta_y = 0;
-		// if (check_barriers(data, delta_x, delta_y))
-		// 	return ;
+		if (check_barriers(data, delta_x, delta_y))
+			return ;
 		data->player.pos_x += delta_x;
 		data->player.pos_y += delta_y;
 		data->keys[MOVE_FLAG] = 1;
@@ -84,8 +84,8 @@ void	a_moves(t_data *data)
 			delta_x = 0;
 		if (delta_y < 0.00001 && delta_y > -0.00001)
 			delta_y = 0;
-		// if (check_barriers(data, delta_x, delta_y))
-		// 	return ;
+		if (check_barriers(data, delta_x, delta_y))
+			return ;
 		data->player.pos_x += delta_x;
 		data->player.pos_y += delta_y;
 		data->keys[MOVE_FLAG] = true;

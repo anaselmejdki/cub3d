@@ -7,7 +7,7 @@ void free_texture(void *mlx, t_texture *texture)
     i = 0;
     while (i < 4)
     {
-        mlx_destroy_image(mlx, texture->img);
+        mlx_destroy_image(mlx, texture[i].img);
         i++;
     }
 }

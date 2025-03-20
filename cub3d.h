@@ -4,11 +4,11 @@
 #define CUB3D_H
 
 
-#define WIDTH 1280
-#define HEIGHT 620
+#define WIDTH 1080
+#define HEIGHT 720
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
-# define TILE_SIZE 1000
+# define TILE_SIZE 20
 # define SPEED_DIVISOR 25
 # define FOV 60
 
@@ -103,11 +103,14 @@ typedef struct s_data
 	char		**map;
 	int			ceilieng_color[3];
 	int			floor_color[3];
+	int 		cc;
+	int			fc;
 	int 		keys[KEYS_NB];
 	t_player	player;
-	t_ray		ray;
+	// t_ray		ray;
 	t_img		image;
 	t_texture	texinfo[4];
+	int debug;
 }	t_data;
 
 enum e_texture_index
@@ -135,4 +138,7 @@ void free_texture(void *mlx, t_texture *texture);
 void    free_map(char **map);
 void	move_player(t_data *data);
 int render(t_data *data);
+void	init_key_flags(t_data *data);
+int check_barriers(t_data *data, float x, float y);
+
 #endif

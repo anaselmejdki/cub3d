@@ -8,8 +8,6 @@ void ft_error(char *str, char *arg)
 	exit(1);
 }
 
-
-
 int	ft_check_new_line(char *str)
 {
 	char *ptr;
@@ -22,8 +20,13 @@ int	ft_check_new_line(char *str)
 
 int ft_count_height_map(t_tinfo *mapp)
 {
-	char* line = get_next_line(mapp->fd);
-	int i = 0;
+	char* line;
+	int i;
+	
+	i = 0;
+	line = get_next_line(mapp->fd);
+	if (!line)
+		ft_error("Invalid file", mapp->file_name);
 	while (line)
 	{
 		i++;
@@ -41,6 +44,7 @@ int ft_height(t_tinfo *mapp)
 	while (mapp->dbl_ptr[i])
 		i++;
 	mapp->hieght = i;
+	// printf("==> %d\n", mapp->hieght);exit(0);
 	return (mapp->hieght);
 }
 
