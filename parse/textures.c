@@ -1,57 +1,65 @@
 #include "../include/main.h"
 
-
-char	*get_texture_path(char *path)
+char *get_texture_path(char *path)
 {
-	int		len;
-	int		i;
-	char	*line;
+    int len = ft_strlen(path);
+    char *line;
 
-	len = 0;
-	while (path[len])
-		len++;
-	if (len < 5)
-		return (print_err(NULL, "Invalid texture path", 1), NULL);
-	line = malloc(sizeof(char) * (&path[len] - path + 1));
-	if (!line)
-		return (NULL);
-	i = -1;
-	while (path[++i])
-		line[i] = path[i];
-	line[i] = '\0';
-	return (line);
+    if (len < 5 || ft_strncmp(path + len - 4, ".xpm", 4)) // Ensure .xpm extension
+        return print_err(NULL, "Invalid texture path (must be .xpm)", 1), NULL;
+
+    line = ft_strdup(path);
+    if (!line)
+        return NULL;
+
+    return line;
 }
 
-int	fill_texures_paths(t_parse *parse, char *path, char c)
+int fill_textures_paths(t_parse *parse, char *path, char c)
 {
-	char	*texture_path;
+    char *texture_path = get_texture_path(path);
+    if (!texture_path)
+        return 1;
 
-	texture_path = get_texture_path(path);
-	if (!texture_path)
-		return (1);
-	if (c == 'N' && !(parse->no_text))
-		parse->no_text = texture_path;
-	else if (c == 'S' && !(parse->so_text))
-		parse->so_text = texture_path;
-	else if (c == 'W' && !(parse->we_text))
-		parse->we_text = texture_path;
-	else if (c == 'E' && !(parse->ea_text))
-		parse->ea_text = texture_path;
-	else
-		return (free(texture_path), 1);
-	return (0);
+    if (c == 'N' && !parse->no_text)
+        parse->no_text = texture_path;
+    else if (c == 'S' && !parse->so_text)
+        parse->so_text = texture_path;
+    else if (c == 'W' && !parse->we_text)
+        parse->we_text = texture_path;
+    else if (c == 'E' && !parse->ea_text)
+        parse->ea_text = texture_path;
+    else
+        return free(texture_path), 1;
+
+    return 0;
 }
 
-int	parse_textures(t_parse *parse, char *line)
+int parse_textures(t_parse *parse, char *line)
 {
-	char	*stock;
+    while (*line == ' ' || *line == '\t') 
+        line++;
 
-	stock = ft_strtrim(line + 3, " \t\r\n");
-	if (ft_strncmp(stock + ft_strlen(stock) - 4, ".xpm", 4))
-		return (print_err(stock, "NOT A [.xpm] file", 1), free(stock), 1);
-	if (fill_texures_paths(parse, stock, line[0]) == 1)
-		return (free(stock), 1);
-	free(stock);
-	parse->texture_count++;
-	return (0);
+    if (!(*line) || !(*(line + 1))) 
+        return (ft_error("Invalid texture line", NULL), 1);
+
+    char identifier = *line;
+    line++; 
+
+    while (*line == ' ' || *line == '\t') 
+        line++;
+
+    if (!(*line)) 
+        return (ft_error("Invalid texture line", NULL), 1);
+
+    char *path = ft_strtrim(line, " \t\r\n"); 
+    if (!path)
+        return 1;
+
+    if (fill_textures_paths(parse, path, identifier))
+        return free(path), 1;
+
+    free(path);
+    parse->texture_count++;
+    return 0;
 }
