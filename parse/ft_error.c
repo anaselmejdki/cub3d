@@ -1,13 +1,19 @@
 #include "../include/main.h"
 
-// int	check_constants(void)
-// {
-// 	return (FOV <= 0 || FOV > 130 || CUB_SIZE <= 0 || WALK_SPEED <= 0
-// 		|| ROT_SPEED <= 0 || WIN_WIDTH <= 10 || WIN_HEIGHT <= 10
-// 		|| WIN_WIDTH > 1920 || WIN_HEIGHT > 1080
-// 		|| MINI_MAP_SCALE_FACTOR >= 1.2);
-// }
 
+bool is_empty_line( char *line)
+{
+    if (!line)
+        return true;
+    
+    while (*line)
+    {
+        if (!isspace((unsigned char)*line))
+            return false;
+        line++;
+    }
+    return true;
+}
 int	print_err(char *info, char *str, int code)
 {
 	ft_putstr_fd("cub3D: Error", 2);
