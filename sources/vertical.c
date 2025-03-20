@@ -70,6 +70,7 @@ void vertical(t_data *data, t_ray *ray, float rayangle)
     while (1)
     {
         find_vertical_point(data, rayangle, &ray->vertical_x, &ray->vertical_y);
+        // printf("Vx: %f || Vy: %f || Vd: %f\n", ray->vertical_x, ray->vertical_y, ray->vertical_distance);
         if (check_next_position(data, ray, &x, &y))
             break;
         if (data->map[y][x] == '1')
@@ -78,4 +79,5 @@ void vertical(t_data *data, t_ray *ray, float rayangle)
             break;
         }
     }
+    // exit(0);
 }

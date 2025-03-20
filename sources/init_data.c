@@ -36,6 +36,7 @@ void init_data(t_data *data)
     data->image.addr = mlx_get_data_addr(data->image.img, &data->image.bpp, &data->image.size_line, &data->image.endian);
     data->map_width = data->width * TILE_SIZE;
     data->map_height = data->height * TILE_SIZE;
+
     data->cc = create_trgb(data->ceilieng_color[0], data->ceilieng_color[1], data->ceilieng_color[2]);
     data->fc = create_trgb(data->floor_color[0], data->floor_color[1], data->floor_color[2]);
     player_first_cordinate(data);
@@ -53,6 +54,8 @@ void merge(t_tinfo *info, t_textura *tex)
 {
     t_data data;
 
+    data.debug = 0;
+
     data.map = info->dbl_ptr;
     data.ceilieng_color[0] = tex->c[0];
     data.ceilieng_color[1] = tex->c[1];
@@ -62,7 +65,7 @@ void merge(t_tinfo *info, t_textura *tex)
     data.floor_color[2] = tex->f[2];
     data.height = info->hieght;
     data.width = info->width;
-    data.player.angle = 45;
+    data.player.angle = 0;
     data.player.angle_step = ((float)(FOV) / (float)WIDTH);
     init_data(&data);
     init_textures(&data, info);
