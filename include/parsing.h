@@ -35,7 +35,7 @@ typedef struct s_tinfo
 
 
 // 		ERROR:
-void    ft_error(char *str, char *arg);
+void    print_err(char *str, char *arg);
 
 
 

@@ -62,13 +62,13 @@ int	validate_and_close(t_parse *parse)
 	if (!validate_map(parse))
 	{
 		close(parse->fd);
-		return (ft_error(NULL, "Invalid map", 1));
+		return (print_err(NULL, "Invalid map", 1));
 	}
 	if (parse->texture_count != 4 || parse->floor_color == -1
 		|| parse->ceil_color == -1)
 	{
 		close(parse->fd);
-		return (ft_error(NULL, "Missing required configurations", 1));
+		return (print_err(NULL, "Missing required configurations", 1));
 	}
 	return (close(parse->fd), 0);
 }

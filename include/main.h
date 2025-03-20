@@ -14,5 +14,4 @@
 
 int	ft_isspace(int c);
 void ft_error(char *str, char *arg);
-bool	ft_empty_line(char *line);
 #endif

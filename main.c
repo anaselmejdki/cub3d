@@ -23,7 +23,8 @@ int validation_extantion(t_parse *mapp, int ac, char **av)
 
 int main(int ac, char **av)
 {
-    t_parse parse;
+    t_parse parse; 
+
     ft_memset(&parse, 0, sizeof(t_parse));
     parse.floor_color = -1;
     parse.ceil_color = -1;

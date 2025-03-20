@@ -1,6 +1,29 @@
 #include "../include/main.h"
 
+// int	check_constants(void)
+// {
+// 	return (FOV <= 0 || FOV > 130 || CUB_SIZE <= 0 || WALK_SPEED <= 0
+// 		|| ROT_SPEED <= 0 || WIN_WIDTH <= 10 || WIN_HEIGHT <= 10
+// 		|| WIN_WIDTH > 1920 || WIN_HEIGHT > 1080
+// 		|| MINI_MAP_SCALE_FACTOR >= 1.2);
+// }
 
+int	print_err(char *info, char *str, int code)
+{
+	ft_putstr_fd("cub3D: Error", 2);
+	if (info)
+	{
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(info, 2);
+	}
+	if (str)
+	{
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(str, 2);
+	}
+	ft_putstr_fd("\n", 2);
+	return (code);
+}
 
 void	free_2d_array(char **str)
 {

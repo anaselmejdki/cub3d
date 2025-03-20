@@ -1,7 +1,22 @@
 #include "../include/main.h"
 
 
-static int	check_line(t_parse *parse, char *line)
+
+bool	is_empty_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line && line[i])
+	{
+		if (line[i] != ' ' && !(line[i] >= 9 && line[i] <= 13))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+static int	handle_pre_map_content(t_parse *parse, char *line)
 {
 	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
 		|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
@@ -12,7 +27,7 @@ static int	check_line(t_parse *parse, char *line)
 		&& ft_strchr("01NSWE \t\r", *line))
 		return (get_map_line(parse, line));
 	else
-		return (ft_error(NULL, "Invalid T, C, or M", 1), 1);
+		return (print_err(NULL, "Invalid configuration", 1), 1);
 	return (0);
 }
 
@@ -20,10 +35,10 @@ int	handle_line(t_parse *parse, char *line)
 {
 	bool	line_empty;
 
-	line_empty = ft_empty_line(line);
-	if (line_empty == false)
+	line_empty = is_empty_line(line);
+	if (!parse->found_map && line_empty == false)
 	{
-		if (check_line(parse, line) == 1)
+		if (handle_pre_map_content(parse, line) == 1)
 			return (close(parse->fd), free(line), 1);
 	}
 	else if (parse->found_map)

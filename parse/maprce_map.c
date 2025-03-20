@@ -13,7 +13,7 @@ char	**duplicate_map(char **map, int *height)
 	while (map[++i])
 		new[i] = ft_strdup(map[i]);
 	i = *height - 1;
-	while (i >= 0 && ft_empty_line(new[i]))
+	while (i >= 0 && is_empty_line(new[i]))
 	{
 		free(new[i]);
 		free(map[i]);
@@ -54,7 +54,7 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	while (line[i])
 	{
 		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]))
-			return (ft_error(NULL, "Invalid character in map", 1));
+			return (print_err(NULL, "Invalid character in map", 1));
 		i++;
 	}
 	return (0);
@@ -68,7 +68,7 @@ int	get_map_line(t_parse *parse, char *line)
 		return (1);
 	parse->map = extend_2d_array(parse->map, line, &parse->map_height);
 	if (!parse->map)
-		return (ft_error(NULL, "Could not allocate memory", 1));
+		return (print_err(NULL, "Could not allocate memory", 1));
 	parse->found_map = true;
 	return (0);
 }
