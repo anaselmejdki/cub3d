@@ -31,7 +31,7 @@
 
 # define ERR_MALLOC "Could not allocate memory"
 
-#include "parsing.h"
+#include "main.h"
 #include <mlx.h>
 #include <math.h>
 #include <stdbool.h>
@@ -138,7 +138,10 @@ void free_texture(void *mlx, t_texture *texture);
 void    free_map(char **map);
 void	move_player(t_data *data);
 int render(t_data *data);
+<<<<<<< HEAD
 void	init_key_flags(t_data *data);
 int check_barriers(t_data *data, float x, float y);
 
+=======
+>>>>>>> sojod
 #endif
