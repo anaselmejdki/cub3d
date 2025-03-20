@@ -12,7 +12,7 @@ static int	check_line(t_parse *parse, char *line)
 		&& ft_strchr("01NSWE \t\r", *line))
 		return (get_map_line(parse, line));
 	else
-		return (print_err(NULL, "Invalid T, C, or M", 1), 1);
+		return (ft_error(NULL, "Invalid T, C, or M", 1), 1);
 	return (0);
 }
 
@@ -28,7 +28,7 @@ int	handle_line(t_parse *parse, char *line)
 	}
 	else if (parse->found_map)
 	{
-		if (get_map_l ine(parse, line) == 1)
+		if (get_map_line(parse, line) == 1)
 			return (close(parse->fd), free(line), 1);
 	}
 	return (0);

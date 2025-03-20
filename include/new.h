@@ -38,7 +38,6 @@ void		free_2d_array(char **str);
 bool		validate_map(t_parse *parse);
 bool		check_player(t_parse *parse);
 void		free_parser(t_parse *parse);
-int			print_err(char *info, char *str, int code);
 int			get_map_line(t_parse *parse, char *line);
 bool		ft_empty_line(char *line);
 int			parse_textures(t_parse *parse, char *line);

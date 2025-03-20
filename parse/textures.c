@@ -11,7 +11,7 @@ char	*get_texture_path(char *path)
 	while (path[len])
 		len++;
 	if (len < 5)
-		return (print_err(NULL, "Invalid texture path", 1), NULL);
+		return (ft_error(NULL, "Invalid texture path", 1), NULL);
 	line = malloc(sizeof(char) * (&path[len] - path + 1));
 	if (!line)
 		return (NULL);
@@ -48,7 +48,7 @@ int	parse_textures(t_parse *parse, char *line)
 
 	stock = ft_strtrim(line + 3, " \t\r\n");
 	if (ft_strncmp(stock + ft_strlen(stock) - 4, ".xpm", 4))
-		return (print_err(stock, "NOT A [.xpm] file", 1), free(stock), 1);
+		return (ft_error(stock, "NOT A [.xpm] file", 1), free(stock), 1);
 	if (fill_texures_paths(parse, stock, line[0]) == 1)
 		return (free(stock), 1);
 	free(stock);

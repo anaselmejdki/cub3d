@@ -38,7 +38,7 @@ int	set_rgb_colors(char *line)
 
 	rgb_to_convert = ft_split(line, ',');
 	if (!rgb_to_convert)
-		return (print_err(NULL, "Could not allocate Memory", 0), -1);
+		return (ft_error(NULL, "Could not allocate Memory", 0), -1);
 	count = 0;
 	while (rgb_to_convert[count])
 	{
@@ -63,16 +63,16 @@ int	fill_color_values(t_parse *parse, char *line, char c)
 	{
 		parse->floor_color = set_rgb_colors(line);
 		if (parse->floor_color == -1)
-			return (print_err(NULL, "Invalid floor color", 1));
+			return (ft_error(NULL, "Invalid floor color", 1));
 	}
 	else if (parse->ceil_color == -1 && c == 'C')
 	{
 		parse->ceil_color = set_rgb_colors(line);
 		if (parse->ceil_color == -1)
-			return (print_err(NULL, "Invalid ceiling color", 1));
+			return (ft_error(NULL, "Invalid ceiling color", 1));
 	}
 	else
-		return (print_err(NULL, "Invalid Color", 1));
+		return (ft_error(NULL, "Invalid Color", 1));
 	return (0);
 }
 
@@ -91,7 +91,7 @@ int	parse_colors(t_parse *parse, char *line)
 			comma_count++;
 	}
 	if (comma_count != 2)
-		return (free(stock), print_err(NULL, "Invalid Color", 1));
+		return (free(stock), ft_error(NULL, "Invalid Color", 1));
 	if (fill_color_values(parse, stock, *line) == 1)
 		return (free(stock), 1);
 	free(stock);
