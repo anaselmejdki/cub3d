@@ -10,8 +10,8 @@ HIGHLIGHTER = \033[0;43m
 # Files:
 
 SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		./parse/colors.c ./parse/ft_error.c ./parse/map_walls.c ./parse/map.c ./parse/maprce_map.c \
-		./parse/parse.c ./parse/textures.c ./parse/ziyada.c main.c\
+		./parse/f_color.c ./parse/ft_error.c ./parse/map_walls.c ./parse/map.c ./parse/maprce_map.c \
+		./parse/parse.c ./parse/textures.c ./parse/ziyada.c ./parse/c_colors.c main.c\
 		#./parsing/parsing.c ./parsing/utils_2.c ./parsing/validation.c \
 		./parsing/mapping.c ./parsing/checking.c  ./parsing/ft_texture.c \
 		./sources/horizontal.c ./sources/init_data.c ./sources/input_handler.c ./sources/free.c ./sources/mouvement.c\

@@ -16,4 +16,6 @@
 int	ft_isspace(int c);
 void ft_error(char *str, char *arg);
 bool is_empty_line( char *line);
+int ft_floor(t_parse *parse, char *line);
+int ft_ceil(t_parse *parse, char *line);
 #endif

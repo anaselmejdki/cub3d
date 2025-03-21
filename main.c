@@ -33,6 +33,5 @@ int main(int ac, char **av)
     validation_extantion(&parse, ac, av);
     if (ft_parse(&parse))
         return (free_parser(&parse), EXIT_FAILURE);
-
     return (0);
 }
