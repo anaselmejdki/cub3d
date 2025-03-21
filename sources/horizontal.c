@@ -53,7 +53,7 @@ static int check_next_position(t_data *data, t_ray *ray, int *x, int *y)
     //     printf("RA: %f || hieght: %d || wid: %d\n", ray->rayangle, data->map_height, data->map_width);
     //     exit(0);
     // }
-    if (ray->rayangle == 0 || ray->rayangle == 180 || ray->horizontal_y > data->map_map_height || ray->horizontal_y < 0 || ray->horizontal_x > data->map_map_width || ray->horizontal_x < 0)
+    if (ray->rayangle == 0 || ray->rayangle == 180 || ray->horizontal_y > data->map_height|| ray->horizontal_y < 0 || ray->horizontal_x > data->map_width || ray->horizontal_x < 0)
         return (1);
     // printf("==> hna\n");exit(0);
     check_y = ray->horizontal_y;

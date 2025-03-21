@@ -31,7 +31,7 @@
 
 # define ERR_MALLOC "Could not allocate memory"
 
-#include "main.h"
+#include "include/main.h"
 #include <mlx.h>
 #include <math.h>
 #include <stdbool.h>
@@ -124,7 +124,7 @@ enum e_texture_index
 };
 
 
-void init_textures(t_data *data, t_prase *parse); //`sojod`
+void init_textures(t_data *data, t_parse *parse); //`sojod`
 int	quiter(t_data *data);
 void	input_handler(t_data *data);
 float	radian(float degree);
@@ -145,5 +145,5 @@ int check_barriers(t_data *data, float x, float y);
 // void merge(t_tinfo *info, t_textura *tex);
 // void init_textures(t_data *data, t_tinfo *info)
 
-=======
+
 #endif

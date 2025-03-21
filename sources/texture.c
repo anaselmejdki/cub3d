@@ -2,7 +2,7 @@
 
 void init_textures(t_data *data, t_parse *parse)
 {
-    int i 
+    int i;
     i = 0;
     data->texinfo[0].img = mlx_xpm_file_to_image(data->mlx, parse->no_text, &data->texinfo[0].width, &data->texinfo[0].hight);
     data->texinfo[0].iter = mlx_get_data_addr(data->texinfo[0].img, &data->texinfo[0].pixel_bits, &data->texinfo[0].line_length, &data->texinfo[0].endianess);
