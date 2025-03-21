@@ -34,6 +34,7 @@ bool	check_boundaries(char *line)
 		i++;
 	if (!line[i] || line[i] != '1')
 		return (false);
+	printf("line: %s\n", line);
 	i = ft_strlen(line) - 1;
 	while (i >= 0 && ft_isspace(line[i]))
 		i--;

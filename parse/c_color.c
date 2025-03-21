@@ -2,7 +2,7 @@
 #include "../include/main.h"
 static void from_new_line_to_ziroo(char *line)
 {
-	size_t len = strlen(line);
+	size_t len = ft_strlen(line);
 	if (len > 0 && line[len - 1] == '\n') {
 		line[len - 1] = '\0'; 
 	}

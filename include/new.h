@@ -36,7 +36,7 @@ typedef struct s_parse
 }			t_parse;
 
 int			ft_parse(t_parse *parse);
-char		**duplicate_map(char **map, int *height);
+char		**duplicate_map(t_parse *parse,char **map, int *height);
 void		free_2d_array(char **str);
 bool		validate_map(t_parse *parse);
 bool		check_player(t_parse *parse);

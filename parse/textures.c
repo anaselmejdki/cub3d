@@ -30,13 +30,18 @@ int fill_textures_paths(t_parse *parse, char *path, char c)
     else if (c == 'E' && !parse->ea_text)
         parse->ea_text = texture_path;
     else
-        return free(texture_path), 1;
+        return free(texture_path), 1;   
 
     return 0;
 }
 
 int parse_textures(t_parse *parse, char *line)
 {
+    // printf("=%c=",(*(line + 1)));
+    parse->texture_count++;
+    if (parse->texture_count > 4)
+        return print_err(NULL, "Too many textures", 1);
+    printf("Texture count: %d\n", parse->texture_count);
     while (*line == ' ' || *line == '\t') 
         line++;
 
@@ -60,6 +65,6 @@ int parse_textures(t_parse *parse, char *line)
         return free(path), 1;
 
     free(path);
-    parse->texture_count++;
+    
     return 0;
 }

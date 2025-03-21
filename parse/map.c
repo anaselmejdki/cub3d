@@ -12,8 +12,12 @@ bool	check_enclosure(t_parse *parse, char **map)
 	{
 		if (!check_boundaries(map[i]))
 			return (false);
+			// chiki hadiiiiiiii 
 		// if (!check_empty_gaps(parse, map, i))
+		// {
+		// 	printf("Error at line %s\n", map[i]);
 		// 	return (false);
+		// }
 	}
 	return (true);
 }
@@ -43,10 +47,10 @@ bool	validate_map(t_parse *parse)
 {
 	char	**copy;
 
-	if (parse->map_height < 3)
-		return (false);
-	copy = duplicate_map(parse->map, &parse->map_height);
+	copy = duplicate_map(parse,parse->map, &parse->map_height);
 	if (!copy)
+		return (false);
+	if (parse->map_height < 3)
 		return (false);
 	if (!check_enclosure(parse, copy))
 		return (free_2d_array(copy), false);
@@ -67,6 +71,9 @@ int	validate_and_close(t_parse *parse)
 	if (parse->texture_count != 4 || parse->floor_color == -1
 		|| parse->ceil_color == -1)
 	{
+	// 	printf("Texture count: %d\n", parse->texture_count);
+	// 	printf("Floor color: %d\n", parse->floor_color);
+	// 	printf("Ceil color: %d\n", parse->ceil_color);
 		close(parse->fd);
 		return (print_err(NULL, "Missing required configurations", 1));
 	}

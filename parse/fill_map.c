@@ -1,5 +1,14 @@
 #include "../include/main.h"
-char	**duplicate_map(char **map, int *height)
+
+static void from_new_line_to_ziroo(char *line)
+{
+	size_t len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n') {
+		line[len - 1] = '\0'; 
+	}
+}
+
+char	**duplicate_map(t_parse *parse,char **map, int *height)
 {
 	char	**new;
 	int		i;
@@ -22,10 +31,14 @@ char	**duplicate_map(char **map, int *height)
 		(*height)--;
 		i--;
 	}
+	parse->map_height = *height;
+	printf("size: %d\n", parse->map_height);
+
+
 	return (new);
 }
 
-char	**extend_2d_array(char **arr, char *new, int *size)
+char	**ft_read_map(char **arr, char *new, int *size)
 {
 	char	**new_arr;
 	int		i;
@@ -36,6 +49,7 @@ char	**extend_2d_array(char **arr, char *new, int *size)
 	i = 0;
 	while (i < *size)
 	{
+		// printf("arr[%d]: %s\n", i, arr[i]);
 		new_arr[i] = arr[i];
 		i++;
 	}
@@ -54,7 +68,7 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	while (line[i])
 	{
 		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]))
-			return (print_err(NULL, "Invalid character in map", 1));
+			return (ft_error( "Invalid character in map", &line[i]),1);
 		i++;
 	}
 	return (0);
@@ -62,13 +76,14 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 
 int	get_map_line(t_parse *parse, char *line)
 {
-	if (line[ft_strlen(line) - 1] == '\n')
-		line[ft_strlen(line) - 1] = '\0';
+	from_new_line_to_ziroo(line);
+	// if (line[ft_strlen(line) - 1] == '\n') // this is not needed
+	// 	line[ft_strlen(line) - 1] = '\0';
 	if (check_valid_map_chars(line, parse->valid_set) == 1)
 		return (1);
-	parse->map = extend_2d_array(parse->map, line, &parse->map_height);
+	parse->map = ft_read_map(parse->map, line, &parse->map_height);
 	if (!parse->map)
-		return (print_err(NULL, "Could not allocate memory", 1));
+		return (ft_error("Could not allocate memory", NULL),1);
 	parse->found_map = true;
 	return (0);
 }
