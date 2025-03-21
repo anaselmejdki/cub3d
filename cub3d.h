@@ -103,6 +103,8 @@ typedef struct s_data
 	char		**map;
 	int			ceilieng_color[3];
 	int			floor_color[3];
+	int 		ceil;	// Soojod
+	int 		floor; // Sojod
 	int 		cc;
 	int			fc;
 	int 		keys[KEYS_NB];

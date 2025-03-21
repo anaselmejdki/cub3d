@@ -1,12 +1,8 @@
-// #include "../include/main.h"
-
-
 #include "../include/main.h"
 
 
 static int handle_pre_map_content(t_parse *parse, char *line)
 {
-    // int i = 0;
     while (*line == ' ' || *line == '\t')
         line++;
     
@@ -34,7 +30,6 @@ static int handle_line(t_parse *parse, char *line)
     {
         return close(parse->fd), free(line), 1;
     }
-  
     return 0;
 }
 
@@ -48,6 +43,5 @@ int ft_parse(t_parse *parse)
             return get_next_line(parse->fd), 1;
         free(line);
     }
-      
     return validate_and_close(parse);
 }

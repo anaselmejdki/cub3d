@@ -18,4 +18,6 @@ void ft_error(char *str, char *arg);
 bool is_empty_line( char *line);
 int ft_floor(t_parse *parse, char *line);
 int ft_ceil(t_parse *parse, char *line);
+void  calculate_map_width(t_parse *parse, char **map);
+
 #endif

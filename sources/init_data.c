@@ -47,26 +47,29 @@ void	first_view(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->image.img, 0, 0);
 }
 
-void merge(t_tinfo *info, t_textura *tex)
+void merge(t_tinfo *info, t_textura *tex, t_parse *parse)
 {
     t_data data;
-
+    (void)parse;
     data.debug = 0;
 
     data.map = info->dbl_ptr;
-    data.ceilieng_color[0] = tex->c[0];
-    data.ceilieng_color[1] = tex->c[1];
-    data.ceilieng_color[2] = tex->c[2];
-    data.floor_color[0] = tex->f[0];
-    data.floor_color[1] = tex->f[1];
-    data.floor_color[2] = tex->f[2];
-    data.height = info->hieght;
-    data.width = info->width;
+    // data.ceilieng_color[0] = tex->c[0]; 
+    // data.ceilieng_color[1] = tex->c[1];     
+    // data.ceilieng_color[2] = tex->c[2]; 
+    // data.floor_color[0] = tex->f[0];
+    // data.floor_color[1] = tex->f[1];
+    // data.floor_color[2] = tex->f[2];
+    data.floor = parse->floor_color; 
+    data.ceil = parse->ceil_color; 
+    data.height = parse->map_height;
+    data.width = parse->map_width;
     data.player.angle = 0;
     data.player.angle_step = ((float)(FOV) / (float)WIDTH);
     init_data(&data);
     init_textures(&data, info);
-    info->dbl_ptr = NULL;
+    // info->dbl_ptr = NULL;
+    t_parse->map = NULL;
 	first_view(&data);
 	init_key_flags(&data);
     input_handler(&data);

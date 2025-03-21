@@ -31,7 +31,7 @@ int	print_err(char *info, char *str, int code)
 	return (code);
 }
 
-void	free_2d_array(char **str)
+void	free_mapping(char **str)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ void	free_2d_array(char **str)
 void	free_parser(t_parse *parse)
 {
 	if (parse->map != NULL)
-		free_2d_array(parse->map);
+		free_mapping(parse->map);
 	if (parse->no_text != NULL)
 		free(parse->no_text);
 	if (parse->so_text != NULL)

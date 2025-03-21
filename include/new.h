@@ -17,6 +17,7 @@ typedef struct s_parse
 	char	*valid_set;
 	char	**map;
 	int		map_height;
+	int 	map_width;
 	char	*no_text;
 	char	*so_text;
 	char	*we_text;
@@ -37,7 +38,7 @@ typedef struct s_parse
 
 int			ft_parse(t_parse *parse);
 char		**duplicate_map(t_parse *parse,char **map, int *height);
-void		free_2d_array(char **str);
+void		free_mapping(char **str);
 bool		validate_map(t_parse *parse);
 bool		check_player(t_parse *parse);
 void		free_parser(t_parse *parse);
@@ -45,11 +46,11 @@ int			print_err(char *info, char *str, int code);
 int			get_map_line(t_parse *parse, char *line);
 bool		is_empty_line(char *line);
 int			parse_textures(t_parse *parse, char *line);
-int			ft_store_rgb(t_parse *parse, char *line);
+// int			ft_store_rgb(t_parse *parse, char *line);
 bool		check_top_and_bottom(char **map, int rows);
-bool		check_boundaries(char *line);
+bool		ft_check_map_borders(t_parse *parse, char **map);
 bool		check_empty_gaps(t_parse *parse, char **map, int i);
-int			set_rgb_colors(char *line);
+// int			set_rgb_colors(char *line);
 int			validate_and_close(t_parse *parse);
 
 #endif

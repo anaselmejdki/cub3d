@@ -1,48 +1,73 @@
 #include "../include/main.h"
 
 
-bool	check_empty_gaps(t_parse *parse, char **map, int i)
-{
-	size_t	j;
+// bool	check_empty_gaps(t_parse *parse, char **map, int i)
+// {
+// 	size_t	j;
 
-	j = 0;
-	while (map[i][j])
+// 	j = 0;
+// 	while (map[i][j])
+// 	{
+// 		if (map[i][j] == '0')
+// 		{
+// 			// printf ("this is the output  %s\n",map[i] );
+// 			if (!map[i][j + 1] || !ft_strchr(parse->valid_set, map[i][j + 1]))
+// 				return (false);
+// 			if (i <= 0 || j >= ft_strlen(map[i - 1])
+// 				|| !ft_strchr(parse->valid_set, map[i - 1][j]))
+// 				return (false);
+// 			if (i >= parse->map_height || j >= ft_strlen(map[i + 1])
+// 				|| !ft_strchr(parse->valid_set, map[i + 1][j]))
+// 				return (false);
+// 		}
+// 		j++;
+// 	}
+// 	return (true);
+// }
+bool  ft_check_map_borders(t_parse *parse, char **map)
+{
+	int i;
+	int width;
+	int first_index;
+	int last_index;
+	
+	i = 0;
+	while (i < parse->map_height)
 	{
-		if (map[i][j] == '0')
-		{
-			// printf ("this is the output  %s\n",map[i] );
-			if (!map[i][j + 1] || !ft_strchr(parse->valid_set, map[i][j + 1]))
-				return (false);
-			if (i <= 0 || j >= ft_strlen(map[i - 1])
-				|| !ft_strchr(parse->valid_set, map[i - 1][j]))
-				return (false);
-			if (i >= parse->map_height || j >= ft_strlen(map[i + 1])
-				|| !ft_strchr(parse->valid_set, map[i + 1][j]))
-				return (false);
-		}
-		j++;
+		width = ft_strlen(map[i]); 
+		first_index = 0;
+		last_index = width - 1;
+
+			while (map[i][first_index] == ' ' || map[i][first_index] == '\t')
+			first_index++;
+
+		while (map[i][last_index] == ' ' || map[i][last_index] == '\n' || map[i][last_index] == '\t')
+			last_index--;
+
+		if (map[i][first_index] != '1' || map[i][last_index] != '1')
+			return (ft_error(" MAP BORDER : First or last non-space column must be 1!", map[i]),false);
+		i++;
 	}
 	return (true);
 }
-
-bool	check_boundaries(char *line)
+void  calculate_map_width(t_parse *parse, char **map)
 {
-	int	i;
+    int i;
+    int max_width;
+    int current_width;
 
-	i = 0;
-	while (line[i] && ft_isspace(line[i]))
-		i++;
-	if (!line[i] || line[i] != '1')
-		return (false);
-	printf("line: %s\n", line);
-	i = ft_strlen(line) - 1;
-	while (i >= 0 && ft_isspace(line[i]))
-		i--;
-	if (i < 0 || line[i] != '1')
-		return (false);
-	return (true);
+    i = 0;
+    max_width = 0;
+    while (map[i])
+    {
+        current_width = ft_strlen(map[i]);
+        if (current_width > max_width)
+            max_width = current_width;
+        i++;
+    }
+	parse->map_width = max_width  ;
+	printf("max_width: %d\n", parse->map_width);
 }
-
 bool	check_player_surronding(t_parse *parse, int i, int j)
 {
 	if (j <= 0 || ft_isspace(parse->map[i][j - 1]))
