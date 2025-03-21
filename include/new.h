@@ -34,7 +34,7 @@ typedef struct s_parse
 	bool	found_map;
 	int		texture_count;
 	int		consecutive_blanks;
-	// int 	angle; W = 0, N = 90, E = 180, S = 270
+	int 	angle; //W = 0, N = 90, E = 180, S = 270
 }			t_parse;
 
 int			ft_parse(t_parse *parse);
