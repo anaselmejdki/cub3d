@@ -28,14 +28,14 @@ int	create_trgb(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
-void init_data(t_data *data)
+void init_data(t_data *data) // // t_parse *parse)
 {
     data->mlx = mlx_init();
     data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
     data->image.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
     data->image.addr = mlx_get_data_addr(data->image.img, &data->image.bpp, &data->image.size_line, &data->image.endian);
-    data->width = data->map_width * TILE_SIZE;
-    data->height = data->map_height * TILE_SIZE;
+    data->width = data->map_width * TILE_SIZE; //parse->map_width;
+    data->height = data->map_height * TILE_SIZE; //parse->map_height;
     player_first_cordinate(data);
     data->player.fov = FOV;
     data->player.distance_to_project_plan = ((float)WIDTH / 2) / tan(radian(data->player.fov / 2));
@@ -47,13 +47,15 @@ void	first_view(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->image.img, 0, 0);
 }
 
-void merge(t_tinfo *info, t_textura *tex, t_parse *parse)
+void merge(t_parse *parse)
+// void merge(t_tinfo *info, t_textura *tex)
 {
     t_data data;
     (void)parse;
     data.debug = 0;
 
-    data.map = info->dbl_ptr;
+    // data.map = info->dbl_ptr;
+    data.map = parse->map;
     // data.ceilieng_color[0] = tex->c[0]; 
     // data.ceilieng_color[1] = tex->c[1];     
     // data.ceilieng_color[2] = tex->c[2]; 

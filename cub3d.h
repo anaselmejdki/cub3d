@@ -101,8 +101,8 @@ typedef struct s_data
 	int			map_height;
 	int			map_width;
 	char		**map;
-	int			ceilieng_color[3];
-	int			floor_color[3];
+	// int			ceilieng_color[3];
+	// int			floor_color[3];
 	int 		ceil;	// Soojod
 	int 		floor; // Sojod
 	int 		cc;
@@ -124,7 +124,7 @@ enum e_texture_index
 };
 
 
-void init_textures(t_data *data, t_tinfo *info);
+void init_textures(t_data *data, t_prase *parse); //`sojod`
 int	quiter(t_data *data);
 void	input_handler(t_data *data);
 float	radian(float degree);
@@ -135,15 +135,15 @@ float get_distance(t_data *data, float x, float y);
 void raycasting(t_data *data);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void get_texture_color(t_data *data, t_ray *ray, int current_y);
-void merge(t_tinfo *info, t_textura *tex);
 void free_texture(void *mlx, t_texture *texture);
 void    free_map(char **map);
 void	move_player(t_data *data);
 int render(t_data *data);
-<<<<<<< HEAD
 void	init_key_flags(t_data *data);
 int check_barriers(t_data *data, float x, float y);
+ void merge(t_parse *parse); // sojod
+// void merge(t_tinfo *info, t_textura *tex);
+// void init_textures(t_data *data, t_tinfo *info)
 
 =======
->>>>>>> sojod
 #endif
