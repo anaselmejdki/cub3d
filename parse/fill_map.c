@@ -1,14 +1,17 @@
 #include "../include/main.h"
 
-static void from_new_line_to_ziroo(char *line)
+static void	from_new_line_to_ziroo(char *line)
 {
-	size_t len = ft_strlen(line);
-	if (len > 0 && line[len - 1] == '\n') {
-		line[len - 1] = '\0'; 
+	size_t	len;
+
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+	{
+		line[len - 1] = '\0';
 	}
 }
 
-char	**duplicate_map(t_parse *parse,char **map, int *height)
+char	**duplicate_map(t_parse *parse, char **map, int *height)
 {
 	char	**new;
 	int		i;
@@ -65,7 +68,7 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	while (line[i])
 	{
 		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]))
-			return (ft_error( "Invalid character in map", &line[i]),1);
+			return (ft_error("Invalid character in map", &line[i]), 1);
 		i++;
 	}
 	return (0);
@@ -80,7 +83,7 @@ int	get_map_line(t_parse *parse, char *line)
 		return (1);
 	parse->map = ft_read_map(parse->map, line, &parse->map_height);
 	if (!parse->map)
-		return (ft_error("Could not allocate memory", NULL),1);
+		return (ft_error("Could not allocate memory", NULL), 1);
 	parse->found_map = true;
 	return (0);
 }
