@@ -1,4 +1,4 @@
-#include "include/main.h"
+#include "cub3d.h"
 int validation_extantion(t_parse *mapp, int ac, char **av)
 {
     char *ptr;
@@ -25,11 +25,11 @@ static bool	check_empty_gaps(t_parse *parse)
     int	i;
     int	j;
 
-    i = 0;
-    while (parse->map[i]) 
+    i = -1;
+    while (parse->map[++i]) 
     {
-        j = 0;
-        while (parse->map[i][j]) 
+        j = -1;
+        while (parse->map[i][++j]) 
         {
             if (parse->map[i][j] == '0') 
             {
@@ -41,13 +41,10 @@ static bool	check_empty_gaps(t_parse *parse)
                     parse->map[i - 1][j] == ' ' || parse->map[i + 1][j] == ' ' ||
                     parse->map[i][j - 1] == ' ' || parse->map[i][j + 1] == ' ')
                 {
-                    ft_error("Map error: '0' is not properly surrounded by '1's!", NULL);
-                    return (false);
+                    return (ft_error("Map error: '0' is not properly surrounded by '1's!", NULL), false);
                 }
             }
-            j++;
         }
-        i++;
     }
     return (true);
 }
@@ -65,8 +62,7 @@ int main(int ac, char **av)
         return (free_parser(&parse), EXIT_FAILURE);
     if (!check_empty_gaps(&parse))
         return (free_parser(&parse), EXIT_FAILURE);
-
-    // merge(&parse); // sojod
+    merge(&parse); // sojod
     
     return (0);
 }

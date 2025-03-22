@@ -66,7 +66,6 @@ void  calculate_map_width(t_parse *parse, char **map)
         i++;
     }
 	parse->map_width = max_width  ;
-	printf("max_width: %d\n", parse->map_width);
 }
 bool	check_player_surronding(t_parse *parse, int i, int j)
 {
@@ -83,15 +82,14 @@ bool	check_player_surronding(t_parse *parse, int i, int j)
 	parse->player_x = j;
 	parse->player_y = i;
 	parse->player_dir = parse->map[i][j];
-
 	if (parse->player_dir == 'W')
-		parse->angle = 0;
+		parse->player_angle = 0;
 	if (parse->player_dir == 'N')
-		parse->angle = 90;
+		parse->player_angle = 90;
 	if (parse->player_dir == 'E')
-		parse->angle = 180;
+		parse->player_angle = 180;
 	if (parse->player_dir == 'S')
-		parse->angle = 270;
+		parse->player_angle = 270;
 	return (false);
 }
 

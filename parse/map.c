@@ -76,9 +76,6 @@ int	validate_and_close(t_parse *parse)
 	if (parse->texture_count != 4 || parse->floor_color == -1
 		|| parse->ceil_color == -1)
 	{
-	// 	printf("Texture count: %d\n", parse->texture_count);
-	// 	printf("Floor color: %d\n", parse->floor_color);
-	// 	printf("Ceil color: %d\n", parse->ceil_color);
 		close(parse->fd);
 		return (print_err(NULL, "Missing required configurations", 1));
 	}

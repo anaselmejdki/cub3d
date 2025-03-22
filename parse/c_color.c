@@ -89,11 +89,6 @@ int ft_ceil(t_parse *parse, char *line)
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
 		return (ft_error("🚨 RGB values must be between 0 and 255", line), 1);
 	}	
-
-	parse->r = r;
-	parse->g = g;
-	parse->b = b;
-
 	parse->ceil_color = (r << 16) | (g << 8) | b; 
     return 0;
 }

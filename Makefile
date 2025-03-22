@@ -13,7 +13,8 @@ SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
 		./parse/f_color.c ./parse/ft_error.c ./parse/map_walls.c ./parse/map.c ./parse/fill_map.c \
 		./parse/parse.c ./parse/textures.c ./parse/ziyada.c ./parse/c_color.c main.c\
 		./sources/horizontal.c ./sources/init_data.c ./sources/input_handler.c ./sources/free.c ./sources/mouvement.c\
-		./sources/raycasting.c ./sources/render.c ./sources/rotate.c ./sources/texture.c ./sources/vertical.c 
+		./sources/raycasting.c ./sources/render.c ./sources/rotate.c ./sources/texture.c ./sources/vertical.c \
+		./sources/check_barriers.c 
 
 OBJ = $(SRC:.c=.o)
 
@@ -32,7 +33,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(CYAN)Making Cub3D..👾$(BLACK)"
-	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME) 
+	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS)  -o $(NAME) $(LFLAGS)
 
 $(LIBFT):
 	@make -s -C libft

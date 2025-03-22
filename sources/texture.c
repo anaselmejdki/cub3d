@@ -1,30 +1,30 @@
 #include "../cub3d.h"
 
+// void init_textures(t_data *data, t_parse *parse)
+// {
+//     data->texinfo[0].img = mlx_xpm_file_to_image(data->mlx, parse->no_text, &data->texinfo[0].width, &data->texinfo[0].hight);
+//     data->texinfo[0].iter = mlx_get_data_addr(data->texinfo[0].img, &data->texinfo[0].pixel_bits, &data->texinfo[0].line_length, &data->texinfo[0].endianess);
+//     data->texinfo[1].img = mlx_xpm_file_to_image(data->mlx, parse->we_text, &data->texinfo[1].width, &data->texinfo[1].hight);
+//     data->texinfo[1].iter = mlx_get_data_addr(data->texinfo[1].img, &data->texinfo[1].pixel_bits, &data->texinfo[1].line_length, &data->texinfo[1].endianess);
+//     data->texinfo[2].img = mlx_xpm_file_to_image(data->mlx, parse->so_text, &data->texinfo[2].width, &data->texinfo[2].hight);
+//     data->texinfo[2].iter = mlx_get_data_addr(data->texinfo[2].img, &data->texinfo[2].pixel_bits, &data->texinfo[2].line_length, &data->texinfo[2].endianess);
+//     data->texinfo[3].img = mlx_xpm_file_to_image(data->mlx, parse->ea_text, &data->texinfo[3].width, &data->texinfo[3].hight);
+//     data->texinfo[3].iter = mlx_get_data_addr(data->texinfo[3].img, &data->texinfo[3].pixel_bits, &data->texinfo[3].line_length, &data->texinfo[3].endianess);
+// }
+
 void init_textures(t_data *data, t_parse *parse)
 {
+    
     int i;
-    i = 0;
-    data->texinfo[0].img = mlx_xpm_file_to_image(data->mlx, parse->no_text, &data->texinfo[0].width, &data->texinfo[0].hight);
-    data->texinfo[0].iter = mlx_get_data_addr(data->texinfo[0].img, &data->texinfo[0].pixel_bits, &data->texinfo[0].line_length, &data->texinfo[0].endianess);
-    data->texinfo[1].img = mlx_xpm_file_to_image(data->mlx, parse->we_text, &data->texinfo[1].width, &data->texinfo[1].hight);
-    data->texinfo[1].iter = mlx_get_data_addr(data->texinfo[1].img, &data->texinfo[1].pixel_bits, &data->texinfo[1].line_length, &data->texinfo[1].endianess);
-    data->texinfo[2].img = mlx_xpm_file_to_image(data->mlx, parse->so_text, &data->texinfo[2].width, &data->texinfo[2].hight);
-    data->texinfo[2].iter = mlx_get_data_addr(data->texinfo[2].img, &data->texinfo[2].pixel_bits, &data->texinfo[2].line_length, &data->texinfo[2].endianess);
-    data->texinfo[3].img = mlx_xpm_file_to_image(data->mlx, parse->ea_text, &data->texinfo[3].width, &data->texinfo[3].hight);
-    data->texinfo[3].iter = mlx_get_data_addr(data->texinfo[3].img, &data->texinfo[3].pixel_bits, &data->texinfo[3].line_length, &data->texinfo[3].endianess);
-}
-// void init_textures(t_data *data, t_tinfo *info)
-// {
-//     int i;
 
-//     i = 0;
-//     while (i < 4)
-//     {
-//         data->texinfo[i].img = mlx_xpm_file_to_image(data->mlx, info->text_path[i], &data->texinfo[i].width, &data->texinfo[i].hight);
-//         data->texinfo[i].iter = mlx_get_data_addr(data->texinfo[i].img, &data->texinfo[i].pixel_bits, &data->texinfo[i].line_length, &data->texinfo[i].endianess);
-//         i++;
-//     }
-// }
+    i = 0;
+    while (i < 4)
+    {
+        data->texinfo[i].img = mlx_xpm_file_to_image(data->mlx, parse->tex_path[i], &data->texinfo[i].width, &data->texinfo[i].hight);
+        data->texinfo[i].iter = mlx_get_data_addr(data->texinfo[i].img, &data->texinfo[i].pixel_bits, &data->texinfo[i].line_length, &data->texinfo[i].endianess);
+        i++;
+    }
+}
 
 void my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {

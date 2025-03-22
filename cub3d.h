@@ -142,6 +142,7 @@ int render(t_data *data);
 void	init_key_flags(t_data *data);
 int check_barriers(t_data *data, float x, float y);
  void merge(t_parse *parse); // sojod
+int check_barriers(t_data *data, float x, float y);
 // void merge(t_tinfo *info, t_textura *tex);
 // void init_textures(t_data *data, t_tinfo *info)
 

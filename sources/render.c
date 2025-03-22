@@ -7,24 +7,9 @@ int	check_keys(t_data *data)
 	return (1);
 }
 
-// void init_keys(t_data *data)
-// {
-//     data->keys[RIGHT_FLAG] = 0;
-//     data->keys[LEFT_FLAG] = 0;
-//     data->keys[W_FLAG] = 0;
-//     data->keys[S_FLAG] = 0;
-//     data->keys[D_FLAG] = 0;
-//     data->keys[A_FLAG] = 0;
-//     data->keys[CLOSE_FLAG] = 0;
-//     data->keys[ROTATE_FLAG] = 0;
-//     data->keys[MOVE_FLAG] = 0;
-
-// }
-
 int render(t_data *data)
 {
-    // init_keys(data);
-    if (!data->keys[CLOSE_FLAG])
+    if (data->keys[CLOSE_FLAG])
         quiter(data);
     rotate(data);
     move_player(data);

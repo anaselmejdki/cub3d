@@ -22,9 +22,7 @@ typedef struct s_parse
 	char	*so_text;
 	char	*we_text;
 	char	*ea_text;
-	int 	r;
-	int 	g;
-	int 	b;
+	char 	*tex_path[4];
 	int		floor_color;
 	int		ceil_color;
 	char	player_dir;
@@ -34,7 +32,7 @@ typedef struct s_parse
 	bool	found_map;
 	int		texture_count;
 	int		consecutive_blanks;
-	int 	angle; //W = 0, N = 90, E = 180, S = 270
+	float 	player_angle; //W = 0, N = 90, E = 180, S = 270
 }			t_parse;
 
 int			ft_parse(t_parse *parse);
@@ -48,9 +46,9 @@ int			get_map_line(t_parse *parse, char *line);
 bool		is_empty_line(char *line);
 int			parse_textures(t_parse *parse, char *line);
 // int			ft_store_rgb(t_parse *parse, char *line);
-bool		check_top_and_bottom(char **map, int rows);
+// bool		check_top_and_bottom(char **map, int rows);
 bool		ft_check_map_borders(t_parse *parse, char **map);
-bool		check_empty_gaps(t_parse *parse, char **map, int i);
+// bool		check_empty_gaps(t_parse *parse, char **map, int i);
 // int			set_rgb_colors(char *line);
 int			validate_and_close(t_parse *parse);
 

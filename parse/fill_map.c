@@ -32,9 +32,6 @@ char	**duplicate_map(t_parse *parse,char **map, int *height)
 		i--;
 	}
 	parse->map_height = *height;
-	printf("size: %d\n", parse->map_height);
-
-
 	return (new);
 }
 

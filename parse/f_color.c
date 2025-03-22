@@ -61,39 +61,38 @@ static void clean_line(char *line)
         ptr++;
     }
 }
+
+int	create_trgb(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
+}
+
+
 int ft_floor(t_parse *parse, char *line)
 {
+    char **split;
 	int r;
 	int g;	
 	int b;
 
     from_new_line_to_ziroo(line);
-	if (validate_line_for_spaces(line)) {
-        return ft_error("🚨 INVALID RGB FORMAT! Spaces between digits are not allowed", line), 1;
-    }
+	if (validate_line_for_spaces(line))
+        return (ft_error("🚨 INVALID RGB FORMAT! Spaces between digits are not allowed", line), 1);
     clean_line(line);
-    char **split = ft_split(line, ',');
-    if (!split || !split[0] || !split[1] || !split[2]) {
+    split = ft_split(line, ',');
+    if (!split || !split[0] || !split[1] || !split[2])
+    {
         return (ft_error("🚨 INVALID COLOR IDENTIFIER! Must be 'F' or 'C'", line), 1);
     }
-	
-	if(split[3]) {
+	if (split[3])
 		return (ft_error("🚨 INVALID RGB FORMAT! Too many components", line), 1);
-	}
-
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
-
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (ft_error("🚨 RGB values must be between 0 and 255", line), 1);
-	}	
 
-	parse->r = r;
-	parse->g = g;
-	parse->b = b;
-
-	parse->floor_color = (r << 16) | (g << 8) | b; 
-
-    return 0;
+    parse->floor_color = create_trgb(r, g, b);
+    printf("FLOOR R is %d G is %d B is %d and florcolor is %X\n", r, g, b, parse->floor_color);
+    return (0);
 }
