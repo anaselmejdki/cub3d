@@ -12,6 +12,7 @@ bool	is_empty_line(char *line)
 	}
 	return (true);
 }
+
 int	print_err(char *info, char *str, int code)
 {
 	ft_putstr_fd("cub3D: Error", 2);

@@ -24,25 +24,25 @@ bool	check_f_and_last_line(char **map, int height)
 	}
 	return (true);
 }
+
 bool	ft_check_map_spaces_above_zero(t_parse *parse, char **map)
 {
 	int	i;
 	int	j;
-
-	// Start from the second row (index 1) because the first row has no row above it
-	for (i = 1; i < parse->map_height; i++)
+	while (i < parse->map_height)
 	{
-		for (j = 0; map[i][j]; j++)
+		j = 0;
+		while(map[i][j])
 		{
-			// Check if the current character is '0'
 			if (map[i][j] == '0')
 			{
-				// Check if the character directly above is a space
 				if (map[i - 1][j] == ' ')
-					return (ft_error("MAP ERROR: Space above '0' detected!",
+					return (ft_error("Space above '0' detected!",
 							map[i]), false);
 			}
+			j++;
 		}
+		i++;
 	}
 	return (true);
 }

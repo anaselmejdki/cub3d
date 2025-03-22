@@ -42,12 +42,12 @@ bool	ft_check_map_borders(t_parse *parse, char **map)
 			|| map[i][last_index] == '\t')
 			last_index--;
 		if (map[i][first_index] != '1' || map[i][last_index] != '1')
-			return (ft_error(" MAP BORDER : First or last non-space column must be 1!",
-					map[i]), false);
+			return (ft_error(" MAP BORDER", map[i]), false);
 		i++;
 	}
 	return (true);
 }
+
 void	calculate_map_width(t_parse *parse, char **map)
 {
 	int	i;
@@ -65,6 +65,7 @@ void	calculate_map_width(t_parse *parse, char **map)
 	}
 	parse->map_width = max_width;
 }
+
 bool	check_player_surronding(t_parse *parse, int i, int j)
 {
 	if (j <= 0 || ft_isspace(parse->map[i][j - 1]))
@@ -93,9 +94,9 @@ bool	check_player_surronding(t_parse *parse, int i, int j)
 
 bool	check_player(t_parse *parse)
 {
-	int i;
-	int j;
-	int count;
+	int	i;
+	int	j;
+	int	count;
 
 	i = -1;
 	count = 0;

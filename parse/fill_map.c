@@ -49,7 +49,6 @@ char	**ft_read_map(char **arr, char *new, int *size)
 	i = 0;
 	while (i < *size)
 	{
-		// printf("arr[%d]: %s\n", i, arr[i]);
 		new_arr[i] = arr[i];
 		i++;
 	}
@@ -77,8 +76,6 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 int	get_map_line(t_parse *parse, char *line)
 {
 	from_new_line_to_ziroo(line);
-	// if (line[ft_strlen(line) - 1] == '\n') // this is not needed
-	// 	line[ft_strlen(line) - 1] = '\0';
 	if (check_valid_map_chars(line, parse->valid_set) == 1)
 		return (1);
 	parse->map = ft_read_map(parse->map, line, &parse->map_height);
