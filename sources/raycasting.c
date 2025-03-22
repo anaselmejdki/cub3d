@@ -66,7 +66,7 @@ void	draw_column(t_data *data, t_ray *ray, int column)
 		end = HEIGHT;
 	i = -1;
 	while (++i < start)
-		my_mlx_pixel_put(data, column, i, data->cc);
+		my_mlx_pixel_put(data, column, i, data->ceil);
 	i = -1;
 	if (start > 0)
 		i = start - 1;
@@ -76,7 +76,7 @@ void	draw_column(t_data *data, t_ray *ray, int column)
 		my_mlx_pixel_put(data, column, i, ray->curr_color);
 	}
 	while (i < HEIGHT)
-		my_mlx_pixel_put(data, column, i++, data->fc);
+		my_mlx_pixel_put(data, column, i++, data->floor);
 }
 
 // Normalize angle to be between 0 and 360

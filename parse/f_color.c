@@ -91,8 +91,7 @@ int ft_floor(t_parse *parse, char *line)
 	b = ft_atoi(split[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (ft_error("🚨 RGB values must be between 0 and 255", line), 1);
-
+    free_mapping(split);
     parse->floor_color = create_trgb(r, g, b);
-    printf("FLOOR R is %d G is %d B is %d and florcolor is %X\n", r, g, b, parse->floor_color);
     return (0);
 }

@@ -1,5 +1,4 @@
 
-
 #ifndef CUB3D_H
 #define CUB3D_H
 
@@ -8,7 +7,7 @@
 #define HEIGHT 720
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
-# define TILE_SIZE 20
+# define TILE_SIZE 1000
 # define SPEED_DIVISOR 25
 # define FOV 60
 
@@ -101,15 +100,10 @@ typedef struct s_data
 	int			map_height;
 	int			map_width;
 	char		**map;
-	// int			ceilieng_color[3];
-	// int			floor_color[3];
 	int 		ceil;	// Soojod
 	int 		floor; // Sojod
-	int 		cc;
-	int			fc;
 	int 		keys[KEYS_NB];
 	t_player	player;
-	// t_ray		ray;
 	t_img		image;
 	t_texture	texinfo[4];
 	int debug;
