@@ -53,7 +53,7 @@ void merge(t_parse *parse)
     data.ceil = parse->ceil_color;
     data.height = parse->map_height;
     data.width = parse->map_width;
-    data.player.angle = parse->player_angle; // sojod 
+    data.player.angle = parse->player_angle;
     data.player.angle_step = ((float)(FOV) / (float)WIDTH);
     init_data(&data);
     init_textures(&data, parse);

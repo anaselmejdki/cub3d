@@ -49,7 +49,6 @@ static void clean_line(char *line)
                 }
                 ptr--;  
             }
-
             if (*(ptr + 1) == ' ' || *(ptr + 1) == '\t') {
                 char *temp = ptr + 1;
                 while (*temp) {
@@ -61,6 +60,7 @@ static void clean_line(char *line)
         ptr++;
     }
 }
+
 int ft_ceil(t_parse *parse, char *line)
 {
     char **split;

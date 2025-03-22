@@ -15,59 +15,24 @@ char *get_texture_path(char *path)
     return line;
 }
 
-// int fill_textures_paths(t_parse *parse, char *path, char c)
-// {
-//     char *texture_path;
-    
-//     texture_path = get_texture_path(path);
-//     if (!texture_path)
-//         return 1;
-    
-//     if (c == 'N' && !parse->no_text)
-//         parse->tex_path[0] = texture_path;
-//     else if (c == 'S' && !parse->so_text)
-//         parse->tex_path[1] = texture_path;
-//     else if (c == 'W' && !parse->we_text)
-//         parse->tex_path[2] = texture_path;
-//     else if (c == 'E' && !parse->ea_text)
-//         parse->tex_path[3] = texture_path;
-//     else
-//         return (free(texture_path), 1);
-//     return 0;
-// }
-
 int fill_textures_paths(t_parse *parse, char *path, char c)
 {
-    char *texture_path = get_texture_path(path);
+    char *texture_path;
+    
+    texture_path = get_texture_path(path);
     if (!texture_path)
         return 1;
-
-    if (c == 'N')
-    {
-        free(parse->tex_path[0]);  // Free the old texture path
+    
+    if (c == 'N' && !parse->no_text)
         parse->tex_path[0] = texture_path;
-    }
-    else if (c == 'S')
-    {
-        free(parse->tex_path[1]);
+    else if (c == 'S' && !parse->so_text)
         parse->tex_path[1] = texture_path;
-    }
-    else if (c == 'W')
-    {
-        free(parse->tex_path[2]);
+    else if (c == 'W' && !parse->we_text)
         parse->tex_path[2] = texture_path;
-    }
-    else if (c == 'E')
-    {
-        free(parse->tex_path[3]);
+    else if (c == 'E' && !parse->ea_text)
         parse->tex_path[3] = texture_path;
-    }
     else
-    {
-        free(texture_path);
-        return 1;
-    }
-
+        return (free(texture_path), 1);
     return 0;
 }
 

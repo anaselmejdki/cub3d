@@ -62,11 +62,6 @@ static void clean_line(char *line)
     }
 }
 
-int	create_trgb(int r, int g, int b)
-{
-	return (r << 16 | g << 8 | b);
-}
-
 
 int ft_floor(t_parse *parse, char *line)
 {
@@ -92,6 +87,6 @@ int ft_floor(t_parse *parse, char *line)
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (ft_error("🚨 RGB values must be between 0 and 255", line), 1);
     free_mapping(split);
-    parse->floor_color = create_trgb(r, g, b);
+    parse->floor_color = (r << 16 | g << 8 | b);
     return (0);
 }

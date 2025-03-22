@@ -26,3 +26,29 @@ void    free_map(char **map)
     free(map);
     map = NULL;
 }
+
+void free_textura(t_data *data, int count)
+{
+    int i;
+
+    i = 0;
+    while (i < count)
+    {
+        if (data->texinfo[i].img)
+            mlx_destroy_image(data->mlx, data->texinfo[i].img);
+        i++;
+    }
+}
+
+void free_all(t_data *data)
+{
+    if (data->image.img)
+        mlx_destroy_image(data->mlx, data->image.img);
+    if (data->win)
+        mlx_destroy_window(data->mlx, data->win);
+    if (data->mlx)
+    {
+        mlx_destroy_display(data->mlx);
+        free(data->mlx);
+    }
+}

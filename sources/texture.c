@@ -2,15 +2,25 @@
 
 void init_textures(t_data *data, t_parse *parse)
 {
-    
     int i;
 
     i = 0;
     while (i < 4)
     {
         data->texinfo[i].img = mlx_xpm_file_to_image(data->mlx, parse->tex_path[i], &data->texinfo[i].width, &data->texinfo[i].hight);
-        if (!data->texinfo[i].img)
-            ft_error("Invalid Path\n", parse->tex_path[i]);
+        if (data->texinfo[i].img)
+            free(parse->tex_path[i]);
+        else 
+        {
+            free(parse->tex_path[0]);
+            free(parse->tex_path[1]);
+            free(parse->tex_path[2]);
+            free(parse->tex_path[3]);
+            free_textura(data, i);
+            free_map(data->map);
+            free_all(data);
+            ft_error("Invalid texture", "");
+        }
         data->texinfo[i].iter = mlx_get_data_addr(data->texinfo[i].img, &data->texinfo[i].pixel_bits, &data->texinfo[i].line_length, &data->texinfo[i].endianess);
         i++;
     }
