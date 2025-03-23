@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:12 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:20:32 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 14:58:37 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ static int	handle_pre_map_content(t_parse *parse, char *line)
 		return (parse->flag++, parse_textures(parse, line));
 	if (ft_strncmp(line, "F", 1) == 0 || ft_strncmp(line, "C", 1) == 0)
 		return (parse->flag++, ft_color(parse, line));
-	printf("%d\n", parse->flag);
 	if (parse->flag >= 6)
 	{
-		printf("flag: %d\n", parse->flag);
 		if (parse->floor_color != -1 && parse->ceil_color != -1
 			&& ft_strchr("01NSWE ", *line))
 			return ( get_map_line(parse, line));
