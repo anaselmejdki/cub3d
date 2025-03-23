@@ -94,7 +94,8 @@ void	a_moves(t_data *data)
 
 void	move_player(t_data *data)
 {
-	if (!data->keys[W_FLAG] && !data->keys[S_FLAG] && !data->keys[D_FLAG] && !data->keys[A_FLAG])
+	if (!data->keys[W_FLAG] && !data->keys[S_FLAG] && !data->keys[D_FLAG]
+		&& !data->keys[A_FLAG])
 		return ;
 	w_moves(data);
 	s_moves(data);

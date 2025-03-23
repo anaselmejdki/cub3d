@@ -1,28 +1,5 @@
 #include "../include/main.h"
 
-
-// bool check_f_and_last_line(char **map, int height)
-// {
-// 	int i;
-// 	int f;
-
-// 	i = 0;
-// 	f = 0;
-// 	while (map[0][f])
-// 	{
-// 		if (map[0][f] != '1' && map[0][f] != '\n' )
-// 			return (ft_error("👾 YOU NEED '1' IN FIRST ROW 👾", map[0]), false);
-// 		f++;
-// 	}
-// 	f = 0;
-// 	while (map[height - 1][f])
-// 	{
-// 		if (map[height - 1][f] != '1' && map[height - 1][f] != '\n')
-// 			return(ft_error("👾 YOU NEED '1' IN LAST ROW 👾", map[height - 1]), false);
-// 		f++;
-// 	}
-// 	return (true);
-// }
 bool check_f_and_last_line(char **line, int height)
 {
 	int i;
