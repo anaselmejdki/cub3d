@@ -6,11 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:12 by saait-si          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/23 21:59:47 by ael-mejd         ###   ########.fr       */
-=======
-/*   Updated: 2025/03/23 14:58:37 by saait-si         ###   ########.fr       */
->>>>>>> refs/remotes/origin/master
+/*   Updated: 2025/03/23 23:15:59 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +25,7 @@ static int	handle_pre_map_content(t_parse *parse, char *line)
 	{
 		if (parse->floor_color != -1 && parse->ceil_color != -1
 			&& ft_strchr("01NSWE ", *line))
-			return ( get_map_line(parse, line));
+			return (get_map_line(parse, line));
 	}
 	return (ft_error(parse, "Invalid configuration", line), 1);
 }
@@ -39,7 +35,7 @@ static int	handle_line(t_parse *parse, char *line)
 	if (!parse->found_map && !is_empty_line(line))
 	{
 		if (handle_pre_map_content(parse, line))
-			return (close(parse->fd), free(line), 1);
+			return (free_parser(&parse), close(parse->fd), free(line), 1);
 	}
 	else if (parse->found_map && get_map_line(parse, line))
 	{
@@ -59,7 +55,11 @@ int	ft_parse(t_parse *parse)
 	while (line)
 	{
 		if (handle_line(parse, line))
-			return (get_next_line(parse->fd), 1);
+		{
+			free(line);
+			get_next_line(parse->fd);
+			return (1);
+		}
 		free(line);
 		line = get_next_line(parse->fd);
 	}

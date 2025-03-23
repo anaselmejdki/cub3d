@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:19 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 21:41:10 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:26:42 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ int	fill_textures_paths(t_parse *parse, char *path, char c)
 	texture_path = get_texture_path(path);
 	if (!texture_path)
 		return (1);
-	// free(path);
-	if (c == 'N' && !parse->no_text)
+	
+	if (c == 'N')
 		parse->tex_path[0] = texture_path;
-	else if (c == 'S' && !parse->so_text)
+	else if (c == 'S')
 		parse->tex_path[1] = texture_path;
-	else if (c == 'W' && !parse->we_text)
+	else if (c == 'W')
 		parse->tex_path[2] = texture_path;
-	else if (c == 'E' && !parse->ea_text)
+	else if (c == 'E')
 		parse->tex_path[3] = texture_path;
 	else
 		return (free(texture_path), 1);

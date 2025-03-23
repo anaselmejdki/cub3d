@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:50 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 21:58:47 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:24:50 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,12 @@ void	free_parser(t_parse **parse)
 
     // Free all texture paths
     i = 0;
-	free((*parse)->no_text);
-	free((*parse)->so_text);
-	free((*parse)->we_text);
-	free((*parse)->ea_text);
-
     while (i < 4)
     {
         if ((*parse)->tex_path[i])
             free((*parse)->tex_path[i]);
         i++;
     }
-
     free(*parse);
     *parse = NULL;
 	exit (1);

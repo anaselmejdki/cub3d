@@ -6,11 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:14:40 by saait-si          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/23 21:43:15 by ael-mejd         ###   ########.fr       */
-=======
-/*   Updated: 2025/03/23 15:00:48 by saait-si         ###   ########.fr       */
->>>>>>> refs/remotes/origin/master
+/*   Updated: 2025/03/23 23:21:37 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +30,6 @@ typedef struct s_parse
 	char	**map;
 	int		map_height;
 	int		map_width;
-	char	*no_text;
-	char	*so_text;
-	char	*we_text;
-	char	*ea_text;
 	char	*tex_path[4];
 	int		floor_color;
 	int		ceil_color;
