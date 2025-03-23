@@ -137,6 +137,6 @@ void			init_key_flags(t_data *data);
 int				check_barriers(t_data *data, float x, float y);
 void			merge(t_parse *parse);
 int				check_barriers(t_data *data, float x, float y);
-void			free_textura(t_data *data, int count);
-void			free_all(t_data *data);
+void free_textura(t_data *data, int count);
+void free_all(t_data *data);
 #endif

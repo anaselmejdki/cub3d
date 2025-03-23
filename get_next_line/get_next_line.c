@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 09:17:48 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/22 21:44:50 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/18 23:19:10 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*stash;
 
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	if (!stash)
@@ -111,4 +112,5 @@ char	*get_next_line(int fd)
 	line = return_a_line(stash);
 	stash = rest_stash(stash);
 	return (line);
+	// printf("ana fl5re");
 }
