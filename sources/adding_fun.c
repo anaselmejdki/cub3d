@@ -6,11 +6,20 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:15:24 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:15:25 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 14:35:19 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+float normalize_angle(float angle)
+{
+    while (angle < 0)
+        angle += 360;
+    while (angle >= 360)
+        angle -= 360;
+    return angle;
+}
 
 void	clean_exit(t_data *data, int code)
 {

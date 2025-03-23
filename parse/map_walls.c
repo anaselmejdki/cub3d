@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:58 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 02:40:00 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 14:43:17 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ bool	check_player_surronding(t_parse *parse, int i, int j)
 	parse->player_y = i;
 	parse->player_dir = parse->map[i][j];
 	if (parse->player_dir == 'W')
-		parse->player_angle = 0;
-	if (parse->player_dir == 'N')
-		parse->player_angle = 90;
-	if (parse->player_dir == 'E')
 		parse->player_angle = 180;
-	if (parse->player_dir == 'S')
+	if (parse->player_dir == 'N')
 		parse->player_angle = 270;
+	if (parse->player_dir == 'E')
+		parse->player_angle = 0;
+	if (parse->player_dir == 'S')
+		parse->player_angle = 90;
 	return (false);
 }
 
