@@ -6,7 +6,11 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:56:22 by ael-mejd          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/23 21:46:37 by ael-mejd         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/23 14:59:16 by saait-si         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +142,10 @@ int				check_barriers(t_data *data, float x, float y);
 void			merge(t_parse *parse);
 int				check_barriers(t_data *data, float x, float y);
 void			free_textura(t_data *data, int count);
+<<<<<<< HEAD
 float 			normalize_angle(float angle);
+=======
+void			free_all(t_data *data);
+float			normalize_angle(float angle);
+>>>>>>> refs/remotes/origin/master
 #endif

@@ -6,7 +6,11 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:43 by saait-si          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/23 21:51:31 by ael-mejd         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/23 14:57:57 by saait-si         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +56,10 @@ char	**ft_read_map(char **arr, char *new, int *size)
 	while (i < *size)
 	{
 		new_arr[i] = arr[i];
+<<<<<<< HEAD
 		printf("++++++++new_arr-> %s\n", new_arr[i]);
+=======
+>>>>>>> refs/remotes/origin/master
 		i++;
 	}
 	new_arr[i] = ft_strdup(new);
@@ -69,8 +76,13 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	i = 0;
 	while (line[i])
 	{
+<<<<<<< HEAD
 		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]) )
 			return (ft_error(NULL, "Invalid character in map", &line[i]), 1);
+=======
+		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]))
+			return (ft_error("Invalid character in map", &line[i]), 1);
+>>>>>>> refs/remotes/origin/master
 		i++;
 	}
 	return (0);
@@ -89,6 +101,7 @@ int    check_zero_space(t_parse *parse)
 		{
 			if (parse->map[i][j] == '0')
 			{
+<<<<<<< HEAD
 				// printf("parse->map ->>>>> %s\n", parse->map[i]);
 				if ( parse->map[i][j + 1] == ' ')
 				{
@@ -113,9 +126,18 @@ int    check_zero_space(t_parse *parse)
 					printf("new_arr->          %s\n", parse->map[i + 1]);
 					return (ft_error(parse, " '0' space in below", &parse->map[i][j]), 1);
 				}
+=======
+				if ( map[i][j + 1] == ' ')
+					return (ft_error(" '0' space in right", &map[i][j]), 1);
+				if (j > 0 && map[i][j - 1] == ' ')
+					return (ft_error(" '0' space in left", &map[i][j]), 1);
+				if (i > 0 && (map[i - 1][j] == ' ' || (int)ft_strlen(map[i - 1]) <= j))
+					return (ft_error(" '0' space in above", &map[i][j]), 1);
+				if (map[i + 1] != NULL && (map[i + 1][j] == ' ' || (int)ft_strlen(map[i + 1]) <= j))
+					return (ft_error(" '0' space in below", &map[i][j]), 1);
+>>>>>>> refs/remotes/origin/master
 			}
 		}
-		printf("--------------------------------------------\n");
 	}
 	return (0);
 }

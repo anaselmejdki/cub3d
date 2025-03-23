@@ -6,7 +6,11 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 02:39:33 by saait-si          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/23 21:37:27 by ael-mejd         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/23 14:58:15 by saait-si         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +69,9 @@ void ft_put_rgb(int r, int g, int b, t_parse *parse)
 		ft_error(parse, "🚨 INVALID RGB VALUES: Must be between 0-255", NULL);
 	
 	if (parse->identifier == 'F' && ft_strncmp(&parse->identifier, "F", 1) == 0)
-	{
 		parse->floor_color = (r << 16) | (g << 8) | b;
-		printf("Floor color: %d, %d, %d\n", r, g, b);
-	}
 	else if (parse->identifier == 'C' && ft_strncmp(&parse->identifier, "C",1) == 0)
-	{
 		parse->ceil_color = (r << 16) | (g << 8) | b;
-		printf("Floor color: %d, %d, %d\n", r, g, b);
-	}
 }
 int	ft_color(t_parse *parse, char *line)
 {

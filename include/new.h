@@ -6,7 +6,11 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:14:40 by saait-si          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/23 21:43:15 by ael-mejd         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/23 15:00:48 by saait-si         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +50,11 @@ typedef struct s_parse
 	int		consecutive_blanks;
 	float	player_angle;
 	int		player_x_pos;
-	int 	found_ceil;
-	int 	found_floor;
-	int 	flag;
+	int		found_ceil;
+	int		found_floor;
+	int		flag;
 	int		comma_count;
-	char 	identifier;
+	char	identifier;
 }			t_parse;
 
 int			ft_parse(t_parse *parse);
