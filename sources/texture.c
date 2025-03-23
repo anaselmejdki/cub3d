@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:16:22 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:50:17 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 17:09:57 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_textures(t_data *data, t_parse *parse)
 		data->texinfo[i].img = mlx_xpm_file_to_image(data->mlx,
 				parse->tex_path[i], &data->texinfo[i].width,
 				&data->texinfo[i].hight);
-		// free(parse->tex_path[i]);
+		free(parse->tex_path[i]);
 		if (!data->texinfo[i].img)
 		{
 			// free(parse->tex_path[0]);

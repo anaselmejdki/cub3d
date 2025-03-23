@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:19 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:50:01 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 17:15:23 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*get_texture_path(char *path)
 	line = ft_strdup(path);
 	if (!line)
 		return (NULL);
+	free(path);
 	return (line);
 }
 
@@ -46,7 +47,7 @@ int	fill_textures_paths(t_parse *parse, char *path, char c)
 		parse->tex_path[3] = texture_path;
 	else
 		return (free(texture_path), 1);
-	return (0);
+	return (free(texture_path), 0);
 }
 
 int	parse_textures(t_parse *parse, char *line)

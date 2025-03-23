@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 09:17:48 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/18 23:19:10 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:06:24 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*stash;
+	char *tmp1;
+	char *tmp2;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
@@ -105,10 +107,12 @@ char	*get_next_line(int fd)
 			return (NULL);
 		stash[0] = '\0';
 	}
-	stash = read_stash(fd, stash);
-	if (!stash)
+	tmp1 = read_stash(fd, stash);
+	if (!tmp1)
 		return (NULL);
+	stash = tmp1;
 	line = return_a_line(stash);
-	stash = rest_stash(stash);
+	tmp2 = rest_stash(stash);
+	stash = tmp2;
 	return (line);
 }
