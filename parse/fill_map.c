@@ -75,7 +75,6 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 
 int check_zero_space(char **map)
 {
-    printf("check_zero_space\n");
     int i;
     int j;
 
@@ -93,7 +92,7 @@ int check_zero_space(char **map)
                 if (j > 0 && map[i][j - 1] == ' ')
                     return (ft_error("Invalid map: '0' next to space (left)", &map[i][j]), 1);
                 
-                if (i > 0 && map[i - 1][j] == ' ')
+                if (i > 0 && (map[i - 1][j] == ' ' || map[i - 1][j] == '\r')) // anas will find out
                     return (ft_error("Invalid map: '0' next to space (above)", &map[i][j]), 1);
                 
                 if (map[i + 1] != NULL && map[i + 1][j] == ' ')
