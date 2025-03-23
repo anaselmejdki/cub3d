@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:50 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:08:55 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:58:47 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,72 @@ void	free_mapping(char **str)
 	}
 }
 
-void	free_parser(t_parse *parse)
+// void	free_parser(t_parse *parse)
+// {
+	
+// 	if (parse->map != NULL)
+// 	{
+// 		printf("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh\n");
+// 		free_mapping(parse->map);
+// 	}
+// 	if (parse->no_text != NULL)
+// 		free(parse->no_text);
+// 	if (parse->so_text != NULL)
+// 		free(parse->so_text);
+// 	if (parse->we_text != NULL)
+// 		free(parse->we_text);
+// 	if (parse->ea_text != NULL)
+// 		free(parse->ea_text);
+// }
+
+
+// void	free_parser(t_parse **parse)
+// {
+//     if (!parse || !*parse)
+//         return;
+
+//     if ((*parse)->map)
+//         free_mapping((*parse)->map);
+//     if ((*parse)->no_text)
+//         free((*parse)->no_text);
+//     if ((*parse)->so_text)
+//         free((*parse)->so_text);
+//     if ((*parse)->we_text)
+//         free((*parse)->we_text);
+//     if ((*parse)->ea_text)
+//         free((*parse)->ea_text);
+
+//     free(*parse);  // Free the struct itself
+//     *parse = NULL; // Avoid dangling pointer
+// 	exit(1);
+// }
+
+
+void	free_parser(t_parse **parse)
 {
-	if (parse->map != NULL)
-		free_mapping(parse->map);
-	if (parse->no_text != NULL)
-		free(parse->no_text);
-	if (parse->so_text != NULL)
-		free(parse->so_text);
-	if (parse->we_text != NULL)
-		free(parse->we_text);
-	if (parse->ea_text != NULL)
-		free(parse->ea_text);
+    int i;
+
+    if (!parse || !*parse)
+        return;
+
+    if ((*parse)->map)
+        free_mapping((*parse)->map);
+
+    // Free all texture paths
+    i = 0;
+	free((*parse)->no_text);
+	free((*parse)->so_text);
+	free((*parse)->we_text);
+	free((*parse)->ea_text);
+
+    while (i < 4)
+    {
+        if ((*parse)->tex_path[i])
+            free((*parse)->tex_path[i]);
+        i++;
+    }
+
+    free(*parse);
+    *parse = NULL;
+	exit (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_color.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:25 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 11:53:52 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:36:52 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,15 @@ int	ft_ceil(t_parse *parse, char *line)
 	b = 0;
 	from_new_line_to_ziroo(line);
 	if (validate_line_for_spaces(line))
-		return (ft_error("🚨 INVALID RGB FORMAT! ", line), 1);
+		return (ft_error(parse, "🚨 INVALID RGB FORMAT! ", line), 1);
 	clean_line(line);
 	split = ft_split(line, ',');
 	if (!split || !split[0] || !split[1] || !split[2])
 	{
-		return (ft_error("🚨 INVALID COLOR IDENTIFIER!", line), 1);
+		return (ft_error(parse, "🚨 INVALID COLOR IDENTIFIER!", line), 1);
 	}
 	if (split[3])
-		return (ft_error("🚨 INVALID RGB FORMAT! Too many components", line), 1);
+		return (ft_error(parse, "🚨 INVALID RGB FORMAT! Too many components", line), 1);
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);

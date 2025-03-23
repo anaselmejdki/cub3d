@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:14:23 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 13:57:50 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:36:43 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 # include <unistd.h>
 
 int		ft_isspace(int c);
-void	ft_error(char *str, char *arg);
+int	    ft_error(t_parse *parse, char *str, char *arg);
 bool	is_empty_line(char *line);
 int     ft_color(t_parse *parse, char *line);
 void	calculate_map_width(t_parse *parse, char **map);
 void	ft_check_rgb_f(t_parse *parse, int r, int g, int b);
 void	ft_check_rgb_c(t_parse *parse, int r, int g, int b);
 void	from_new_line_to_ziroo(char *line);
+void	free_parser(t_parse **parse);
 #endif

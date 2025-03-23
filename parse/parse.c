@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:12 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 17:12:33 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:59:47 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	handle_pre_map_content(t_parse *parse, char *line)
 			&& ft_strchr("01NSWE ", *line))
 			return ( get_map_line(parse, line));
 	}
-	return (ft_error("Invalid configuration", line), 1);
+	return (ft_error(parse, "Invalid configuration", line), 1);
 }
 
 static int	handle_line(t_parse *parse, char *line)
@@ -53,7 +53,7 @@ int	ft_parse(t_parse *parse)
 	parse->flag = 0;
 	line = get_next_line(parse->fd);
 	if (!line)
-		return (ft_error("Empty file", NULL), close(parse->fd), 1);
+		return (ft_error(parse, "Empty file", NULL), close(parse->fd), 1);
 	while (line)
 	{
 		if (handle_line(parse, line))

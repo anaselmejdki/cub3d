@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:14:40 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:22:20 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:43:15 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char		**duplicate_map(t_parse *parse, char **map, int *height);
 void		free_mapping(char **str);
 bool		validate_map(t_parse *parse);
 bool		check_player(t_parse *parse);
-void		free_parser(t_parse *parse);
+// void		free_parser(t_parse *parse);
 int			print_err(char *info, char *str, int code);
 int			get_map_line(t_parse *parse, char *line);
 bool		is_empty_line(char *line);

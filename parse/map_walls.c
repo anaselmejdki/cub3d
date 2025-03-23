@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:58 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:51:16 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:40:41 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	ft_check_map_borders(t_parse *parse, char **map)
 			|| map[i][last_index] == '\t')
 			last_index--;
 		if (map[i][first_index] != '1' || map[i][last_index] != '1')
-			return (ft_error(" MAP BORDER", map[i]), false);
+			return (ft_error(parse, " MAP BORDER", map[i]), false);
 		i++;
 	}
 	return (true);

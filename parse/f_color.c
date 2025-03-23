@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_color.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 02:39:33 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:38:12 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:37:27 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void ft_check_comma(char *line,  t_parse *parse)
 		if (line[i] == ',')
 			parse->comma_count++;
 		if (parse->comma_count > 2)
-			ft_error("Must have exactly two commas", line);
+			ft_error(parse, "Must have exactly two commas", line);
 		i++;
 	}
 }
@@ -62,7 +62,7 @@ static void ft_check_comma(char *line,  t_parse *parse)
 void ft_put_rgb(int r, int g, int b, t_parse *parse)
 {
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		ft_error("🚨 INVALID RGB VALUES: Must be between 0-255", NULL);
+		ft_error(parse, "🚨 INVALID RGB VALUES: Must be between 0-255", NULL);
 	
 	if (parse->identifier == 'F' && ft_strncmp(&parse->identifier, "F", 1) == 0)
 	{
@@ -91,15 +91,15 @@ int	ft_color(t_parse *parse, char *line)
 	parse->identifier = *ptr;
 	
 	if (validate_line_for_spaces(line))
-		return (ft_error("🚨 INVALID RGB FORMAT: No spaces within numbers", line), 1);
+		return (ft_error(parse, "🚨 INVALID RGB FORMAT: No spaces within numbers", line), 1);
 	ft_check_comma(line, parse);
 	
 	split = ft_split(ptr, ',');
 	if (!split || !split[0] || !split[1] || !split[2])
-		return (free_mapping(split), ft_error("🚨 INVALID RGB FORMAT: Missing components", line), 1);
+		return (free_mapping(split), ft_error(parse,"🚨 INVALID RGB FORMAT: Missing components", line), 1);
 	
 	if (split[3])
-		return (free_mapping(split), ft_error("🚨 INVALID RGB FORMAT: Too many components", line), 1);
+		return (free_mapping(split), ft_error(parse, "🚨 INVALID RGB FORMAT: Too many components", line), 1);
 	
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
