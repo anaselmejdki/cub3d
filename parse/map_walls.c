@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_walls.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:58 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 02:40:00 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 14:25:24 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ bool	check_player_surronding(t_parse *parse, int i, int j)
 	parse->player_x = j;
 	parse->player_y = i;
 	parse->player_dir = parse->map[i][j];
-	if (parse->player_dir == 'W')
-		parse->player_angle = 0;
 	if (parse->player_dir == 'N')
-		parse->player_angle = 90;
-	if (parse->player_dir == 'E')
+		parse->player_angle = 270;
+	if (parse->player_dir == 'W')
 		parse->player_angle = 180;
 	if (parse->player_dir == 'S')
-		parse->player_angle = 270;
+		parse->player_angle = 90;
+	if (parse->player_dir == 'E')
+		parse->player_angle = 0;
 	return (false);
 }
 

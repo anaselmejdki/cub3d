@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:05 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:13:23 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 06:32:14 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ int	validate_and_close(t_parse *parse)
 	if (!validate_map(parse))
 	{
 		close(parse->fd);
+		free(parse->tex_path[0]);
+		free(parse->tex_path[1]);
+		free(parse->tex_path[2]);
+		free(parse->tex_path[3]);
 		return (print_err(NULL, "Invalid map", 1));
 	}
 	if (parse->texture_count != 4 || parse->floor_color == -1

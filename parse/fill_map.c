@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:43 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:06:48 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 03:49:08 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,33 +74,33 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	return (0);
 }
 
-int	check_zero_space(char **map)
+int    check_zero_space(char **map)
 {
-	int	i;
-	int	j;
+    int    i;
+    int    j;
 
-	i = -1;
-	while (map[++i])
-	{
-		j = -1;
-		while (map[i][++j])
-		{
-			if (map[i][j] == '0')
-			{
-				if (map[i][j + 1] != '\0' && map[i][j + 1] == ' ')
-					return (ft_error(" '0' space in right",
-							&map[i][j]), 1);
-				if (j > 0 && map[i][j - 1] == ' ')
-					return (ft_error(" '0' space in left",
-							&map[i][j]), 1);
-				if (i > 0 && (map[i - 1][j] == ' ' || map[i - 1][j] == '\r'))
-					return (ft_error(" '0' space in above", &map[i][j]), 1);
-				if (map[i + 1] != NULL && map[i + 1][j] == ' ')
-					return (ft_error(" '0' space in below", &map[i][j]), 1);
-			}
-		}
-	}
-	return (0);
+    i = -1;
+    while (map[++i])
+    {
+        j = -1;
+        while (map[i][++j])
+        {
+            if (map[i][j] == '0')
+            {
+                if ( map[i][j + 1] == ' ')
+                    return (ft_error(" '0' space in right",
+                            &map[i][j]), 1);
+                if (j > 0 && map[i][j - 1] == ' ')
+                    return (ft_error(" '0' space in left",
+                            &map[i][j]), 1);
+                if (i > 0 && (map[i - 1][j] == ' ' || (int)ft_strlen(map[i - 1]) <= j))
+                    return (ft_error(" '0' space in above", &map[i][j]), 1);
+                if (map[i + 1] != NULL && (map[i + 1][j] == ' ' || (int)ft_strlen(map[i + 1]) <= j))
+                    return (ft_error(" '0' space in below", &map[i][j]), 1);
+            }
+        }
+    }
+    return (0);
 }
 
 int	get_map_line(t_parse *parse, char *line)
