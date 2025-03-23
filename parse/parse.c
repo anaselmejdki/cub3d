@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 02:40:12 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 02:40:14 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/main.h"
 
 static int	handle_pre_map_content(t_parse *parse, char *line)
@@ -35,11 +47,15 @@ int	ft_parse(t_parse *parse)
 {
 	char	*line;
 
-	while ((line = get_next_line(parse->fd)))
+	line = get_next_line(parse->fd);
+	if (!line)
+		return (ft_error("Empty file", NULL), close(parse->fd), 1);
+	while (line)
 	{
 		if (handle_line(parse, line))
 			return (get_next_line(parse->fd), 1);
 		free(line);
+		line = get_next_line(parse->fd);
 	}
 	return (validate_and_close(parse));
 }

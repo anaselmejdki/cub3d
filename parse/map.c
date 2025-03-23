@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 02:40:05 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:13:23 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/main.h"
 
 bool	check_f_and_last_line(char **line, int height)
@@ -29,9 +41,11 @@ bool	ft_check_map_spaces_above_zero(t_parse *parse, char **map)
 	int	i;
 	int	j;
 
-	for (i = 1; i < parse->map_height; i++)
+	i = 1;
+	while (i < parse->map_height)
 	{
-		for (j = 0; map[i][j]; j++)
+		j = 0;
+		while (map[i][j])
 		{
 			if (map[i][j] == '0')
 			{
@@ -39,7 +53,9 @@ bool	ft_check_map_spaces_above_zero(t_parse *parse, char **map)
 					return (ft_error("MAP ERROR: Space above '0' detected!",
 							map[i]), false);
 			}
+			j++;
 		}
+		i++;
 	}
 	return (true);
 }
@@ -59,8 +75,6 @@ bool	validate_map(t_parse *parse)
 		return (printf("here2"), free_mapping(copy), false);
 	if (!check_player(parse))
 		return (printf("here3"), free_mapping(copy), false);
-	// if (!ft_check_map_spaces_above_zero(parse, parse->map))
-	// 	return (false); 
 	calculate_map_width(parse, copy);
 	return (free_mapping(copy), true);
 }

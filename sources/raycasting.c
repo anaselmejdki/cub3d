@@ -1,4 +1,16 @@
-#include "../cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 02:38:50 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:15:09 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cub3d.h"
 
 void	real_distance(t_ray *ray, t_data *data)
 {
@@ -82,15 +94,6 @@ void	draw_column(t_data *data, t_ray *ray, int column)
 		my_mlx_pixel_put(data, column, i++, data->floor);
 }
 
-float	normalize_angle(float angle)
-{
-	while (angle < 0)
-		angle += 360;
-	while (angle >= 360)
-		angle -= 360;
-	return (angle);
-}
-
 void	raycasting(t_data *data)
 {
 	t_ray	ray;
@@ -98,7 +101,7 @@ void	raycasting(t_data *data)
 
 	column = 0;
 	memset(&ray, 0, sizeof(t_ray));
-	ray.rayangle = normalize_angle(data->player.angle - (data->player.fov / 2));
+	ray.rayangle = data->player.angle - (data->player.fov / 2);
 	while (column <= WIDTH)
 	{
 		horizontal(data, &ray, ray.rayangle);
@@ -107,6 +110,8 @@ void	raycasting(t_data *data)
 		small_distance(&ray);
 		draw_column(data, &ray, column);
 		column++;
-		ray.rayangle = normalize_angle(ray.rayangle + data->player.angle_step);
+		ray.rayangle += data->player.angle_step;
+		if (ray.rayangle >= 360)
+			ray.rayangle -= 360;
 	}
 }

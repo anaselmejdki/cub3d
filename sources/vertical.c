@@ -1,4 +1,16 @@
-#include "../cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vertical.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 03:16:29 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:16:31 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cub3d.h"
 
 float	calculate_delta_x(t_data *data, float *vertical_x, float *vertical_y,
 		float rayangle)

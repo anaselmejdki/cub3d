@@ -1,4 +1,16 @@
-#include "../cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   adding_fun.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 03:15:24 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:15:25 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cub3d.h"
 
 void	clean_exit(t_data *data, int code)
 {
@@ -10,6 +22,7 @@ void	clean_exit(t_data *data, int code)
 	free(data->mlx);
 	exit(code);
 }
+
 int	quiter(t_data *data)
 {
 	clean_exit(data, 0);

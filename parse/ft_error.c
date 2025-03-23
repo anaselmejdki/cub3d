@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 02:39:50 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:08:55 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/main.h"
 
 bool	is_empty_line(char *line)
@@ -12,6 +24,7 @@ bool	is_empty_line(char *line)
 	}
 	return (true);
 }
+
 int	print_err(char *info, char *str, int code)
 {
 	ft_putstr_fd("cub3D: Error", 2);

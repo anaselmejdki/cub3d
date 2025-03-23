@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:56:22 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/23 00:57:39 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 02:16:46 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 
 # define ERR_MALLOC "Could not allocate memory"
 
-# include "include/main.h"
+# include "main.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <errno.h>

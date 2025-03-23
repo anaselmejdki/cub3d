@@ -1,4 +1,16 @@
-#include "../cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_handler.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 03:15:53 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:15:55 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cub3d.h"
 
 void	init_key_flags(t_data *data)
 {
@@ -48,7 +60,6 @@ int	key_release_handler(int key, t_data *data)
 		data->keys[A_FLAG] = 0;
 	return (0);
 }
-
 
 void	input_handler(t_data *data)
 {

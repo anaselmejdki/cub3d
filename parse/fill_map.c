@@ -1,15 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 02:39:43 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:06:48 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/main.h"
-
-static void	from_new_line_to_ziroo(char *line)
-{
-	size_t	len;
-
-	len = ft_strlen(line);
-	if (len > 0 && line[len - 1] == '\n')
-	{
-		line[len - 1] = '\0';
-	}
-}
 
 char	**duplicate_map(t_parse *parse, char **map, int *height)
 {
@@ -73,36 +74,33 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	return (0);
 }
 
-int check_zero_space(char **map)
+int	check_zero_space(char **map)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (map[i][j] == '0')
-            {
-                if (map[i][j + 1] != '\0' && map[i][j + 1] == ' ')
-                    return (ft_error("Invalid map: '0' next to space (right)", &map[i][j]), 1);
-                
-                if (j > 0 && map[i][j - 1] == ' ')
-                    return (ft_error("Invalid map: '0' next to space (left)", &map[i][j]), 1);
-                
-                if (i > 0 && (map[i - 1][j] == ' ' || map[i - 1][j] == '\r')) // anas will find out
-                    return (ft_error("Invalid map: '0' next to space (above)", &map[i][j]), 1);
-                
-                if (map[i + 1] != NULL && map[i + 1][j] == ' ')
-                    return (ft_error("Invalid map: '0' next to space (below)", &map[i][j]), 1);
-            }
-            j++;
-        }
-        i++;
-    }
-    return (0);
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == '0')
+			{
+				if (map[i][j + 1] != '\0' && map[i][j + 1] == ' ')
+					return (ft_error(" '0' space in right",
+							&map[i][j]), 1);
+				if (j > 0 && map[i][j - 1] == ' ')
+					return (ft_error(" '0' space in left",
+							&map[i][j]), 1);
+				if (i > 0 && (map[i - 1][j] == ' ' || map[i - 1][j] == '\r'))
+					return (ft_error(" '0' space in above", &map[i][j]), 1);
+				if (map[i + 1] != NULL && map[i + 1][j] == ' ')
+					return (ft_error(" '0' space in below", &map[i][j]), 1);
+			}
+		}
+	}
+	return (0);
 }
 
 int	get_map_line(t_parse *parse, char *line)
@@ -110,7 +108,6 @@ int	get_map_line(t_parse *parse, char *line)
 	from_new_line_to_ziroo(line);
 	if (check_valid_map_chars(line, parse->valid_set) == 1)
 		return (1);
-	
 	parse->map = ft_read_map(parse->map, line, &parse->map_height);
 	if (!parse->map)
 		return (ft_error("Could not allocate memory", NULL), 1);

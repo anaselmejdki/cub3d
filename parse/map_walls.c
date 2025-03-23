@@ -1,5 +1,16 @@
-#include "../include/main.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_walls.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 02:39:58 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 02:40:00 by saait-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../include/main.h"
 
 bool	ft_check_map_borders(t_parse *parse, char **map)
 {
@@ -20,12 +31,12 @@ bool	ft_check_map_borders(t_parse *parse, char **map)
 			|| map[i][last_index] == '\t')
 			last_index--;
 		if (map[i][first_index] != '1' || map[i][last_index] != '1')
-			return (ft_error(" MAP BORDER : First or last non-space column must be 1!",
-					map[i]), false);
+			return (ft_error(" MAP BORDER", map[i]), false);
 		i++;
 	}
 	return (true);
 }
+
 void	calculate_map_width(t_parse *parse, char **map)
 {
 	int	i;
@@ -43,18 +54,13 @@ void	calculate_map_width(t_parse *parse, char **map)
 	}
 	parse->map_width = max_width;
 }
+
 bool	check_player_surronding(t_parse *parse, int i, int j)
 {
 	if (j <= 0 || ft_isspace(parse->map[i][j - 1]))
-		return (printf("SSSs"),true);
+		return (printf("SSSs"), true);
 	if (j >= (int)ft_strlen(parse->map[i]) || ft_isspace(parse->map[i][j + 1]))
 		return (true);
-	// if (i <= 0 || j >= (int)ft_strlen(parse->map[i - 1])
-	// || ft_isspace(parse->map[i - 1][j]))
-	// return (printf("SSSs"),true);
-	printf(" - 1=%c=\n", parse->map[i - 1][j]);
-	printf("=%c=\n", parse->map[i][j]);
-	printf("Player found at (%d, %d)\n", i, j);
 	if (i >= parse->map_height || j >= (int)ft_strlen(parse->map[i + 1])
 		|| ft_isspace(parse->map[i + 1][j]))
 		return (true);
@@ -74,9 +80,9 @@ bool	check_player_surronding(t_parse *parse, int i, int j)
 
 bool	check_player(t_parse *parse)
 {
-	int i;
-	int j;
-	int count;
+	int	i;
+	int	j;
+	int	count;
 
 	i = -1;
 	count = 0;
@@ -88,7 +94,7 @@ bool	check_player(t_parse *parse)
 			if (ft_strchr("NEWS", parse->map[i][j]))
 			{
 				if (check_player_surronding(parse, i, j))
-					return (printf("wooo"),false);
+					return (printf("wooo"), false);
 				count++;
 			}
 		}
