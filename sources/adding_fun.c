@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   adding_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 19:25:15 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/23 02:22:51 by saait-si         ###   ########.fr       */
+/*   Created: 2025/03/23 03:15:24 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:15:25 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/cub3d.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	clean_exit(t_data *data, int code)
 {
-	char	*substr;
-	size_t	s_len;
+	free_texture(data->mlx, data->texinfo);
+	mlx_destroy_image(data->mlx, data->image.img);
+	mlx_destroy_window(data->mlx, data->win);
+	free_map(data->map);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(code);
+}
 
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	substr = (char *)malloc((len + 1) * sizeof(char));
-	if (!substr)
-		return (NULL);
-	ft_strlcpy(substr, &s[start], len + 1);
-	return (substr);
+int	quiter(t_data *data)
+{
+	clean_exit(data, 0);
+	return (0);
 }

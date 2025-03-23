@@ -14,7 +14,7 @@ SRC =	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
 		./parse/parse.c ./parse/textures.c ./parse/ziyada.c ./parse/c_color.c main.c\
 		./sources/horizontal.c ./sources/init_data.c ./sources/input_handler.c ./sources/free.c ./sources/mouvement.c\
 		./sources/raycasting.c ./sources/render.c ./sources/rotate.c ./sources/texture.c ./sources/vertical.c \
-		./sources/check_barriers.c 
+		./sources/check_barriers.c ./sources/adding_fun.c
 
 OBJ = $(SRC:.c=.o)
 

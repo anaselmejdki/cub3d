@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 00:00:01 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/23 00:00:03 by ael-mejd         ###   ########.fr       */
+/*   Created: 2025/03/23 03:16:13 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:23:46 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../include/cub3d.h"
 
 float	radian(float degree)
 {

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/22 23:57:24 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/22 23:57:25 by ael-mejd         ###   ########.fr       */
+/*   Created: 2025/03/23 03:15:59 by saait-si          #+#    #+#             */
+/*   Updated: 2025/03/23 03:23:35 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../include/cub3d.h"
 
 void	w_moves(t_data *data)
 {
@@ -106,7 +106,8 @@ void	a_moves(t_data *data)
 
 void	move_player(t_data *data)
 {
-	if (!data->keys[W_FLAG] && !data->keys[S_FLAG] && !data->keys[D_FLAG] && !data->keys[A_FLAG])
+	if (!data->keys[W_FLAG] && !data->keys[S_FLAG] && !data->keys[D_FLAG]
+		&& !data->keys[A_FLAG])
 		return ;
 	w_moves(data);
 	s_moves(data);
