@@ -1,14 +1,17 @@
 #include "../include/main.h"
 
-static void from_new_line_to_ziroo(char *line)
+static void	from_new_line_to_ziroo(char *line)
 {
-	size_t len = ft_strlen(line);
-	if (len > 0 && line[len - 1] == '\n') {
-		line[len - 1] = '\0'; 
+	size_t	len;
+
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+	{
+		line[len - 1] = '\0';
 	}
 }
 
-char	**duplicate_map(t_parse *parse,char **map, int *height)
+char	**duplicate_map(t_parse *parse, char **map, int *height)
 {
 	char	**new;
 	int		i;
@@ -46,7 +49,6 @@ char	**ft_read_map(char **arr, char *new, int *size)
 	i = 0;
 	while (i < *size)
 	{
-		// printf("arr[%d]: %s\n", i, arr[i]);
 		new_arr[i] = arr[i];
 		i++;
 	}
@@ -65,22 +67,56 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	while (line[i])
 	{
 		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]))
-			return (ft_error( "Invalid character in map", &line[i]),1);
+			return (ft_error("Invalid character in map", &line[i]), 1);
 		i++;
 	}
 	return (0);
 }
 
+int check_zero_space(char **map)
+{
+    printf("check_zero_space\n");
+    int i;
+    int j;
+
+    i = 0;
+    while (map[i])
+    {
+        j = 0;
+        while (map[i][j])
+        {
+            if (map[i][j] == '0')
+            {
+                if (map[i][j + 1] != '\0' && map[i][j + 1] == ' ')
+                    return (ft_error("Invalid map: '0' next to space (right)", &map[i][j]), 1);
+                
+                if (j > 0 && map[i][j - 1] == ' ')
+                    return (ft_error("Invalid map: '0' next to space (left)", &map[i][j]), 1);
+                
+                if (i > 0 && map[i - 1][j] == ' ')
+                    return (ft_error("Invalid map: '0' next to space (above)", &map[i][j]), 1);
+                
+                if (map[i + 1] != NULL && map[i + 1][j] == ' ')
+                    return (ft_error("Invalid map: '0' next to space (below)", &map[i][j]), 1);
+            }
+            j++;
+        }
+        i++;
+    }
+    return (0);
+}
+
 int	get_map_line(t_parse *parse, char *line)
 {
 	from_new_line_to_ziroo(line);
-	// if (line[ft_strlen(line) - 1] == '\n') // this is not needed
-	// 	line[ft_strlen(line) - 1] = '\0';
 	if (check_valid_map_chars(line, parse->valid_set) == 1)
 		return (1);
+	
 	parse->map = ft_read_map(parse->map, line, &parse->map_height);
 	if (!parse->map)
-		return (ft_error("Could not allocate memory", NULL),1);
+		return (ft_error("Could not allocate memory", NULL), 1);
+	if (check_zero_space(parse->map) == 1)
+		return (1);
 	parse->found_map = true;
 	return (0);
 }
