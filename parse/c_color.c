@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:25 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:07:48 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 11:53:52 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int	clean_space_around_comma(char *line, char *ptr)
 {
 	char	*temp;
 	int		shift;
-
 	shift = 0;
 	if (*ptr == ',')
 	{
@@ -116,6 +115,7 @@ int	ft_ceil(t_parse *parse, char *line)
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
 	free_mapping(split);
+	printf("Ceil color: %d, %d, %d\n", r, g, b);
 	ft_check_rgb_c(parse, r, g, b);
 	return (0);
 }

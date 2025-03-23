@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:39:43 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:06:48 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 05:17:41 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	**ft_read_map(char **arr, char *new, int *size)
 	while (i < *size)
 	{
 		new_arr[i] = arr[i];
+		printf("new_arr-> %s\n", new_arr[i]);
 		i++;
 	}
 	new_arr[i] = ft_strdup(new);
@@ -67,7 +68,7 @@ int	check_valid_map_chars(char *line, char *valid_chars)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]))
+		if (!ft_strchr(valid_chars, line[i]) && !ft_isspace(line[i]) )
 			return (ft_error("Invalid character in map", &line[i]), 1);
 		i++;
 	}
@@ -87,18 +88,30 @@ int	check_zero_space(char **map)
 		{
 			if (map[i][j] == '0')
 			{
-				if (map[i][j + 1] != '\0' && map[i][j + 1] == ' ')
+				// printf("map ->>>>> %s\n", map[i]);
+				if ( map[i][j + 1] == ' ')
 					return (ft_error(" '0' space in right",
 							&map[i][j]), 1);
 				if (j > 0 && map[i][j - 1] == ' ')
 					return (ft_error(" '0' space in left",
 							&map[i][j]), 1);
-				if (i > 0 && (map[i - 1][j] == ' ' || map[i - 1][j] == '\r'))
+				if (i > 0 && (map[i - 1][j] == ' ' || (int)ft_strlen(map[i - 1]) <= j))
+				{
+					// printf("map above ->>>>> %s\n", map[i - 1]);
+					// printf("map below ->>>>> %s\n", map[i]);
+					// printf("j ->>>>> %d\n", j);
+					// printf("i ->>>>> %d\n", i);
+					// printf("len--------> %lu\n",ft_strlen(map[i - 1]));
 					return (ft_error(" '0' space in above", &map[i][j]), 1);
-				if (map[i + 1] != NULL && map[i + 1][j] == ' ')
+				}
+				if (map[i + 1] != NULL && (map[i + 1][j] == ' ' || (int)ft_strlen(map[i + 1]) <= j))
+				{
+					printf("new_arr->          %s\n", map[i + 1]);
 					return (ft_error(" '0' space in below", &map[i][j]), 1);
+				}
 			}
 		}
+		printf("--------------------------------------------\n");
 	}
 	return (0);
 }

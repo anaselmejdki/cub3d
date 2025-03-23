@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:19 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 02:40:20 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 04:31:54 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	parse_textures(t_parse *parse, char *line)
 	char	identifier;
 	char	*path;
 
+	while (*line == ' ' || *line == '\t')
+		line++;
 	parse->texture_count++;
 	if (parse->texture_count > 4)
 		return (print_err(NULL, "Too many textures", 1));

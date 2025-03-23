@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:40:28 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:13:33 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/23 12:59:49 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isspace(int c)
 {
-	return (c == ' ' || c == '\t' || c == '\r' || c == '\b');
+	return (c == ' '  || c == '\r' || c == '\b');
 }
 
 void	ft_error(char *str, char *arg)

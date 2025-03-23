@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   new.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:14:40 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:28:30 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 12:12:44 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NEW_H
 # define NEW_H
 
+// # include "cub3d.h"
 # include "../get_next_line/get_next_line.h"
 # include "../include/color.h"
 # include "../libft/libft.h"
@@ -44,6 +45,10 @@ typedef struct s_parse
 	int		texture_count;
 	int		consecutive_blanks;
 	float	player_angle;
+	int		player_x_pos;
+	int 	found_ceil;
+	int 	found_floor;
+	int 	flag;
 }			t_parse;
 
 int			ft_parse(t_parse *parse);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:38:50 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 03:31:37 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/23 12:35:13 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	raycasting(t_data *data)
 	column = 0;
 	memset(&ray, 0, sizeof(t_ray));
 	ray.rayangle = data->player.angle - (data->player.fov / 2);
-	while (column <= WIDTH)
+	while (column <= 50)
 	{
 		horizontal(data, &ray, ray.rayangle);
 		vertical(data, &ray, ray.rayangle);
