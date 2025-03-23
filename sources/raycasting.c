@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/22 23:58:36 by ael-mejd          #+#    #+#             */
+/*   Updated: 2025/03/22 23:59:36 by ael-mejd         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 void real_distance(t_ray *ray, t_data *data)
@@ -79,17 +91,6 @@ void	draw_column(t_data *data, t_ray *ray, int column)
 		my_mlx_pixel_put(data, column, i++, data->floor);
 }
 
-// Normalize angle to be between 0 and 360
-float normalize_angle(float angle)
-{
-    while (angle < 0)
-        angle += 360;
-    while (angle >= 360)
-        angle -= 360;
-    return angle;
-}
-
-
 void raycasting(t_data *data)
 {
     t_ray ray;
@@ -97,7 +98,7 @@ void raycasting(t_data *data)
 
     column = 0;
     memset(&ray, 0, sizeof(t_ray));
-    ray.rayangle = normalize_angle(data->player.angle - (data->player.fov / 2)); //45 - 60/2 = 15
+    ray.rayangle = data->player.angle - (data->player.fov / 2);
     while (column <= WIDTH)
     {
         horizontal(data, &ray, ray.rayangle);
@@ -106,6 +107,8 @@ void raycasting(t_data *data)
         small_distance(&ray);
         draw_column(data, &ray, column);
         column++;
-        ray.rayangle = normalize_angle(ray.rayangle + data->player.angle_step);
+        ray.rayangle += data->player.angle_step;
+        if (ray.rayangle >= 360)
+            ray.rayangle -= 360;
     }
 }
