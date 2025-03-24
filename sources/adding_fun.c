@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adding_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhrif <aakhrif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:15:24 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:35:19 by saait-si         ###   ########.fr       */
+/*   Updated: 2025/03/24 00:10:16 by aakhrif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ float normalize_angle(float angle)
 
 void	clean_exit(t_data *data, int code)
 {
+	int	i;
+	i = 0;
+    while (i < 4)
+    {
+        if (data->parse->tex_path[i])
+            free(data->parse->tex_path[i]);
+        i++;
+    }
+	free(data->parse);
+    data->parse = NULL;
 	free_texture(data->mlx, data->texinfo);
 	mlx_destroy_image(data->mlx, data->image.img);
 	mlx_destroy_window(data->mlx, data->win);

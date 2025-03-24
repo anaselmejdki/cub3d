@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhrif <aakhrif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:56:22 by ael-mejd          #+#    #+#             */
-/*   Updated: 2025/03/23 23:05:50 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/24 00:06:06 by aakhrif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct s_data
 	t_img		image;
 	t_texture	texinfo[4];
 	int			debug;
+	t_parse *parse;
 }				t_data;
 
 void			init_textures(t_data *data, t_parse *parse);

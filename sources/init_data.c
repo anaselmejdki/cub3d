@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhrif <aakhrif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 03:15:46 by saait-si          #+#    #+#             */
-/*   Updated: 2025/03/23 14:50:09 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2025/03/24 00:06:17 by aakhrif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	merge(t_parse *parse)
 	data.height = parse->map_height;
 	data.width = parse->map_width;
 	data.player.angle = parse->player_angle;
+	data.parse = parse;
 	data.player.angle_step = ((float)(FOV) / (float)WIDTH);
 	init_data(&data);
 	init_textures(&data, parse);
